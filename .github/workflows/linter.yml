@@ -45,6 +45,6 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_LATEX: false
-          FILTER_REGEX_EXCLUDE: "*.tex"
+          VALIDATE_JSCPD: false
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
