@@ -1,0 +1,72 @@
+%! Licence = CC BY-NC-SA 4.0
+
+%! Author = mariuszindel
+%! Date = 22. Feb 2021
+%! Project = Latex-documentation-template
+
+
+
+\begin{titlepage}
+
+
+   \newcommand{\HRule}{\color{black}\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+   \center
+
+   \begin{minipage}{0.49\linewidth}
+      \vspace{2pt}
+      \includegraphics[width=0.8\linewidth]{../style/img/INS_Icon}
+      \hfill
+   \end{minipage}
+   \begin{minipage}{0.49\linewidth}
+      \hfill
+      \includegraphics[width=0.6\linewidth]{../style/img/OST_Icon}
+   \end{minipage}
+
+   \vspace*{\fill}
+
+   \vspace{1.5cm}
+
+   {\HRule} \\[0.7cm]
+   {\Huge \bfseries \TITLE}\\[0.4cm]
+   {\huge \bfseries \SUBTITLE}\\[0.4cm]
+
+   {\HRule} \\[1.5cm]
+
+   \textbf{\textsc{\Huge \SUBJECT}}\\[1.5cm]
+
+   \Large
+   \textbf{Studiengang Informatik}\\
+   \textbf{\INSTITUTE}\\
+   \textbf{Campus Rapperswil-Jona}\\
+
+   \vspace{1cm}
+
+ 
+
+   \vspace{1.5cm}
+
+   \begin{center}
+      \begin{tabular} {|p{3cm} l|}
+         Autoren:    &     \AUTHORONE        \\
+                     &     \AUTHORTWO        \\
+                     &                       \\
+         Version:    &     \VERSION          \\
+      \end{tabular}
+   \end{center}
+
+
+
+   \vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+
+% don't show \subsubsection in \tableofcontents
+\setcounter{tocdepth}{2}
+
+%Table of contents
+\tableofcontents
+
+\newpage
+
