@@ -23,5 +23,5 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: document
+          name: ${{ matrix.main_file }}
           path: ${{ matrix.main_file }}/main.pdf
