@@ -9,11 +9,7 @@ jobs:
     strategy:
       matrix:
         main_file:
-          [
-            "installation-guide-OSS/main.tex",
-            "usage-guide-OSS/main.tex",
-            "best-practices/main.tex",
-          ]
+          ["installation-guide-OSS", "usage-guide-OSS", "best-practices"]
     steps:
       - name: Set up Git Repository
         uses: actions/checkout@v2
@@ -22,4 +18,5 @@ jobs:
         id: compile-doc
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: ${{ matrix.main_file }}
+          root_file: main.tex
+          pre_compile: cd ${{ matrix.main_file }}
