@@ -20,3 +20,8 @@ jobs:
         with:
           root_file: main.tex
           pre_compile: cd ${{ matrix.main_file }}
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: document
+          path: ${{ matrix.main_file }}/main.pdf
