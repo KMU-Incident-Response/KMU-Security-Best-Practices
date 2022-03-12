@@ -1,3 +1,4 @@
+---
 name: Build LaTeX document
 on:
   push:
