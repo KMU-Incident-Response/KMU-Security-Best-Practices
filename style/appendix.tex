@@ -1,0 +1,29 @@
+%! Licence = CC BY-NC-SA 4.0
+
+%! Author = mariuszindel
+%! Date = 22. Feb 2022
+%! Project = latex-documentation-template
+
+\chapter{Verzeichnisse}
+
+% List of figures
+\listoffigures
+% \addcontentsline{toc}{section}{List of Figures}
+% \addcontentsline{toc}{section}{\arabic{chapter}.\arabic{section}~~ line added to TOC: subsubsection one}
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Abbildungsverzeichnis}
+
+% List of tables
+\listoftables
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Tabellenverzeichnis}
+
+% List of bibliography
+\bibliographystyle{IEEEtran} % We choose the "plain" reference style
+\bibliography{bibliography.bib} % Entries are in the "refs.bib" file
+\addtocounter{section}{1}
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}Literaturverzeichnis}
+
+
+\chapter{Anhang}
+\newpage

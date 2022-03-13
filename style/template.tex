@@ -1,0 +1,157 @@
+%! Licence = CC BY-NC-SA 4.0
+
+%! Author = mariuszindel
+%! Date = 24. Jan 2021
+%! Project = latex-documentation-template
+
+
+\documentclass[a4paper, oneside, 10pt]{scrreprt}
+
+% charset
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[Sonny]{fncychap}
+\ChNameVar{\Large\fontfamily{\sfdefault}\bfseries}
+\ChNumVar{\Huge\fontfamily{\sfdefault}\bfseries}
+\ChTitleVar{\Large\fontfamily{\sfdefault}\bfseries}
+
+% use language german
+\usepackage[ngerman]{babel}
+
+% format page size
+\usepackage{geometry}
+\geometry{top=2.54cm,left=2.54cm,right=2.54cm}
+
+% tabular
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{colortbl}
+
+% math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+
+% graphic
+\usepackage{graphicx}
+\graphicspath{{img/}}
+\usepackage{caption}
+
+% colors
+\usepackage[dvipsnames]{xcolor}
+
+% multi columns
+\usepackage{multicol}
+
+% Enable clickable table of contents
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+% make items compact
+%\setlist{topsep=0pt, leftmargin=4mm, nolistsep}
+%\setlength{\parindent}{0cm}
+
+% author and institute
+\newcommand{\AUTHORONE}{Severin Grimm }
+\newcommand{\AUTHORTWO}{Marco Martinez }
+\newcommand{\INSTITUTE}{Hochschule für Technik}
+
+% define header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setkomafont{pagehead}{\normalfont}
+\setkomafont{pagefoot}{\normalfont}
+
+\fancyhead[LO]{\nouppercase \leftmark}
+\fancyhead[RO]{\AUTHOR}
+\fancyfoot[CO]{\thepage}
+\renewcommand\headrulewidth{0.5pt}
+\renewcommand\footrulewidth{0.5pt}
+%\headsep = -2pt
+%\footskip = 0pt
+
+% define color
+\definecolor{sectionColor}{HTML}{000000}
+\definecolor{subSectionColor}{HTML}{000000}
+\definecolor{subSubSectionColor}{HTML}{000000}
+\definecolor{codeBackground}{RGB}{245,245,245}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{darkGreen}{RGB}{0,150,0}
+\definecolor{OSTPink}{RGB}{140,25,95}
+\definecolor{DarkPurple}{rgb}{0.4, 0.1, 0.4}
+
+% define section format
+%define section color and size
+\addtokomafont{section}{\color{sectionColor}}
+\addtokomafont{subsection}{\color{subSectionColor}}
+\addtokomafont{subsubsection}{ \color{subSubSectionColor}}
+\addtokomafont{paragraph}{\small \color{subSubSectionColor}}
+\addtokomafont{subparagraph}{\small \bfseries \itshape \color{subSubSectionColor}}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+{-3.25ex\@plus -1ex \@minus -.2ex}%
+{1.5ex \@plus .2ex}%
+{\normalfont\normalsize\itshape\bfseries}}
+
+\renewcommand\subparagraph{\@startsection{subparagraph}{4}{\z@}%
+{-3.25ex\@plus -1ex \@minus -.2ex}%
+{1.5ex \@plus .2ex}%
+{\normalfont\normalsize\bfseries\itshape\color{black}}}
+\makeatother
+
+% new section -> new page
+\let\stdchapter\chapter
+\renewcommand\chapter{\clearpage\stdchapter}
+
+% import code listings
+\usepackage{listings}
+\usepackage{beramono}
+\input{../style/listings.tex}
+\lstset{style=java}
+\lstset{
+    literate=  % Allow for German characters in lstlistings.
+        {Ö}{{\"O}}1
+        {Ä}{{\"A}}1
+        {Ü}{{\"U}}1
+        {ü}{{\"u}}1
+        {ä}{{\"a}}1
+        {ö}{{\"o}}1
+}
+
+% dotted rule
+\usepackage{dashrule}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\newcommand{\drule}[3][0]{
+    \tikz[baseline]{\path[decoration={markings,
+    mark=between positions 0 and 1 step 2*#3
+    with {\node[fill, circle, minimum width=#3, inner sep=0pt, anchor=south west] {};}},postaction={decorate}]  (0,#1) -- ++(#2,0);}}
+
+% no indentation
+\setlength{\parindent}{0cm}
+
+% include lorem ipsum
+\usepackage{lipsum}
+
+% degree symbol
+\usepackage{textcomp}
+
+% insert PDF's
+\usepackage{pdfpages}
+
+% change layout to landscape for one page
+\usepackage{pdflscape}
+
+% globaly small URL
+\renewcommand{\UrlFont}{\ttfamily\small}
+
+% Center p element in table
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
