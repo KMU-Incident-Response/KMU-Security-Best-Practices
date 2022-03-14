@@ -32,10 +32,9 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v3
         with:
-          name: all_files
           path: etc/usr/artifacts/
       - name: Check for files
-        run: ls -la etc/usr/artifacts/
+        run: ls -la etc/usr/artifacts/${{ matrix.main_file }}
       # - name: Resort
       #   run: for folder in $(ls etc/usr/artifacts/) do echo $folder done
       # - name: Release
