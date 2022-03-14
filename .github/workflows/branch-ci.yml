@@ -23,7 +23,7 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: ${{ matrix.main_file }}
+          name: ${{ matrix.main_file }}.pdf
           path: ${{ matrix.main_file }}/main.pdf
   publish:
     runs-on: ubuntu-latest
@@ -38,7 +38,7 @@ jobs:
         with:
           path: etc/usr/artifacts/
       - name: Check for files
-        run: ls -la etc/usr/artifacts/${{ matrix.main_file }}
+        run: ls -la etc/usr/artifacts/
       # - name: Resort
       #   run: for folder in $(ls etc/usr/artifacts/) do echo $folder done
       # - name: Release
