@@ -28,6 +28,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: Build-LaTeX-Doc
+    strategy:
+      matrix:
+        main_file:
+          ["installation-guide-OSS", "usage-guide-OSS", "best-practices"]
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v3
