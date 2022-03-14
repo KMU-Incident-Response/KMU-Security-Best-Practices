@@ -36,7 +36,7 @@ jobs:
       - name: Check for files
         run: ls -la etc/usr/artifacts/
       - name: Resort
-        run: for folder in $(ls etc/usr/artifacts/) do echo $floder done
+        run: for folder in $(ls etc/usr/artifacts/) do echo $folder done
       # - name: Release
       #   uses: softprops/action-gh-release@v1
       #   if: startsWith(github.ref, 'refs/tags/')
