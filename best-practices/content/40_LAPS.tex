@@ -8,64 +8,85 @@ Um LAPS einsetzten zu können, wir ein Active Directory benötigt.
 \section{Installation}
 Die Installation ist in drei Schritte unterteilt.
 Als erstes wird LAPS per Group Policy auf allen Windows Geräten installiert.
-Danach wird das Active Directory für LAPS vorbereitet und zum Schluss wird LAPS per Group Policy aktiviert.
+Danach wird das Active Directory für LAPS vorbereitet.
+Das Active Directory braucht noch zwei zusätzliche Attribute auf den Computer Objekten. 
+\begin{itemize}
+    \item \textbf{ms-Mcs-AdmPwd}: Speicher das Administrator Passwort in Plain-Text
+    \item \textbf{ms-Mcs-AdmPwdExpirationTime}: Speichert den Zeitpunkt für den Passwortwechsel.
+\end{itemize}
+
+Zum Schluss wird LAPS per Group Policy aktiviert.
 
 \subsection{Softwareverteilung}
 
 \begin{enumerate}
     \item LAPS kann auf der \href{https://www.microsoft.com/download/details.aspx?id=46899}{Webseite von Microsoft}\footnote{Link: https://www.microsoft.com/download/details.aspx?id=46899} heruntergeladen werden.
-    \item Die Datei muss in einem freigegebenen Netzlaufwerk auf dem Domain Controller platziert werden, auf welches alle Computer zugriff haben.
-          Zum Beispiel: C:\textbackslash Windows\textbackslash SYSVOL\textbackslash sysvol\textbackslash <domain>\textbackslash.
-          Dieses Verzeichniss ist Standardmässig freigegeben.
+    \item Die Datei muss in einem freigegebenen Netzlaufwerk auf dem Domain Controller platziert werden, auf welches alle Computer Zugriff haben.
+    Zum Beispiel: \textbf{C:\textbackslash Windows\textbackslash SYSVOL\textbackslash sysvol\textbackslash <domain>\textbackslash}. 
+    Dieses Verzeichniss ist Standardmässig freigegeben.
     \item Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der OU verknüpft ist, die alle Windows Geräte enthält.
-
-    \item d
-    \item d
-    \item d
-    \item d
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}
+        \caption{Neue GPO für LAPS Deployment}
+    \end{figure}
+    \item Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
+    Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Software Settings $\rightarrow$ Software installation} kann mit \textbf{Rechtsklick $\rightarrow$ New $\rightarrow$ Package\dots} eine Datei ausgewählt werden, welche installiert werden soll.
+    Hier muss man die zuvor im freigegebenen Netzlaufwerk abgelegte Installationsdatei auswählen.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Edit-Deployment.png}
+        \caption{Neue GPO für LAPS Deployment}
+    \end{figure}
+\item Die Group Policy kann nun geschlossen werden. LAPS wird beim Einloggen auf allen Geräten installiert. Die Installation kann auch mit ``gpupdate /force'' in Powershell/CMD gestartet werden.
 \end{enumerate}
-%TODO: Does not Work
-%\begin{figure}[h]
-%    \centering
-%    \includegraphics[width=0.7\linewidth]{LAPS/GPO-Create-New.png}
-%    \caption{Neue GPO für LAPS Deployment}
-%\end{figure}
-%3. Open GPO Editor on DC and Create a new GPO+Link to all Computer OUs
-%
-%4. Edit GPO and add new Software Installation. Select .msi on path from before.
-%
-%5. Close GPO. PC will install after restart or force with gpupdate /force
-%Hint: Install manually on DC to prevent restart.
-%
-%\subsection*{Install UI for Admins}
-%
-%1. Open Programm List
-%2. Click LAPS and Change. Click Change [LAPS-UI-Install]
-%3. Add Management Tools, Next, Change, Finish
-%
-%
-%\section{Configure AD}
-%
-%1. Add Extension Attribute (Admin must be Schema Admin)
-%
-%2. Run commands
-%Import-module AdmPwd.PS (If not available, LAPS not installed on DC)
-%Update-AdmPwdADSchema
-%
-%Result:
-%Operation            DistinguishedName                                                 Status
-%---------            -----------------                                                 ------
-%AddSchemaAttribute   cn=ms-Mcs-AdmPwdExpirationTime,CN=Schema,CN=Configuration,DC=b... Success
-%AddSchemaAttribute   cn=ms-Mcs-AdmPwd,CN=Schema,CN=Configuration,DC=ba,DC=lab          Success
-%ModifySchemaClass    cn=computer,CN=Schema,CN=Configuration,DC=ba,DC=lab               Success
-%
-%
-%Set-AdmPwdComputerSelfPermission -OrgUnit "Clients"
-%Name                 DistinguishedName                                                 Status
-%----                 -----------------                                                 ------
-%Clients              OU=Clients,OU=Computers,OU=Lab,DC=ba,DC=lab                       Delegated
-%
-%
+
+\subsection{LAPS GUI für Admins}
+Über die GPO wird auf den Computern LAPS ohne GUI installiert.
+Mit dem GUI kann man das Passwort von beliebigen Windows Geräten abfragen.
+
+\begin{enumerate}
+    \item In der Programmliste in den Systemeinstellungen auf LAPS klicken und im Balken auf \textbf{Change} klicken.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install.png}
+        \caption{LAPS GUI Installieren 1}
+    \end{figure}
+
+    \item Das \textbf{Management Tools} Feature auswählen und dem Installationsprozess folgen.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install-2.png}
+        \caption{LAPS GUI Installieren 2}
+    \end{figure}
+\end{enumerate}
+
+\section{Active Directory vorbereiten}
+Die zusätzlichen Extension Attributes können per Powershell hinzugefügt werden.
+Der Auszuführende Benutzer muss dafür ``Schema Admin'' sein.
+
+\begin{enumerate}
+    \item Powershell mit dem Schema Admin Benutzer starten.
+    \begin{lstlisting}
+Import-module AdmPwd.PS
+Update-AdmPwdADSchema
+
+#Resultat:
+Operation            DistinguishedName                                              Status
+---------            -----------------                                              ------
+AddSchemaAttribute   cn=ms-Mcs-AdmPwdExpirationTime,CN=Schema,CN=Configuration,DC=b Success
+AddSchemaAttribute   cn=ms-Mcs-AdmPwd,CN=Schema,CN=Configuration,DC=ba,DC=lab       Success
+ModifySchemaClass    cn=computer,CN=Schema,CN=Configuration,DC=ba,DC=lab            Success
+
+Set-AdmPwdComputerSelfPermission -OrgUnit "<Name der OU>"
+#Resultat:
+Name                 DistinguishedName                                              Status
+----                 -----------------                                              ------
+Clients              OU=Clients,OU=Computers,OU=Lab,DC=ba,DC=lab                    Delegated
+    \end{lstlisting}
+
+\end{enumerate}
+
 %3. Create a Group where all Users are added, that can use LAPS. [Laps-Admins.png]
 %
 %4. Open ASedit [ASEdit.png] and Open Properties of OU with Computers. Open Security tab. Add Group and give ``All Extended Rights''
