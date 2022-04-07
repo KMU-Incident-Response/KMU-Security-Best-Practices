@@ -2,3 +2,42 @@
 
 \section{Manuelle Installation des Windows Agents}
 \section{Installation des Windows Agents via GPO}
+
+%1. Download Wazuh Agent
+%https://documentation.wazuh.com/current/installation-guide/packages-list.html#windows
+%
+%2.5 Download Sysmon
+%https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
+%
+%2. Download Windows SDK
+%https://documentation.wazuh.com/current/installation-guide/packages-list.html#windows
+%
+%3. Install only MSI Tools [Install-SDK]
+%
+%4. Go to C:\Program Files (x86)\Windows Kits\10\bin\<Version>\x86 and run Orca
+%
+%5. Right Klick Wazuh MSI and select Edit with Orca
+%
+
+%6. Select Transform > New Transform
+
+%7. Go to Property and add key value pairs: [Orca-Edit]
+
+%WAZUH_MANAGER: <IP>
+%WAZUH_REGISTRATION_SERVER: <IP>
+%WAZUH_AGENT_GROUP: Windows
+%WAZUH_REGISTRATION_PASSWORD: <Set Password>
+
+%8. Select Transform > Generate Transform
+%Save as custom-wazuh-settings.mst
+
+%9. Copy to Server to path every client has access to. E.g.: C:\Windows\SYSVOL\sysvol\ba.lab\Applications
+
+%10. Create new Group Policy on OU of Windows Clients/Servers. [edit-new-group-policy]
+
+%11. Go to Computer Configuration > Policies Software Settings > Software Installation > New > Package [new-software-install.png]
+
+%12. Window Opens. Select .msi file. New windows opens Select Advanced
+%Under modifications select add and select .mst file [new-software-install-advanced-mod.png]
+
+%13 GPO is now ready. PC install it on restart
