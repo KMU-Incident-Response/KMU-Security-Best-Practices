@@ -52,8 +52,20 @@ Hier muss man die zuvor im freigegebenen Netzlaufwerk abgelegte Installationsdat
 Die Group Policy kann nun geschlossen werden.
 LAPS wird beim Einloggen auf den jeweiligen Geräten installiert.
 
+\subsubsection{Domain Controller}
+Auf dem DC sollte man LAPS von Hand installieren.
+Bei der manuellen Installation müssen die zusätzliche Features installiert werden.
+Diese sind das GUI, das Powershell Modul und die GPO Richtlinien.
 
-\subsection{LAPS GUI für Admins}
+Dazu die Installationsdatei ausführen und alle Features installieren.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install-2.png}
+    \caption{LAPS manuelle Installation}
+\end{figure}
+
+
+\subsubsection{LAPS GUI für Admins}
 Über die GPO wird auf den Computern LAPS ohne GUI installiert.
 Mit dem GUI kann man das Passwort von beliebigen Windows Geräten abfragen.\\
 
