@@ -1,0 +1,66 @@
+\chapter{Sysmon Installation}
+
+\section{Installation via GPO}
+
+
+1. Download Sysmon:
+https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
+
+2. Download Sysmon Configuration File:
+https://github.com/KMU-Incident-Response/KMU-Basis-Logging
+%Todo: Update link maybe if sysmon file is in folder
+
+3. Save files in shared folder of dc.
+Sysmon64.exe if only 64bit PC, else Sysmon.exe
+
+%4. Create new Group Policy on OU of Windows Clients/Servers. [edit-new-group-policy]
+
+%5. Go to Computer Configuration > Preferences > Windows Settings > Folder and Rightclick > New > Folder
+
+%6. Path: C.\ Temp [new-folder-1]
+%Apply Once and do not reapply [new-folder-2]
+%
+%7. Got to Files. Rightclick > New > File 
+%Action Create
+%Select Sysmonfile in shared folder
+%Select destination:
+%C:\Temp\Sysmon64.exe
+%under commen select Apply once and do not reapply as in folder
+%[sysmon-file]
+
+
+%8. New File
+%Select config 
+%copy to C:\Temp\sysmon-config.xml
+%under commen select Apply once and do not reapply as in folder
+
+%9. Go to ../Control Panel Settings > Scheduled Tasks > New > Immidiate Task (Win 7)
+%[new-scheduled-task]
+
+%10. Fill Out
+%General
+%[scheudled-task-general]
+%
+%klick new
+%Action
+%Start a Program
+%Program: C:\Temp\Sysmon64.exe
+%Arguments: -accepteula -i C:\Temp\sysmon-config.xml
+%[scheudled-task-action]
+%under commen select Apply once and do not reapply as in folder
+
+%13 GPO is now ready. PC install it on restart
+
+
+\section{Manuelle Installation}
+
+%1. Download See chapter above
+%
+%2. open terminal as administrator and change into folder where files are
+%
+%3. Run
+%\begin{lstlisting}
+%    sysmon64.exe -accepteula -i sysmon-config.xml
+%\end{lstlisting}
+%
+%4. Done
