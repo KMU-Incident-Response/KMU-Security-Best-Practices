@@ -1,11 +1,11 @@
 \chapter{Wazuh Agent Installation}
 
-\section{Manuelle Installation des Windows Agents}
-\section{Installation des Windows Agents via GPO}
+\section{Installation via GPO}
 
 %1. Download Wazuh Agent
 %https://documentation.wazuh.com/current/installation-guide/packages-list.html#windows
-%
+%64bit if only 64bit system else 32bit
+
 %2.5 Download Sysmon
 %https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon
 %
@@ -23,8 +23,8 @@
 
 %7. Go to Property and add key value pairs: [Orca-Edit]
 
-%WAZUH_MANAGER: <IP>
-%WAZUH_REGISTRATION_SERVER: <IP>
+%WAZUH_MANAGER: <Hostname>
+%WAZUH_REGISTRATION_SERVER: <Hostname>
 %WAZUH_AGENT_GROUP: Windows
 %WAZUH_REGISTRATION_PASSWORD: <Set Password>
 
@@ -41,3 +41,22 @@
 %Under modifications select add and select .mst file [new-software-install-advanced-mod.png]
 
 %13 GPO is now ready. PC install it on restart
+
+
+\section{Manuelle Installation}
+
+Windows Agent kann mittels Powershell installiert werden.
+
+
+1. Wazuh Webseite öffnen und unter Wazuh > Agent auf Deploy new Agent drücken. [Deploy-new-agent]
+
+2. Daten auswählen [Deploy-new-agent-2] und PS Kopieren
+
+3. Powershell auf Computer als Admin starten
+
+4 Ausführen
+\begin{lstlisting}
+    Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.2.6-1.msi -OutFile wazuh-agent-4.2.6.msi; ./wazuh-agent-4.2.6.msi /q WAZUH_MANAGER='wazuh-server' WAZUH_REGISTRATION_SERVER='wazuh-server' WAZUH_REGISTRATION_PASSWORD=<Password> WAZUH_AGENT_GROUP='Windows' 
+\end{lstlisting}
+
+5. Done
