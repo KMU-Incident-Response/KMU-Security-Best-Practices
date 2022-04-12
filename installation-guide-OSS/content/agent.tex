@@ -59,7 +59,7 @@ Die .msi und .mst Dateien müssen nun in einem freigegebenen Netzlaufwerk abgesp
     C:\Windows\SYSVOL\sysvol\<Domain>
 \end{lstlisting}
 
-Nun muss noch eine neue Group Policy erstellt werden, mit welcher der Wazuh Agent auf den Windows Geräten installiert wird.
+Nun muss eine neue Group Policy erstellt werden, mit welcher der Wazuh Agent auf den Windows Geräten installiert wird.
 Dazu öffnet man das Group Policy Management auf dem Domain Controller und erstellt eine neue Group Policy, welche mit der OU verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
     \centering
@@ -82,6 +82,7 @@ Unter \textbf{Modifications $\rightarrow$} wählt man nun die .mst Datei aus, we
 Nun kann man mit OK Bestätigen.
 Die Group Policy ist bereit und kann geschlossen werden.
 Der Wazuh Agent wird beim Einloggen auf den Geräten installiert und verbindet sich mit dem Server.
+
 
 \section{Manuelle Installation}
 
