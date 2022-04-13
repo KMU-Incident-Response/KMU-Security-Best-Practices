@@ -1,0 +1,48 @@
+\chapter{Wazuh Server Installation}
+
+\section{Voraussetzungen}
+Die Installationsanleitung für KMUs unterstützt debian basierte Systeme.
+Es wird \href{https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso}{Ubuntu 20.04 LTS}\footnote{Link: https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso} empfohlen.
+Es muss auch beachtet werden, dass der Server genug Ressourcen zur Verfügung hat.
+Der Server braucht mindestens 2 CPU Cores, 4GB RAM \& 100 GB Speicher.
+Der Speicher hängt von der Anzahl Clients ab.
+Weitere Informationen dazu gibt es in der \href{https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}.
+
+\section{Installation}
+Die Installationsanleitung kann direkt im \href{https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/wazuh\_server/README.md\#installation}{README.md}\footnote{Link: https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/wazuh\_server/README.md\#installation} auf GitHub eingesehen werden.
+
+
+\subsection{Firewall}
+Es ist empfohlen eine Hostbased Firewall zu verwenden.
+Auf Ubuntu wird standardmässig \href{https://help.ubuntu.com/community/UFW}{UFW}\footnote{Link: https://help.ubuntu.com/community/UFW} verwendet.
+Es ist auch möglich \href{https://firewalld.org/}{Firewalld}\footnote{Link: https://firewalld.org/} einzusetzen, welches auf den meisten anderen Linuxsystemen als default verwendet wird.
+
+\subsubsection{Ports}
+\begin{lstlisting}
+443/tcp         -  Kibana web interface
+514/UDP/tcp     -  Syslog
+1514/UDP/tcp    -  To get events from the agent.
+1515/tcp        -  Port Used for agent Registration.
+1516/tcp        -  Wazuh Cluster communications.
+9200/tcp        -  Elasticsearch API
+55000/tcp       -  Wazuh API port for incoming requests.
+\end{lstlisting}
+
+
+
+
+Weitere Informationen können dem \href{https://documentation.wazuh.com/current/getting-started/architecture.html\#required-ports}{Architekturkonzept}\footnote{Link: https://documentation.wazuh.com/current/getting-started/architecture.html\#required-ports} von Wazuh entnommen werden.\\
+
+
+\subsection{SELinux}
+Es ist empfohlen SELinux auf der ``permissive'' oder ``disabled'' Stufe zu halten. Im Scope von dieser Anleitung wird keine SELinux ``enforcing'' Variante angeboten.
+
+\section{Upgrade}
+Das Upgrade des Wazuhserver kann über den Packagemanager gemacht werden.
+Es ist zu beachten, dass nur die unterstützen Versionen von Wazuh, Elasticsearch \& Kibana installiert werden sollen.
+Informationen zu unterstützten Versionen können der \href{https://documentation.wazuh.com/current/upgrade-guide/compatibility-matrix/index.html}{Webseite}\footnote{Link: https://documentation.wazuh.com/current/upgrade-guide/compatibility-matrix/index.html} von Wazuh entnommen werden. Ein Upgrade könnte nachher wie folgt aussehen:
+\begin{lstlisting}
+apt-get install elasticsearch=7.14.2
+\end{lstlisting}
+
+
