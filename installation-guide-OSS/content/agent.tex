@@ -4,15 +4,15 @@
 Der Wazuh Agent kann per Group Policy auf allen Windows Geräten installiert werden.
 Dazu muss als erstes die Installationsdatei für den Agent auf der \href{https://documentation.wazuh.com/current/installation-guide/packages-list.html}{Webseite von Wazuh}\footnote{Link: https://documentation.wazuh.com/current/installation-guide/packages-list.html} heruntergeladen werden.\\
 
-Die Installationsdatei braucht noch eine Konfigurationsdatei welche die Adresse des Wazuh-Servers enthält.
-Ein solche Konfigurationsdatei kann mithilfe dem Windows Tool ``Orca'' erstellt werden, welches Teil der Windows SDK ist. Windows SDK kann man auf der \href{https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/}{Webseite von Microsoft}\footnote{Link: https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/} herunterladen.\\
+Die Installationsdatei braucht eine Konfigurationsdatei welche die Netzwerkadresse des Wazuh Managers enthält.
+Eine solche Konfigurationsdatei kann mithilfe dem Windows Tool ``Orca'' erstellt werden, welches Teil der Windows SDK ist. Das Windows SDK kann man auf der \href{https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/}{Webseite von Microsoft}\footnote{Link: https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/} herunterladen.\\
 
-Bei der Installation von Windows SDK kann eine grosse Anzahl Features ausgewählt werden.
+Bei der Installation der Windows SDK kann eine grosse Anzahl Features ausgewählt werden.
 Für Orca wird jedoch nur das Feature ``MSI Tools'' benötigt, alle andere Features können abgewählt werden.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/agent/install-sdk.png}
-    \caption{MSI Tools von Windows SDK}
+    \caption{MSI Tools der Windows SDK}
 \end{figure}
 
 Orca befindet sich nun unter
@@ -20,28 +20,28 @@ Orca befindet sich nun unter
     C:\Program Files (x86)\Windows Kits\10\bin\<Version>\x86\Orca-x86_de-de.msi
 \end{lstlisting}
 und kann mit dieser .msi Installationsdatei installiert werden.
-Orca ist nun installiert und im Kontextmenu bei .msi Dateien gibt es einen neuen Punkt mit ``Edit with Orca''.\\
+Sobald Orca installiert ist wird im Kontextmenu bei .msi Dateien einen neuen Punkt mit ``Edit with Orca'' ersichtlich.\\
 
-Jetzt kann mit einem Rechtsklick auf die Wazuh Agent .msi Datei und ``Edit with Orca'' eine Konfigurationsdatei erstellt werden.
+Mit einem Rechtsklick auf die Wazuh Agent .msi Datei kann via ``Edit with Orca'' eine Konfigurationsdatei erstellt werden.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/agent/edit-with-orca.png}
     \caption{Mit Orca bearbeiten}
 \end{figure}
 
-In Orca muss man in der Menuleiste unter \textbf{Transform $\rightarrow$ New Transform} einen neuen Änderungsnachweis starten.
+In Orca muss man in der Menüleiste unter \textbf{Transform $\rightarrow$ New Transform} einen neuen Änderungsnachweis erstellen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/agent/new-transform.png}
     \caption{Neuer Änderungsnachweis in Orca}
 \end{figure}
 
-Jetzt muss man auf der linken Seite unter ``Tables'' auf die Tabelle ``Property'' gehen.
-Dort werden jetzt neue ``Key - Value'' Paare hinzugefügt.
+Auf der linken Seite unter ``Tables'' auf die Tabelle ``Property'' gehen.
+Dort werden neue ``Key - Value'' Paare hinzugefügt.
 Es braucht folgende Paare:
 \begin{itemize}
-    \item \textbf{WAZUH\_MANAGER}: <Hostname Wazuh-Server>
-    \item \textbf{WAZUH\_REGISTRATION\_SERVER}: <Hostname Wazuh-Server>
+    \item \textbf{WAZUH\_MANAGER}: <Hostname Wazuh Manager>
+    \item \textbf{WAZUH\_REGISTRATION\_SERVER}: <Hostname Wazuh Manager>
     \item \textbf{WAZUH\_AGENT\_GROUP}: Windows
     \item \textbf{WAZUH\_REGISTRATION\_PASSWORD}: <Password gesetzt bei Installation>
 \end{itemize}
@@ -52,7 +52,7 @@ Es braucht folgende Paare:
     \caption{Wazuh Installationsparameter}
 \end{figure}
 
-In der Menuleiste unter \textbf{Transform $\rightarrow$ New Transform} die Konfigurationsdatei exportiert und unter einem beliebigen Namen, zum Beispiel ``custom-wazuh-settings.mst'', abgespeichert werden.\\
+In der Menüleiste unter \textbf{Transform $\rightarrow$ Generate Transform} die Konfigurationsdatei exportieren und unter einem beliebigen Namen, zum Beispiel ``custom-wazuh-settings.mst'', abgespeichern.\\
 
 Die .msi und .mst Dateien müssen nun in einem freigegebenen Netzlaufwerk abgespeichert werden, auf welches alle Windows Geräte Zugriff haben. Zum Beispiel auf dem Domain Controller unter:
 \begin{lstlisting}
@@ -81,7 +81,7 @@ Unter \textbf{Modifications $\rightarrow$} wählt man nun die .mst Datei aus, we
 
 Nun kann man mit OK Bestätigen.
 Die Group Policy ist bereit und kann geschlossen werden.
-Der Wazuh Agent wird beim Einloggen auf den Geräten installiert und verbindet sich mit dem Server.
+Der Wazuh Agent wird beim Einloggen auf den Geräten installiert und verbindet sich automatisch mit dem Server.
 
 
 \section{Manuelle Installation}
@@ -90,21 +90,21 @@ Der Wazuh Agent kann über die Commandline von mehreren Betriebssystemen install
 Für Windows zum Beispiel mit Powershell.
 Die Commands der einzelen Betriebssystem findet man im Wazuh Manager.
 Dazu öffnet man den Wazuh Manager und geht auf \textbf{Wazuh $\rightarrow$ Agent}.
-Oben Rechts von der Tabelle mit allen Agents klickt man auf ``Deploy new Agent''.
+Auf der rechten Seite der Tabelle mit allen Agents klickt man auf ``Deploy new Agent''.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/agent/deploy-new-agent.png}
     \caption{Agent deployment}
 \end{figure}
 
-Auf der nächsten Seite gibt man alle nötigen Daten an und kann unten das Powershell Command kopieren.
+Auf der nächsten Seite gibt man alle nötigen Daten an und kann unten den Powershell Command kopieren.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/agent/deploy-new-agent-2.png}
     \caption{Wazuh Agent manuell installieren}
 \end{figure}
 
-Nun muss man auf dem Windows Gerät Powershell als Administrator starten und das zuvor kopiere Command eingeben:
+Auf dem Windows Gerät Powershell als Administrator starten und das zuvor kopierte Command eingeben:
 
 \begin{lstlisting}
     Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/Der Wazuh/wazuh-agent-mit einem.2.6-1.msi -OutFile wazuh-agent-4.2.6.msi; ./wazuh-agent-4.2.6.msi /q WAZUH_MANAGER='wazuh-server' WAZUH_REGISTRATION_SERVER='wazuh-server' WAZUH_REGISTRATION_PASSWORD=<Password> WAZUH_AGENT_GROUP='Windows' 
