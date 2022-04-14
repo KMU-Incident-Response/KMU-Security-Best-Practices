@@ -60,9 +60,9 @@
 %\setlength{\parindent}{0cm}
 
 % author and institute
-\newcommand{\AUTHORONE}{Severin Grimm }
-\newcommand{\AUTHORTWO}{Marco Martinez }
-\newcommand{\INSTITUTE}{Hochschule für Technik}
+\newcommand{\AUTHORONE}{Severin Grimm}
+\newcommand{\AUTHORTWO}{Marco Martinez}
+\newcommand{\INSTITUTE}{Ostschweizer Fachhochschule}
 
 % define header and footer
 \usepackage{fancyhdr}
@@ -156,3 +156,9 @@ literate=  % Allow for German characters in lstlistings.
 
 % Center p element in table
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usepackage[acronyms, toc]{glossaries}
+\makeglossaries
+
+\input{../style/glossary.tex}
+\input{../style/abbreviations.tex}
