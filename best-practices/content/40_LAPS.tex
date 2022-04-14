@@ -9,20 +9,19 @@ Die Passwörter sind in einem Attribut auf dem Computer Objekt im Active Directo
 Zugriff auf dieses Attribut haben nur berechtigte Benutzer.
 
 \subsection{Voraussetzungen}
-Um LAPS einsetzten zu können, wird ein Active Directory benötigt mit allen Windows Geräten als Computer Objekte.
+Um LAPS einsetzen zu können, wird eine Active Directory benötigt mit allen Windows Geräten als Computer Objekte.
 
 \section{Installation}
 Die Installation ist in drei Schritte unterteilt.
-Als erstes wird LAPS bia Group Policy auf allen Windows Geräten installiert.
-Danach wird das Active Directory für LAPS vorbereitet.
-Das Active Directory braucht noch zwei zusätzliche Attribute auf den Computer Objekten.
-\begin{itemize}
-    \item \textbf{ms-Mcs-AdmPwd}: Speichert das Administrator Passwort in Plain-Text.
-    \item \textbf{ms-Mcs-AdmPwdExpirationTime}: Speichert den Zeitpunkt für den Passwortwechsel.
-\end{itemize}
-
-Zum Schluss wird LAPS per Group Policy aktiviert.
-
+\begin{enumerate}
+    \item Zuerstes wird LAPS via Group Policy auf allen Windows Geräten installiert.
+    \item Danach wird das Active Directory für LAPS vorbereitet. Das Active Directory braucht zwei zusätzliche Attribute auf den Computer Objekten um die Passwörter verwalten zu können.
+          \begin{itemize}
+              \item \textbf{ms-Mcs-AdmPwd}: Speichert das Administrator Passwort in Klartext.
+              \item \textbf{ms-Mcs-AdmPwdExpirationTime}: Speichert den Zeitpunkt für den Passwortwechsel.
+          \end{itemize}
+    \item Zum Schluss wird LAPS per Group Policy aktiviert.
+\end{enumerate}
 
 \subsection{Installation via GPO}
 LAPS kann auf der \href{https://www.microsoft.com/download/details.aspx?id=46899}{Webseite von Microsoft}\footnote{Link: https://www.microsoft.com/download/details.aspx?id=46899} heruntergeladen werden.
@@ -42,24 +41,28 @@ Im Group Policy Management muss eine neue Group Policy erstellt werden, welche m
 
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
 Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Software Settings $\rightarrow$ Software installation} kann mit \textbf{Rechtsklick $\rightarrow$ New $\rightarrow$ Package\dots} eine Datei ausgewählt werden, welche installiert werden soll.
-Hier muss man die zuvor im freigegebenen Netzlaufwerk abgelegte Installationsdatei auswählen.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Edit-Deployment.png}
-    \caption{GPO für LAPS Deployment bearbeiten}
-\end{figure}
+Hier muss man die zuvor im freigegebenen Netzlaufwerk abgelegte Installationsdatei auswählen.\\
+\begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{../img/LAPS/GPO-Edit-Deployment.png}
+        \caption{GPO für LAPS Deployment bearbeiten}
+    \end{figure}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{../img/LAPS/GPO-Edit-Deployment-2.png}
+        \caption{LAPS Installationsdatei auswählen}
+    \end{figure}
+\end{minipage}\\
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Edit-Deployment-2.png}
-    \caption{LAPS Installationsdatei auswählen}
-\end{figure}
 Die Group Policy kann nun geschlossen werden.
 LAPS wird beim Einloggen auf den jeweiligen Geräten installiert.
 
 \subsubsection{Domain Controller}
 Auf dem DC sollte man LAPS von Hand installieren.
-Bei der manuellen Installation müssen die zusätzliche Features installiert werden.
+Bei der manuellen Installation müssen die zusätzlichen Features installiert werden.
 Diese sind das GUI, das Powershell Modul und die GPO Richtlinien.
 
 Dazu die Installationsdatei ausführen und alle Features installieren.
@@ -72,7 +75,7 @@ Dazu die Installationsdatei ausführen und alle Features installieren.
 
 \subsubsection{LAPS GUI für Admins}\label{subsubsec:Laps-Gui}
 Über die GPO wird auf den Computern LAPS ohne GUI installiert.
-Mit dem GUI kann man das Passwort von beliebigen Windows Geräten abfragen.\\
+Mit dem GUI kann das Passwort von beliebigen Windows Geräten in der Domäne abgefragt werden.\\
 
 In der Programmliste in den Systemeinstellungen auf LAPS klicken und im Balken auf \textbf{Change} klicken.
 \begin{figure}[H]
@@ -91,7 +94,7 @@ Das \textbf{Management Tools} Feature auswählen und dem Installationsprozess fo
 
 \subsection{Active Directory vorbereiten}
 Die zusätzlichen Extension Attributes können per Powershell hinzugefügt werden.
-Der Auszuführende Benutzer muss dafür ``Schema Admin'' in Active Directory sein.\\
+Der ausführende Domänenbenutzer muss ein ``Schema Admin'' in Active Directory sein.\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/schema-admins.png}
@@ -118,7 +121,7 @@ Set-AdmPwdComputerSelfPermission -OrgUnit "<Name der OU>"
 \end{lstlisting}
 
 Nun muss noch eine Active Directory Gruppe erstellt werden.
-Dieser kann man alle Benutzer hinzufügen, welche Zugriff auf die Passwörter bekommen sollen.
+Dieser Gruppe kann man alle Benutzer hinzufügen, welche Zugriff auf die Passwörter bekommen sollen.
 
 \begin{figure}[H]
     \centering
