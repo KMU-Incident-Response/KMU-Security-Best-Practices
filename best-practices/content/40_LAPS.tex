@@ -179,7 +179,7 @@ Die Group Policy kann nun geschlossen werden.
 
 \section{Verwendung}
 \subsection{Mit dem GUI}\label{subsec:laps-gui-usage}
-Das auslesen über das GUI geht nur, wenn das GUI auch installiert wurde.
+Das auslesen eines Passwortes über das GUI geht nur, wenn das GUI auch installiert wurde.
 Die Installation des GUI wird im Kapitel \hyperref[subsubsec:Laps-Gui]{LAPS GUI für Admins} erklärt.\\
 
 Im Startmenü muss man nach \textbf{LAPS UI} suchen. Falls der in Windows angemeldete Benutzer Berechtigung besitzt, LAPS Passwörter auszulesen, kann LAPS dirket gestartet werden.\\
@@ -212,10 +212,10 @@ Das Passwort wird dann im Feld ``Password'' angezeigt.
 Im Feld ``New expiration time'' kann man eine neue Zeit setzten, wann das Passwort gewechselt werden soll.
 
 \subsection{Mit Powershell}
-Powershell muss als Benutzer gestartet werden, welcher Berechtigung hat das Passwort anzusehen oder Zurückzusetzten.
-Powershell als andere Benutzer starten kann man gleich wie LAPS im Kapitel \hyperref[subsec:laps-gui-usage]{``Mit dem GUI''} als anderer Benutzer gestartet wurde.\\
+Die Powershell muss als Benutzer gestartet werden, welcher die Berechtigung hat das Passwort auszulesen oder zurückzusetzten.
+Powershell als ein anderer Benutzer starten kann man gleich wie LAPS im Kapitel \hyperref[subsec:laps-gui-usage]{``Mit dem GUI''} als anderer Benutzer gestartet wurde.\\
 
-Für das Auslesen und Zurücksetzten gibt es folgende zwei Befehle:
+Für das Auslesen und Zurücksetzen gibt es folgende Befehle:
 \begin{lstlisting}
     Get-AdmPwdPassword -ComputerName <Computer Name>
     Reset-AdmPwdPassword -ComputerName <Computer Name>
@@ -223,9 +223,9 @@ Für das Auslesen und Zurücksetzten gibt es folgende zwei Befehle:
 
 
 \section{Best Practices}
-Wenn möglich sollten nur IT Mitarbeitende die Berechtigung erhalten, Passwörter auslesen zu können.
+Idealerweise sollten nur ausgewählte IT Mitarbeitende die Berechtigung erhalten, Passwörter auslesen zu können.
 Alle Lokale Administratorrechte von AD Benutzern sollten entfernt werden und nur noch LAPS Passwörter verwendet werden.
-Dadurch kann man verhindern, dass es einen Benutzer gibt, welcher auf allen Systemen Berechtigung hat.\\
+Dadurch kann man verhindern, dass es einen Benutzer gibt, welcher auf allen Systemen berechtigt ist.\\
 
 Falls ein Mitarbeitender ohne LAPS Berechtigung lokale Administratorrechte braucht, kann diesem das LAPS Paswort gegeben werden.
 Dann sollte man aber auch das ``Expire Date'' auf das Datum setzten, wo das Passwort nicht mehr gebraucht wird.
