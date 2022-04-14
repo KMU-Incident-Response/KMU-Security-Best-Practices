@@ -1,17 +1,19 @@
 \chapter{Local Administrator Password Solution}
 \section{Einleitung}
-Local Administrator Password Solution (LAPS)
-%What is it
-%Difference to normal (One Admin Password on all, Annoyingly saving password for all, have domain users with local admin permission)
+Local Administrator Password Solution (LAPS) ist eine Lösung von Microsoft.
+Mit LAPS werden die Passwörter der lokalen Administratoren, welche auf allen Windows Geräten vorhanden sind, zufällig und unterschiedlich voneinander gesetzt.
+Zusätzlich werden die Paswörter in einem gewissen Zeitraum automatisch neu gesetzt.\\
 
-\subsection{Anforderungen}
-Um LAPS einsetzten zu können, wir ein Active Directory benötigt.
+Dies verhindert, dass ein Angreiffer auf weitere Systeme vordringen kann, wenn ein lokales Administratorpasswort komprimiert ist.
+Die Passwörter sind in einem Attribut auf dem Computer Objekt im Active Directory hinterlegt.
+Zugriff auf dieses Attribut haben nur berechtigte Benutzer.
 
-
+\subsection{Voraussetzungen}
+Um LAPS einsetzten zu können, wird ein Active Directory benötigt mit allen Windows Geräten als Computer Objekte.
 
 \section{Installation}
 Die Installation ist in drei Schritte unterteilt.
-Als erstes wird LAPS per Group Policy auf allen Windows Geräten installiert.
+Als erstes wird LAPS bia Group Policy auf allen Windows Geräten installiert.
 Danach wird das Active Directory für LAPS vorbereitet.
 Das Active Directory braucht noch zwei zusätzliche Attribute auf den Computer Objekten.
 \begin{itemize}
@@ -22,11 +24,14 @@ Das Active Directory braucht noch zwei zusätzliche Attribute auf den Computer O
 Zum Schluss wird LAPS per Group Policy aktiviert.
 
 
-\subsection{Softwareverteilung}
+\subsection{Installation via GPO}
 LAPS kann auf der \href{https://www.microsoft.com/download/details.aspx?id=46899}{Webseite von Microsoft}\footnote{Link: https://www.microsoft.com/download/details.aspx?id=46899} heruntergeladen werden.
-Die .msi Datei muss in einem freigegebenen Netzlaufwerk auf dem Domain Controller platziert werden, auf welches alle Windows Geräte Zugriff haben.
-Zum Beispiel: \textbf{C:\textbackslash Windows\textbackslash SYSVOL\textbackslash sysvol\textbackslash <domain>\textbackslash}.
-Dieses Verzeichniss ist Standardmässig auf Domain Controllern freigegeben.\\
+Die .msi Datei muss in einem freigegebenen Netzlaufwerk platziert werden, auf welches alle Windows Geräte Zugriff haben.
+Zum Beispiel auf dem Domain Controller unter:
+\begin{lstlisting}
+    C:\Windows\SYSVOL\sysvol\<Domain>
+\end{lstlisting}
+Dieses Verzeichnis ist Standardmässig auf Domain Controllern freigegeben.\\
 
 Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der OU verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
@@ -65,7 +70,7 @@ Dazu die Installationsdatei ausführen und alle Features installieren.
 \end{figure}
 
 
-\subsubsection{LAPS GUI für Admins}
+\subsubsection{LAPS GUI für Admins}\label{subsubsec:Laps-Gui}
 Über die GPO wird auf den Computern LAPS ohne GUI installiert.
 Mit dem GUI kann man das Passwort von beliebigen Windows Geräten abfragen.\\
 
@@ -86,25 +91,30 @@ Das \textbf{Management Tools} Feature auswählen und dem Installationsprozess fo
 
 \subsection{Active Directory vorbereiten}
 Die zusätzlichen Extension Attributes können per Powershell hinzugefügt werden.
-Der Auszuführende Benutzer muss dafür ``Schema Admin'' sein.\\
+Der Auszuführende Benutzer muss dafür ``Schema Admin'' in Active Directory sein.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{../img/LAPS/schema-admins.png}
+    \caption{Schema Admins Gruppe}
+\end{figure}
 
-Powershell mit dem Schema Admin Benutzer starten.
+Powershell mit dem Schema Admin Benutzer starten und folgendes Eingeben
 \begin{lstlisting}
 Import-module AdmPwd.PS
 Update-AdmPwdADSchema
 
 #Resultat:
-Operation            DistinguishedName                                              Status
----------            -----------------                                              ------
-AddSchemaAttribute   cn=ms-Mcs-AdmPwdExpirationTime,CN=Schema,CN=Configuration,DC=b Success
-AddSchemaAttribute   cn=ms-Mcs-AdmPwd,CN=Schema,CN=Configuration,DC=ba,DC=lab       Success
-ModifySchemaClass    cn=computer,CN=Schema,CN=Configuration,DC=ba,DC=lab            Success
+#Operation            DistinguishedName                                              Status
+#---------            -----------------                                              ------
+#AddSchemaAttribute   cn=ms-Mcs-AdmPwdExpirationTime,CN=Schema,CN=Configuration,DC=b Success
+#AddSchemaAttribute   cn=ms-Mcs-AdmPwd,CN=Schema,CN=Configuration,DC=ba,DC=lab       Success
+#ModifySchemaClass    cn=computer,CN=Schema,CN=Configuration,DC=ba,DC=lab            Success
 
 Set-AdmPwdComputerSelfPermission -OrgUnit "<Name der OU>"
 #Resultat:
-Name                 DistinguishedName                                              Status
-----                 -----------------                                              ------
-Clients              OU=Clients,OU=Computers,OU=Lab,DC=ba,DC=lab                    Delegated
+#Name                 DistinguishedName                                              Status
+#----                 -----------------                                              ------
+#Clients              OU=Clients,OU=Computers,OU=Lab,DC=ba,DC=lab                    Delegated
 \end{lstlisting}
 
 Nun muss noch eine Active Directory Gruppe erstellt werden.
@@ -112,7 +122,7 @@ Dieser kann man alle Benutzer hinzufügen, welche Zugriff auf die Passwörter be
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/Laps-Admins.png}
+    \includegraphics[width=\linewidth]{../img/LAPS/Laps-Admins.png}
     \caption{LAPS Active Directory Gruppe}
 \end{figure}
 
@@ -123,21 +133,19 @@ Dazu muss ASEdit und die Eigenschaften der OU geöffnet werden. Im ``Security'' 
     \includegraphics[width=0.7\linewidth]{../img/LAPS/ASEdit.png}
     \caption{ASEdit}
 \end{figure}
+unter ``Advanced'' muss die neue Gruppe hinzugefügt werden mit der Berechtigung ``All Extended Rights''.\\
 
-%TODO: Add Picture 
-
-Unter ``Advanced'' muss die neue Gruppe hinzugefügt werden mit der Berechtigung ``All Extended Rights''.
 Nun muss für LAPS noch die Verknüpfung zwischen dieser Gruppe und der OU erstellt werden.
 Dies kann mit Powershell erledigt werden:
 \begin{lstlisting}
-Set-AdmPwdReadPasswordPermission -OrgUnit "Computers" -AllowedPrincipals Global_LAPS-Admins
-Set-AdmPwdResetPasswordPermission -OrgUnit "Computers" -AllowedPrincipals Global_LAPS-Admins
+Set-AdmPwdReadPasswordPermission -OrgUnit "<Name der OU>" -AllowedPrincipals Global_LAPS-Admins
+Set-AdmPwdResetPasswordPermission -OrgUnit "<Name der OU>" -AllowedPrincipals Global_LAPS-Admins
 \end{lstlisting}
 Die Read Berechtigung erlaubt das Lesen der Passwörter.
 Die Reset Berechtigung erlaubt das setzten eines Ablaufdatums eines Passwortes.
-Die Berechtigung kann nun noch mti Powershell überprüft werden:
+Die Berechtigung kann nun noch mii Powershell überprüft werden:
 \begin{lstlisting}
-Find-AdmPwdExtendedrights -identity "Computers"
+Find-AdmPwdExtendedrights -identity "<Name der OU>"
 \end{lstlisting}
 
 
@@ -148,11 +156,100 @@ Im Group Policy Management muss eine neue Group Policy erstellt werden, welche m
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}
-    \caption{Neue GPO für LAPS Deployment}
+    \caption{Neue GP für LAPS Deployment}
 \end{figure}
-%2. Edit Policy and go to Computer Configuration > Policies > Administrative Templates > Laps [enable-laps]
-%
-%3. Enable Password Settings and define how: best 14 characters and change all
-%
-%
-%
+
+Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
+Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Laps} findet man die Einstellungen von LAPS.
+Mit \textbf{Rechtsklick $\rightarrow$ Edit} auf ``Enable local admin password management'' kann man die Einstellung öffnen und Links auf ``Enabled'' setzen.
+Mit OK bestätigen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{../img/LAPS/enable-laps.png}
+    \caption{LAPS aktivieren}
+\end{figure}
+
+In der Einstellung ``Password Settings'' kann man die Passwort Länge und den Zyklus setzten, wie oft das Passwort gewechselt werden soll.\\
+
+Die Group Policy kann nun geschlossen werden.
+
+
+\section{Verwendung}
+\subsection{Mit dem GUI}\label{subsec:laps-gui-usage}
+Das auslesen über das GUI geht nur, wenn das GUI auch installiert wurde.
+Die Installation des GUI wird im Kapitel \hyperref[subsubsec:Laps-Gui]{LAPS GUI für Admins} erklärt.\\
+
+Im Startmenü muss man nach \textbf{LAPS UI} suchen. Falls der in Windows angemeldete Benutzer Berechtigung besitzt, LAPS Passwörter auszulesen, kann LAPS dirket gestartet werden.\\
+Falls nicht, muss man den Speicherort der Datei öffnen.
+Dann kann man mit \textbf{Shift + Rechtsklick} das Kontextmenü öffnen und die Datei mit ``Run as different user'' als anderen Benutzer ausführen.
+Ein Eingabefenster öffnet sich, wo man den berechtigten Benutzer und das Passwort des Benutzer eingeben kann.
+Berechtigt sind alle Benutzer in der zuvor erstellten Gruppe und Domänen Administratoren.\\
+\begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{../img/LAPS/usage-1.png}
+        \caption{LAPS Speicherort öffnen}
+    \end{figure}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{../img/LAPS/usage-2.png}
+        \caption{LAPS als anderer Benutzer starten}
+    \end{figure}
+\end{minipage}\\
+
+Im LAPS UI gibt man im Feld ``Computer name'' den Namen des Computers ein, von welchem man das lokale Passwort möchte.
+Das Passwort wird dann im Feld ``Password'' angezeigt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{../img/LAPS/Laps-ui.png}
+    \caption{LAPS Passwort auslesen}
+\end{figure}
+Im Feld ``New expiration time'' kann man eine neue Zeit setzten, wann das Passwort gewechselt werden soll.
+
+\subsection{Mit Powershell}
+Powershell muss als Benutzer gestartet werden, welcher Berechtigung hat das Passwort anzusehen oder Zurückzusetzten.
+Powershell als andere Benutzer starten kann man gleich wie LAPS im Kapitel \hyperref[subsec:laps-gui-usage]{``Mit dem GUI''} als anderer Benutzer gestartet wurde.\\
+
+Für das Auslesen und Zurücksetzten gibt es folgende zwei Befehle:
+\begin{lstlisting}
+    Get-AdmPwdPassword -ComputerName <Computer Name>
+    Reset-AdmPwdPassword -ComputerName <Computer Name>
+\end{lstlisting}
+
+
+\section{Best Practices}
+Wenn möglich sollten nur IT Mitarbeitende die Berechtigung erhalten, Passwörter auslesen zu können.
+Alle Lokale Administratorrechte von AD Benutzern sollten entfernt werden und nur noch LAPS Passwörter verwendet werden.
+Dadurch kann man verhindern, dass es einen Benutzer gibt, welcher auf allen Systemen Berechtigung hat.\\
+
+Falls ein Mitarbeitender ohne LAPS Berechtigung lokale Administratorrechte braucht, kann diesem das LAPS Paswort gegeben werden.
+Dann sollte man aber auch das ``Expire Date'' auf das Datum setzten, wo das Passwort nicht mehr gebraucht wird.
+Zum Beispeil am nächsten Tag.
+
+\section{Intergration in Wazuh}
+In Wazuh existiert eine Regel, welche jedes auslesen meldet.
+Die Regel hat die ID 110010 und der Agent Name ist der \textbf{Domain Controller}.
+Es ist nicht der der Computer, auf welchem das Passwort ausgelesen wurde.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../img/LAPS/laps-wazuh.png}
+    \caption{LAPS Wazuh Alert}
+\end{figure}
+Somit weiss man wer für welchen Computer das Passwort ausgelesen hat.
+Man kann jedoch nicht feststellen, von welchem Computer aus das Passwort ausgelesen wurde.\\
+
+Zusätzlich wird nur die GUID des Computers angezeigt, für welchen man das Passwort ausgelesen hat.
+Um den Computernamen zu finden, kann man folgenden Powershell Befehl verwenden:
+\begin{lstlisting}
+    #GUID mit { } eingeben!
+    Get-ADObject -Identity "<GUID>"
+\end{lstlisting}
+
+Zusätzlich gibt es noch eine Regel, welche einen Alert generiert, sobald 20 LAPS Passwörter in 10 Minuten ausgelesen wurden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../img/LAPS/laps-wazuh-alert.png}
+    \caption{LAPS Wazuh Alert 2}
+\end{figure}
