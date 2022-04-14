@@ -50,7 +50,7 @@
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
-    linkcolor={black},
+    linkcolor={blue},
     citecolor={blue!50!black},
     urlcolor={blue!80!black}
 }
@@ -98,14 +98,14 @@
 
 \makeatletter
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-{-3.25ex\@plus -1ex \@minus -.2ex}%
-{1.5ex \@plus .2ex}%
-{\normalfont\normalsize\itshape\bfseries}}
+    {-3.25ex\@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}%
+    {\normalfont\normalsize\itshape\bfseries}}
 
 \renewcommand\subparagraph{\@startsection{subparagraph}{4}{\z@}%
-{-3.25ex\@plus -1ex \@minus -.2ex}%
-{1.5ex \@plus .2ex}%
-{\normalfont\normalsize\bfseries\itshape\color{black}}}
+    {-3.25ex\@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}%
+    {\normalfont\normalsize\bfseries\itshape\color{black}}}
 \makeatother
 
 % new section -> new page
@@ -118,13 +118,13 @@
 \input{../style/listings.tex}
 \lstset{style=java}
 \lstset{
-    literate=  % Allow for German characters in lstlistings.
-        {Ö}{{\"O}}1
-        {Ä}{{\"A}}1
-        {Ü}{{\"U}}1
-        {ü}{{\"u}}1
-        {ä}{{\"a}}1
-        {ö}{{\"o}}1
+literate=  % Allow for German characters in lstlistings.
+    {Ö}{{\"O}}1
+{Ä}{{\"A}}1
+{Ü}{{\"U}}1
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
 }
 
 % dotted rule
@@ -133,8 +133,8 @@
 \usetikzlibrary{decorations.markings}
 \newcommand{\drule}[3][0]{
     \tikz[baseline]{\path[decoration={markings,
-    mark=between positions 0 and 1 step 2*#3
-    with {\node[fill, circle, minimum width=#3, inner sep=0pt, anchor=south west] {};}},postaction={decorate}]  (0,#1) -- ++(#2,0);}}
+                    mark=between positions 0 and 1 step 2*#3
+                    with {\node[fill, circle, minimum width=#3, inner sep=0pt, anchor=south west] {};}},postaction={decorate}]  (0,#1) -- ++(#2,0);}}
 
 % no indentation
 \setlength{\parindent}{0cm}
