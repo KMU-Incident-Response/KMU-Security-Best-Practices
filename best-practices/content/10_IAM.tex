@@ -1,12 +1,12 @@
 \chapter{\acrfull{iam}}
 
 \section{\acrshort{iam} Varianten}
-Eine \acrfull{iam} ist ein zentrales System welches die Entitäten, wie Benutzeraccounts und Computer, erfassen kann. Zudem können Berechtigungen auf Entitäten in einer Domäne verwaltet.\\
+Ein \acrfull{iam} ist ein zentrales System welches die Entitäten, wie Benutzeraccounts und Computer, erfassen kann. Zudem können Berechtigungen auf Entitäten in einer Domäne verwaltet.\\
 
 %TODO: style correct @sevigrimm should use quote or some fancy style?
-\textbf{Nun kommt die Frage auf: Geht es nicht ohne?}\\
+\textbf{Braucht es ein IAM?}\\
 Es ist grundsätzlich möglich ohne ein IAM System zu arbeiten, wobei der Aufwand für das Management der Userverwaltung auf allen Maschinen schnell den Rahmen des Budgets sprengt.
-Der allgemeine Konsenus ist dass ab 15 aktiven Bentuzern ein IAM verwendet werden soll.\\
+Der allgemeine Konsenus ist, dass ab 15 aktiven Bentuzern ein IAM verwendet werden soll.\\
 
 Eine IAM Lösung bringt viele Vorteile, gleichzeitig birgt es auch Risiken.\\
 
@@ -48,7 +48,7 @@ Eine IAM Lösung bringt viele Vorteile, gleichzeitig birgt es auch Risiken.\\
 Wie bei vielem ist es wichtig das richtige Produkt für seine Umgebung zu finden. Als nächstes werden zwei, im Markt beliebte Produkte vorgestellt.
 
 \subsection{Active Directory}
-Active Directory ist ein Produkt von Microsoft und kann exklusiv auf einem Microsoft Windows Server installiert werden. Active Directory ist einfach zu installieren, wobei die Konfiguration manchmal Herausforderungen birgt.\\
+Active Directory ist ein Produkt von Microsoft und kann exklusiv auf einem Microsoft Windows Server installiert werden. Active Directory ist einfach zu installieren, wobei die Konfiguration Herausforderungen mit sich bringen kann.\\
 
 Active Directory ist mit mehr als 80\% Marktanteil der Marktführer. Die Active Directory Funktion wird mit DNS, DHCP und NTP gebündelt. Das Produkt bietet alle grundlegenden Funktionen wie User-, Geräteverwaltung, DHCP, DNS, NTP und viele weitere einfache, bis zu komplexe Funktionen. Vorallem in Windowsnetzwerken ist die Integration sehr gut und intuitiv.\\
 
@@ -56,9 +56,9 @@ Active Directory bietet in fast allen Fällen, was ein KMU braucht und viel mehr
 
 
 \subsection{FreeIPA}
-FreeIPA ist eine Open-Source Implementation eines IAMs, entwickelt durch die Community und Upstream von Red Hat Identity Management. Exklusiv verfügbar auf RPM-based Linux Systemen.\\
+FreeIPA ist eine Open-Source Implementation eines IAMs, entwickelt durch die Community und Upstream von Red Hat Identity Management. Exklusiv verfügbar auf RPM-basierten Linux Systemen.\\
 
-FreeIPA bietet von den Features einen ähnlichen Scope wie Active Directory, aber mit dem grossen Unterschied dass die Hauptzielgruppe Linux Server und Clients sind. Es wird auch User-, Geräteverwaltung, DHCP, DNS, NTP und viele weitere einfache, bis zu komplexe Funktionen.\\
+FreeIPA bietet von den Features einen ähnlichen Umfang wie Active Directory, aber mit dem grossen Unterschied, dass die Hauptzielgruppe Linux Server und Clients sind. Es werden auch User-, Geräte- und Berechtigungsverwaltung, DHCP, DNS, NTP und viele weitere einfache, bis zu komplexe Funktionen angeboten.\\
 
 FreeIPA ist eine gute Wahl in exklusiven Linuxnetzwerken. Für KMUs ist in den meisten Fällen FreeIPA die falsche Wahl und Active Directory sollte vorgezogen werden.
 
@@ -79,7 +79,7 @@ Das ``least privilege principle'' ist ein grundlegender Security Best Practice, 
 Das Prinzip besagt jeder Benutzer soll genau soviel Rechte haben, wie er für seine tägliche Arbeit benötigt. Alles weitere soll blockiert werden.
 Somit kann die Angriffsfläche bei Vorfällen massiv verringert werden.\\
 
-Für privilegierte Benutzer wie z.B. ein Systemadministrator sollen spezielle Accounts bereitgestellt werden.
+Für privilegierte Benutzer wie z.B. ein Systemadministrator sollen zusätzliche, spezielle Accounts bereitgestellt werden.
 Den die meiste Arbeit kann mit einem nicht privilegierten Nutzer verrichtet werden.\\
 
 Zusätzlich soll auch beachtet werden, dasses keine ``Masteraccounts'' gibt, welche alle Rechte besitzen.
@@ -91,19 +91,20 @@ Es muss versucht werden die Anzahl unpersönliche Accounts auf ein minimum besch
 Bei einem Incident sind die Logs ausschlaggebend.\\
 
 Arbeiten alle Benutzer mit dem Account ``Finanzen'' ist es schwer Rückschlüsse zu ziehen, wo kritische Aktionen oder ilegitime Zugriffe passiert sind.
-In diesem Fall wäre es klar der Verstoss ist mit dem Account ``Finanzen'' passiert, aber welcher der 10 Leute die den Account benutzen den Verstoss begangen hat ist schwer, bis unmöglich Rückzuschliessen.
+In einem Vorfall wäre es klar, dass der Verstoss mit dem Account ``Finanzen'' passiert ist, aber welcher der 10 Personen die den Account benutzen den Verstoss begangen hat ist schwer, bis unmöglich Rückzuschliessen.
 
 \subsection{Rollen als Berechtigungen}
 Unternehmungen sind ermutigt Jobprofile zu erstellen, um geeignetes Personal zu finden.
 Es ist ähnlich in der verteilung von Benutzerrechten.
 Eine Person ist angestellt um eine bestimmte Arbeit zu verrichten.
 Diese Zuteilung wird nun auf eine Rolle abgebildet.
-Die Rolle mit den Rechten erhalten alle Angestellten mit dem gleichen Auftrag.\\
+Die Rolle mit den Rechten erhalten alle Angestellten mit dem gleichen Auftrag.
+Oftmals werden Rollen in einem IAM Gruppen genannt, welcher man Benutzer und andere Gruppen hinzufügen kann.\\
 
 Das verteilen von Rollen erleichtert den Überblick der einzelnen Berechtigungen in der Unternehmung.
 Bei individual Berechtigungen verliert man schnell den Überblick.
-Mit administrativen Wechseln wie interne Umorientierungen aknn es dazu führen, dass Nutzer zu viele Berechtigungen für Ihren Job haben und somit das ``least privilege principle'' verletzen.
-Abschliessend, es sollte bei internen Wechseln lediglich die alte Rolle entfernt und die neue Rolle hinzugefügt werden.
+Mit administrativen Wechseln wie interne Umorientierungen kann es dazu führen, dass Nutzer zu viele Berechtigungen für Ihren Job haben und somit das ``least privilege principle'' verletzen.
+Mit Rollen kann bei internen Wechseln lediglich die alte Rolle entfernt und die neue Rolle hinzugefügt werden.
 
 
 \subsection{Automatische Benutzerverwaltung}
@@ -122,7 +123,9 @@ Bei solchen Geräten sollte sich überlegt werden, wie sie adäquat geschützt w
 
 \section{IAM Schlusswort}
 Ein IAM kann Agilität, Komfort und Sicherheit bringen.
-Mit den Vorteilen bringt ein IAM auch Risiken, wie Sicherheitsbedenken und Abhängigkeit für den produktiven Betrieb.\\
+Mit den Vorteilen bringt ein IAM auch Risiken, wie Sicherheitsbedenken und Abhängigkeit für den produktiven Betrieb.
+Daher sollte ein IAM bestmöglich geschützt werden.
+Editorberechtigung im IAM sollten nur Personen zustehen, welche diese auch wirklich brauchen (least privilege).
 
 In den meisten Fällen ist ein IAM die beste Lösung.
 Der grösste Teil der Vorfälle kann mit den Konzepten oben mitigiert oder sogar ganz vermieden werden.
