@@ -9,7 +9,7 @@ Der Speicher hängt von der Anzahl Clients ab.
 Weitere Informationen dazu gibt es in der \href{https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}.
 
 \section{Installation}
-Die Installationsanleitung kann direkt im \href{https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/wazuh\_server/README.md\#installation}{README.md}\footnote{Link: https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/wazuh\_server/README.md\#installation} auf GitHub eingesehen werden.
+Die Installationsanleitung kann direkt im \href{https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#installation}{README.md}\footnote{Link: https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#installation} auf GitHub eingesehen werden.
 
 
 \subsection{Firewall}
@@ -46,3 +46,8 @@ apt-get install elasticsearch=7.14.2
 \end{lstlisting}
 
 
+\section{Wazuh Rules}
+Bei der Installation vom Wazuh Server für KMUs wird automatisch auch eine Palette von Regeln bereitgestellt.
+Es ist möglich die Regeln ohne die Serverinstallation zu importieren.
+Dazu wird ein bereits installierter Wazuhserver benötigt.
+Mehr Informationen kann man im GitHub \href{https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules}{README}\footnote{Link: https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules} finden.
