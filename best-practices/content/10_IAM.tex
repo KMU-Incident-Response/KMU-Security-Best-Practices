@@ -134,13 +134,13 @@ Der grösste Teil der Vorfälle kann mit den Konzepten oben mitigiert oder sogar
 
 \section{Active Directory Best Practices}
 \subsection{Passwortrichtlinien}
-Es gibt verschieden Möglichkeiten, wie Angreiffer an Passwörter kommen können.
+Es gibt verschiedene Möglichkeiten, wie Angreifer an Passwörter kommen können.
 Darunter gehören zum Beispiel:
 \begin{itemize}
     \item Bruteforce Attacken: Auf einem Account verschiedene Passwörter testen.
     \item Spraying Attacken: Ein Passwort mit verschiedenen Accounts testen.
     \item Dictionary Attacks: Bruteforce-Attacke mit einer Liste von bekannten Passwörtern.
-    \item Social-Engineering: Angreiffer versuchen das Passwort direkt vom Benutzer zu bekommen.
+    \item Social-Engineering: Angreifer versuchen das Passwort direkt vom Benutzer zu bekommen.
 \end{itemize}
 
 %TODO: Cite correctly
@@ -154,7 +154,7 @@ Best Practice für die Passwortvorgaben für User und Administratoren sind folge
 
 \acrshort{nist} empfiehlt für die mindestlänge eines Passwortes 8 Zeichen.
 Dieser Guide empfiehlt jedoch mindestens 12 Zeichen.
-Hier ein vergleich von einem 8-Stelligen und einem 12-Stelligen Passwort, welches Gross- und Kleinschreibung und Zahlen enthält\footnote{Berechnet mit: https://www.passwortcheck.ch/}:\\
+Hier ein Vergleich von einem 8-Stelligen und einem 12-Stelligen Passwort, welches Gross- und Kleinschreibung und Zahlen enthält\footnote{Berechnet mit: https://www.passwortcheck.ch/}:\\
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
@@ -187,13 +187,13 @@ In dieser setzt man unter \textbf{Computer Configuration $\rightarrow$ Policies 
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/IAM/account-lockout-policy.png}
-        \caption{Account-Lockout-Richtlinien}
+        \caption{Account Lockout Richtlinien}
     \end{figure}
 \end{minipage}\\
 
 Die Group Policy kann nun so geschlossen werden.
 In den AD Objekten der Benutzer ist nun unter ``Account'' ein Hacken bei ``Password never expires''.
-Falls die Passwordrichtline vorher bei weniger als 12 Zeichen war, müssen nun die Benuter noch aufgefordert werden, ihr Passwort zu ändern.
+Falls die Passwordrichtline vorher bei weniger als 12 Zeichen war, müssen nun die Benutzer noch aufgefordert werden, ihr Passwort zu ändern.
 Dies kann mit Powershell gemacht werden:
 \begin{lstlisting}
     Get-ADUser -SearchBase "<OU der Benutzer>" -Filter * | Set-ADUser -ChangePasswordAtLogon $True
@@ -202,8 +202,8 @@ Dies kann mit Powershell gemacht werden:
     Get-ADUser -SearchBase "OU=Employees,OU=Users,OU=Lab,DC=ba,DC=lab" -Filter * | Set-ADUser -ChangePasswordAtLogon $True
 \end{lstlisting}
 
-Dies sollte mit dem Management abgeklärt werden und die Benutzer sollten frühzeitig benachrichtigt werden.
-Man kann auch zuerst die Mindestlänge in der Group Policy setzten und erst nach einem Zyklus, wenn alle Mitarbeitenden ihr Passwort auf die neue Länge gesetzt haben, die Option ``Maximum password age'' auf 0 setzten. \\
+Dies sollte mit dem Management abgeklärt werden und die Benutzer sollten frühzeitig informiert werden.
+Man kann auch zuerst die Mindestlänge in der Group Policy setzen und erst nach einem Zyklus, wenn alle Mitarbeitenden ihr Passwort auf die neue Länge gesetzt haben, die Option ``Maximum password age'' auf 0 setzen. \\
 
 Bei der Passwortrichtlinie für Administratoren wird empfohlen, dass diese ihr Passwort weiterhin mindestens alle 180 Tage wechseln müssen.
 Dazu kann eine neue Group Policy auf Höhe der OU mit den Administratoren erstellt werden:
@@ -218,13 +218,13 @@ Die Account Lockout Policy bleibt gleich.
 Active Directory bietet die Möglichkeit, Änderungen and Gruppen und Benutzern im Event Log festzuhalten.
 Dies ist nützlich um nachvollziehen zu können, wann welche Änderungen gemacht wurden und zusammen mit Wazuh erkennen zu können, ob Änderungen gemacht wurden die nicht von Administratoren kamen.\\
 
-Dies Logs müssen mit einer Group Policy aktiviert werden.
+Diese Logs müssen mit einer Group Policy aktiviert werden.
 Im Group Policy Management existiert unter \textbf{Forest: <Domänen-Namen> $\rightarrow$ Domains $\rightarrow$ <Domänen-Namen> $\rightarrow$ Domain Controllers} die ``Default Domain Controllers Policy''.
 In dieser setzt man unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Windows Settings $\rightarrow$ Security Settings $\rightarrow$ Local Policies $\rightarrow$ Audit Policy} in der Richtlinie ``Audit account Management'' folgende Einstellungen:\\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/IAM/ad-account-management.png}
-    \caption{AD Audit Policy}
+    \caption{Active Directory Audit Policy}
 \end{figure}
 
 \section{Intergration in Wazuh}
