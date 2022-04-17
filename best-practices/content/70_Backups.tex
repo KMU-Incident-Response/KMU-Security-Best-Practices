@@ -1,0 +1,71 @@
+\chapter{Backup}
+
+\section{Einleitung}
+Ein Backup ist eine Sicherungskopie.
+Ein Backup kann aus Nutzdaten, Systemdaten oder gar ganzen Datenträgerabbildungen bestehen.
+Im operativen Betrieb wird ein Backup nicht benötigt.
+Ein Backup wird in nicht regulären Situationen, wie Datenverlust (z.B. Missclick) oder Ransomware, von sehr grossem Nutzen.
+Ein Backup kann einen Betrieb bei einem Ransomware Vorfall vor dem Konkurs retten.
+Trotz des enormen Mehrwertes des Backups geht es in KMUs oft vergessen.
+Dies kann schon bei kleinen Vorfällen enorme Wirtschaftliche Folgen herbeiziehen.
+
+
+
+\section{Allgemeine Tipps zum Backup}
+Bevor dieser Guide ins Detail vom Backup ugeht, wird noch eine wichtiger Punkt aufgegriffen.\\
+
+\textbf{Das Backup ist gleich sensibel wie die darin enthaltenen Daten.}
+Oft als unkritisch klassifiziert.
+Das Backup sollte gleich wie die Daten behandelt werden.
+In der Schlussfolgerung, wenn die Daten verschlüsselt werden, sollte das das Backup auch.
+Es sollte verschlüsselt übermittelt werden, verschlüsselt gespeichert und bei sehr kritischen Daten in einer Form verschlüsselt bearbeitet, resp. im Memory gelagert werden.
+
+\section{Backup Plan}
+Ein Backup sollte keine zufällige Sache sein.
+Ein Backup sollte geplant, vollständig und regelmässig sein.
+Alle nachfolgenden Punkte sollten im Backup Plan berrücksichtigt werden.
+
+
+
+\subsection{spezifische Daten}
+Ein Backup macht in den meisten Fällen Sinn, wenn spezifische Daten existieren.
+Backups können schnell zu einem grossen Kostenpunkt werden, denn diese konsumieren enorm viel Speicher.
+Daher sollte es vermieden werden unnötige Daten zu backupen.
+Die nachfolgenden Beispiele sollen diesen Punkt etwas praktischer visualisieren.\\
+
+
+\textbf{Beispiel 1:}\\
+\textbf{Ausgangslage:} Ein Fileshare mit kritischen Daten der von 100 Usern verwendet wird soll gebackupt werden.\\
+\textbf{Erläuterung:} Der oben beschriebene Sachverhalt bestätigt, dass hier ein Backup sinnvoll ist. Denn der Ausfall dieses Server könnte für die Firma den produktiven Betrieb beeinträchtigen. Die Daten könnten durch Verlust grossen Sachschaden bedauten.\\
+
+
+\textbf{Beispiel 2:}\\
+\textbf{Ausgangslage:} Ein Notebook mit einer standard Firmeninstallation soll gebackupt werden. Der Benutzer liest seine E-Mails und arbeitet im Sharepoint auf dem Gerät.\\
+\textbf{Erläuterung:} Dieses Gerät zu backupen macht keinen Sinn da es weder spezifische Daten beherbergt, noch einen speziellen Wert für das Unternehmen bringt. Der Plan bei einem Notfall sollte hier sein das Gerät neu zu installieren.\\
+
+Es ist wichtig seine Mitarbeiter zu schulen, wie der Umgang mit Daten verlaufen sollte.
+Möglich wäre eine Regel die besagt alle kritischen Geschäftsdaten werden auf einem Fileshare abgelegt der gebackupt wird.
+Damit ist es nicht nötig jeden Client einzeln zu backupen.
+
+\subsection{Aufbewahrungsdauer / Retention Policy}
+Bei Datensicherungen ist es wichtig nicht nur die neuste Version zu behalten, da vielleicht diese nicht vollständig ist.
+
+
+\subsection{Wo sollen die daten gelagert werden}
+\subsection{Datenschutz / Datenspeicherort}
+Aus Datenschutzgründen muss abgeklärt werden, welche Daten wo gelagert werden dürfen.
+Dies ist vorallem bei Cloudanbieter kritisch und sollte im vorhinein klar vereinbart werden.
+Der Datenspeicherort muss gegebenfalls mit juristischer Unterstützung geklärt werden.
+
+\section{Emergencyplan}
+In einem Notfall ist es wichtig einen ``Emergencyplan'' zu haben.
+
+% Datenklassifizierung
+% time of breach to time of recovery
+
+
+\section{Wiederherstellen des Backups}
+Es scheint trivial dass ein Backup wiederherstellbar sein sollte.
+Leider kann es auch hier technisches Versagen geben.
+Es wird stark empfohlen in regelmässigen Abständen das wiederherstellen der Daten zu testen.
+Das beste Backup bringt ohne einen funktionierenden Restore nichts.
