@@ -1,0 +1,64 @@
+\chapter{\acrlong{av}}
+\section{Allgemeines} %TODO: maybe change title
+Ein \acrfull{av} ist der erste Verteidigungsmechanismus in einem Netzwerk. Angriffe, darunter Schadsoftware, kommen in den meinsten Fällen über einen Endpoint (z.B. Notebook) in ein Firmennetzwerk.\\
+
+Eine gegebene Struktur ist immer nur so stabil, wie sein schwächstes Glied. Dies gilt bei Häusern wie auch bei Computernetzwerken.
+Oftmals ist das schwächste Glied ein Client oder ein Server, da diese Geräte vielfach mit dem Internet kommunizieren.
+Dies macht genau diese Geräte besonders schützenswert.\\
+
+Server \& Clients werden mit einem \acrlong{av} versucht zu schützen. Ein Antivirus hilft bekannte Schadsoftware zu entfernen.
+Neue Schadsoftware wird versucht mit komplexen Algorithmen zu erkennen und deren Vorhaben zu blockieren.
+Schadsoftware kann sich sehr schnell vermehren und sich im ganzen Netzwerk ausbreiten. 
+Das kann den Effekt haben, dass die ganze Unternehmung beeinträchtigt wird.
+Deshalb ist eines der wichtigesten Erkenntnisse, dass ein \acrlong{av} auf \textbf{allen} Endpoints (Server \& Client) benötigt wird.
+
+
+
+
+
+\section{Windows Defender}
+\acrfull{av} kommen in allen Arten \& Formen.
+Es ist schwer den Überblick über die Landschaft der Antiviren Programme zu behalten.\\
+
+
+Microsoft bietet für seine Produkte einen eigenen kostenfreien \acrlong{av} an.
+Der Windows Defender ist weder der beste \acrshort{av} noch hat er die meisten Features.
+Er ist einer der besten kostenfreien Lösungen \& ist für KMUs sehr geeignet, da dort meiste keine Massgeschneiderte Lösung gewünscht wird.
+Der Windows Defender erkennt die meisten Gefahren und löst die erkannten Probleme sehr kompetent.\\
+
+Hier eine Übersicht der Vor- und Nachteile:\\
+
+\begin{minipage}{\linewidth}
+    \begin{multicols}{2}
+        \begin{table}[H]
+            \begin{center}
+                \textbf{Vorteile:}
+                \begin{itemize}
+                    \item kostenfrei mit Windows geliefert
+                    \item Realtime Protection funktioniert zuverlässig
+                    \item keine Installation nötig
+                    \item einfache Bedienung
+                \end{itemize}
+            \end{center}
+            \caption{Vorteile Windows Defender}
+        \end{table}
+        \begin{table}[H]
+            \begin{center}
+                \textbf{Nachteile:}
+                \begin{itemize}
+                    \item beschränkte Konfigurationsmöglichkeiten
+                    \item Keine cloudbasiertes Dashboard/Management
+                    \item Machine Learning nicht vorhanden
+                \end{itemize}
+            \end{center}
+            \caption{Nachteile Windows Defender}
+        \end{table}
+    \end{multicols}
+\end{minipage}
+%TODO: @sevigrimm add more points?
+
+
+
+
+\subsection{Wazuh Integration}
+%TODO: @sevigrimm already included correct?
