@@ -43,10 +43,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: etc/usr/artifacts/
+      - name: Rename files
+        run: find etc/usr/artifacts/ -type f -name "main.pdf" -printf "/%P\n" | while read FILE ; do DIR=$(dirname "$FILE" );mv etc/usr/artifacts/"$FILE" etc/usr/artifacts/"$DIR""$DIR";done
       - name: Check for files
-        run: ls -la etc/usr/artifacts/
+        run: ls -la etc/usr/artifacts/*
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./etc/usr/artifacts/*
+          files: |
+            etc/usr/artifacts/*/*.docx
+            etc/usr/artifacts/*/*.pdf
