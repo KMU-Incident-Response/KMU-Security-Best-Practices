@@ -2,22 +2,22 @@
 \section{Einleitung}
 Die Verschlüsselung der Daten auf Geräten ist Teil der physischen Sicherheit.
 Damit kann sichergestellt werden, dass keine Daten gestohlen werden können, wenn das Geräte verloren geht oder gestohlen wird.
-Die ist besonders wichtig, wenn Notebooks in der Firma eingesetzt werden.
+Diese Sicherheit ist besonders wichtig, wenn Notebooks in der Firma eingesetzt werden.
 
 \section{Verschlüsselung unter Windows}
-Unter Windows gibt es zwei integrierte Möglichkeiten, die Daten auf den Geräten zu Verschlüsseln.
+In Windows gibt es zwei im OS integrierte Möglichkeiten, die Daten auf dem Gerät zu verschlüsseln.
 In Windows Home gibt es die sogenannte ``Geräteverschlüsselung'' in den Systemeinstellungen.
 Ab Windows Pro kann man Geräte mit ``BitLocker'' verschlüsseln.\\
 
-\subsection{Home Version}
+\subsection{Windows Home Version}
 In der Windows 10 Home Version gibt es die ``Geräteverschlüsselung''.
 Da Windows 10 Home nicht für Unternehmen gedacht ist, gibt es auch keine Möglichkeit, die Geräteverschlüsselung zentral zu verwalten.
 Sie muss auf jedem Gerät einzeln aktiviert werden.
 
 Die ``Geräteverschlüsselung'' findet man unter \textbf{Settings $\rightarrow$ Update \& Security $\rightarrow$ Device encryption}
 
-\subsection{Pro/Enterprise Version}
-Mit BitLocker kann man die Festplatten auf den Geräten schnell und einfach Verschlüsseln.
+\subsection{Windows Pro/Enterprise Version}
+Mit BitLocker kann man die Festplatten auf den Geräten schnell und einfach verschlüsseln.
 Der Recovery Key wird im Computer Objekt in Active Directory hinterlegt.
 
 \subsubsection{Voraussetzungen}
@@ -30,9 +30,9 @@ Falls das Gerät einen \acrshort{tpm} Chip hat, ist dieser im Gerätemanager unt
 \end{figure}
 Es gibt auch die Möglichkeit BitLocker ohne \acrshort{tpm} Chip zu verwenden. Dann muss jedoch bei jedem aufstarten ein Passwort eingegeben werden.
 
-\subsubsection{Bitlocker Feature}
+\subsubsection{BitLocker Feature}
 Damit der Recovery Key in Active Directory hinterlegt wird, muss zuerst das BitLocker Feature auf dem Domain Controller aktiviert werden.
-Dazu öffnet man den Server Manager und öffnet \textbf{Manage $\rightarrow$ Add Roles and Features}.
+Dazu öffnet man den Server Manager, navigiert \textbf{Manage $\rightarrow$ Add Roles and Features}.
 Unter ``Features'' wählt man ``Bitlocker Drive Encryption'' und installiert dieses Feature:
 \begin{figure}[H]
     \centering
@@ -44,7 +44,7 @@ Unter ``Features'' wählt man ``Bitlocker Drive Encryption'' und installiert die
 \subsubsection{Group Policy}
 Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der OU verknüpft ist, die die zu verschlüsselnden Windows Geräte enthält.
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
-Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Windows Components $\rightarrow$ BitLocker Drive Encryption $\rightarrow$ Operating System Drives} kann mit \textbf{Rechtsklick $\rightarrow$ New $\rightarrow$ Package\dots} wird die Policy ``Choose how BitLocker-protected operating system drives can be recovered'' folgend eingerichtet:
+Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Windows Components $\rightarrow$ BitLocker Drive Encryption $\rightarrow$ Operating System Drives} kann mit \textbf{Rechtsklick $\rightarrow$ New $\rightarrow$ Package\dots} wird die Policy ``Choose how BitLocker-protected operating system drives can be recovered'' wie folgt eingerichtet:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/Encryption/store-bitlocker-in-ad.png}
@@ -60,7 +60,7 @@ Dazu speichert man folgenden Powershell Code als .ps1 Datei ab:
         Enable-Bitlocker -MountPoint 'c:' -TpmProtector
     }
 \end{lstlisting}
-Das Script muss auf einem freigegebenen Netzlaufwerk abgespecihert werden, auf welches alle Geräte Lesezugriff haben.
+Das Script muss auf einem freigegebenen Netzlaufwerk abgespeichert werden, auf welches alle Geräte Lesezugriff haben.
 Zum Beispiel auf dem Domain Controller unter:
 \begin{lstlisting}
     C:\Windows\SYSVOL\sysvol\<Domain>\scripts
@@ -71,7 +71,7 @@ Zum Beispiel auf dem Domain Controller unter:
     \caption{BitLocker Scripts}
 \end{figure}
 
-Da die Installation mit einem Script gemacht wird, muss zuerst noch erlaubt werden, dass in Powershell Scripte ausgeführt werden dürfen.
+Da die Installation mit einem Script gemacht wird, muss zuerst noch erlaubt werden, dass in Powershell Skripte ausgeführt werden dürfen.
 Die kann unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Windows Components $\rightarrow$ Windows Powershell} mit der Policy ``Turn on Script Execution'' aktiviert werden:
 \begin{figure}[H]
     \centering
@@ -98,7 +98,7 @@ Beim Scheduled Task werden folgende Einstellungen getroffen:\\
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Encryption/scheduled-task-2.png}
-        \caption{Scheduled Task Einstellungen 1}
+        \caption{Scheduled Task Einstellungen 2}
     \end{figure}
 \end{minipage}\\
 
@@ -141,4 +141,4 @@ Dazu öffnet man die Einstellungen eines Computer Objektes und öffnet den Tab `
     \includegraphics[width=0.7\linewidth]{../img/Encryption/bitlocker-recovery.png}
     \caption{Recovery Key für BitLocker}
 \end{figure}
-Dort findet man unter ``Recovery Password'' das Passwort zum den Computer im Notefall zu entschlüsseln.
+Dort findet man unter ``Recovery Password'' das Passwort zum den Computer im Notfall zu entschlüsseln.
