@@ -1,15 +1,15 @@
 \chapter{Updates}
 \section{Einleitung}
-Updates gehören zu den effizientesten Möglichkeiten, sich gegen Angreifer zu schützen.
-Für Angreifer ist es ein Goldenes Los, wenn sie Software entdecken, welche nicht aktualisiert wurde und tendenziell sogar eine \acrfull{cve}\footnote{Link: https://www.cve.org/} dazu existiert.\\
+Updates gehören zu den effektivsten Möglichkeiten, sich gegen Angreifer zu schützen.
+Für Angreifer ist es ein goldenes Los Software zu entdecken, welche nicht aktualisiert wurde und tendenziell sogar ein \acrfull{cve}\footnote{Link: https://www.cve.org/} dazu existiert.\\
 
-Daher ist es wichtig, möglichst Zeitnah neue Updates zu installieren.
+Daher ist es wichtig, möglichst zeitnah aktuelle Updates zu installieren.
 Viele Softwarehersteller bieten eine automatische Updatefunktion, welche die neusten Updates direkt installiert.
 
 \section{Windows Updates}
 Windows Updates können direkt in den Systemeinstellungen heruntergeladen und installiert werden.
 Dies muss jedoch standardmässig von den Benutzern gemacht werden.
-Diese Updates können über die Group Policy durchgesetzt werden, damit sichergestellt werden kann, dass die System immer auf neustem Stand sind.\\
+Diese Updates können über die Group Policy erzwungen werden, damit sichergestellt werden kann, dass die System immer auf aktuellen Stand sind.\\
 
 Wichtige Anmerkung:
 \begin{lstlisting}
@@ -59,7 +59,7 @@ Für Clients werden folgende Policies eingerichtet:
     \end{figure}
 \end{minipage}\\
 
-Mit diesen Einstellungen werden die Updates am Morgen heruntergeladen und installiert.
+Mit diesen Einstellungen werden die Updates am Morgen, um 05:00 Uhr,  heruntergeladen und installiert.
 Die Benutzer müssen spätestens nach 7 Tagen ihre Computer neu starten.
 Ausserdem werden die Computer nur ausserhalb der definierten Arbeitszeit automatisch neu gestartet.\\
 
@@ -67,11 +67,11 @@ Diese Einstellungen sollen nicht strikt übernommen werden, sondern den Bedürfn
 Wichtig ist jedoch, dass die Updates automatisch installiert werden und das die Computer nach Updates neugestartet werden müssen.
 
 \subsection{GPO für Server}
-Falls kritische Clients vorhanden sind, sollte \acrfull{wsus} verwendet werden. Siehe Kapitel \hyperref[subsec:wsus]{WSUS}\\
+Falls kritische Server vorhanden sind, sollte \acrfull{wsus} verwendet werden. Siehe Kapitel \hyperref[subsec:wsus]{WSUS}\\
 
-Updates für Server sollten installiert werden, wenn Sie nicht in Verwendung sind, da sie eventuell für kurze Zeit nicht verfügbar sind.
+Updates für Server sollten installiert werden, wenn Sie nicht in Verwendung sind, da sie für kurze Zeit nicht verfügbar sein werden.
 Daher ist die Group Policy für Server anderst als für Clients.
-Für Server die 24/7h verwendet werden, muss ein ``Maintenance Window'' gesetzt und alle Benutzer informiert werden.\\
+Für Server die 24/7 verwendet werden, muss ein ``Maintenance Window'' gesetzt und alle Benutzer informiert werden.\\
 
 Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der OU verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
@@ -88,32 +88,32 @@ Für Server werden folgende Policies eingerichtet:
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/client-allow-immediate-updates.png}
-        \caption{GPO Client Updates 1}
+        \caption{GPO Server Updates 1}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/server-configure-automatic-updates.png}
-        \caption{GPO Client Updates 2}
+        \caption{GPO Server Updates 2}
     \end{figure}
 \end{minipage}\\
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/client-auto-restart-during-working-hours.png}
-        \caption{GPO Client Updates 3}
+        \caption{GPO Server Updates 3}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/server-automatic-restart.png}
-        \caption{GPO Client Updates 4}
+        \caption{GPO Server Updates 4}
     \end{figure}
 \end{minipage}\\
 
-Die Updates werden auf den Servern in der Nacht installiert und die Server anschliessend neu gestartet.
+Die Updates werden auf den Servern in der Nacht, um 01:00 Uhr, installiert und die Server anschliessend neu gestartet.
 Für kritische Server sollten die Updates zuerst getestet werden und manuell installiert werden.
 
 \subsection{\acrfull{wsus}}\label{subsec:wsus}
