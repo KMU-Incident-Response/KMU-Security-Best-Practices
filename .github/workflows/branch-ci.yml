@@ -29,11 +29,14 @@ jobs:
         with:
           run: |
             cd ${{ matrix.main_file }}
-            latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex
+            latexmk -pdf -file-line-error -halt-on-error \
+            -interaction=nonstopmode main.tex
             makeglossaries main
-            latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex
+            latexmk -pdf -file-line-error -halt-on-error \
+            -interaction=nonstopmode main.tex
             makeglossaries main
-            latexmk -pdf -file-line-error -halt-on-error -interaction=nonstopmode main.tex
+            latexmk -pdf -file-line-error -halt-on-error \
+            -interaction=nonstopmode main.tex
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
