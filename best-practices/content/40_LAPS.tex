@@ -32,7 +32,7 @@ Zum Beispiel auf dem Domain Controller unter:
 \end{lstlisting}
 Dieses Verzeichnis ist Standardmässig auf Domain Controllern freigegeben.\\
 
-Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der OU verknüpft ist, die alle Windows Geräte enthält.
+Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der \acrshort{ou} verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}
@@ -131,8 +131,8 @@ Dieser Gruppe kann man alle Benutzer hinzufügen, welche Zugriff auf die Passwö
     \caption{LAPS Active Directory Gruppe}
 \end{figure}
 
-Nach dem erstellen der Gruppe, muss zusätzlich noch eine Berechtigung auf der OU für die Gruppe eingerichtet werden.
-Dazu muss ASEdit und die Eigenschaften der OU geöffnet werden. Im ``Security'' Tab
+Nach dem erstellen der Gruppe, muss zusätzlich noch eine Berechtigung auf der \acrshort{ou} für die Gruppe eingerichtet werden.
+Dazu muss ASEdit und die Eigenschaften der \acrshort{ou} geöffnet werden. Im ``Security'' Tab
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/ASEdit.png}
@@ -140,7 +140,7 @@ Dazu muss ASEdit und die Eigenschaften der OU geöffnet werden. Im ``Security'' 
 \end{figure}
 unter ``Advanced'' muss die neue Gruppe hinzugefügt werden mit der Berechtigung ``All Extended Rights''.\\
 
-Nun muss für LAPS noch die Verknüpfung zwischen dieser Gruppe und der OU erstellt werden.
+Nun muss für LAPS noch die Verknüpfung zwischen dieser Gruppe und der \acrshort{ou} erstellt werden.
 Dies kann mit Powershell erledigt werden:
 \begin{lstlisting}
 Set-AdmPwdReadPasswordPermission -OrgUnit "<Name der OU>" -AllowedPrincipals Global_LAPS-Admins
@@ -157,7 +157,7 @@ Find-AdmPwdExtendedrights -identity "<Name der OU>"
 \subsection{LAPS aktivieren}
 Zum Schluss muss LAPS noch mit einer neuen Group Policy aktiviert werden.
 
-Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der gleichen OU verknüpft ist, wie die Group Policy für das Deployment.
+Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der gleichen \acrshort{ou} verknüpft ist, wie die Group Policy für das Deployment.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}

@@ -42,7 +42,7 @@ Unter ``Features'' wählt man ``Bitlocker Drive Encryption'' und installiert die
 \textbf{Wichtig:} Nach dem installiern muss der Server neugestartet werden.
 
 \subsubsection{Group Policy}
-Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der OU verknüpft ist, die die zu verschlüsselnden Windows Geräte enthält.
+Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der \acrshort{ou} verknüpft ist, die die zu verschlüsselnden Windows Geräte enthält.
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
 Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Windows Components $\rightarrow$ BitLocker Drive Encryption $\rightarrow$ Operating System Drives} kann mit \textbf{Rechtsklick $\rightarrow$ New $\rightarrow$ Package\dots} wird die Policy ``Choose how BitLocker-protected operating system drives can be recovered'' wie folgt eingerichtet:
 \begin{figure}[H]
