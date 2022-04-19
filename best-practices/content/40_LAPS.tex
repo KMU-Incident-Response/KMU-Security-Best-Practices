@@ -23,7 +23,7 @@ Die Installation ist in drei Schritte unterteilt.
     \item Zum Schluss wird LAPS per Group Policy aktiviert.
 \end{enumerate}
 
-\subsection{Installation via GPO}
+\subsection{Installation via \acrshort{gpo}}
 LAPS kann auf der \href{https://www.microsoft.com/download/details.aspx?id=46899}{Webseite von Microsoft}\footnote{Link: https://www.microsoft.com/download/details.aspx?id=46899} heruntergeladen werden.
 Die .msi Datei muss in einem freigegebenen Netzlaufwerk platziert werden, auf welches alle Windows Geräte Zugriff haben.
 Zum Beispiel auf dem Domain Controller unter:
@@ -36,7 +36,7 @@ Im Group Policy Management muss eine neue Group Policy erstellt werden, welche m
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}
-    \caption{Neue GPO für LAPS Deployment}
+    \caption{Neue \acrshort{gpo} für LAPS Deployment}
 \end{figure}
 
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
@@ -46,7 +46,7 @@ Hier muss man die zuvor im freigegebenen Netzlaufwerk abgelegte Installationsdat
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/LAPS/GPO-Edit-Deployment.png}
-        \caption{GPO für LAPS Deployment bearbeiten}
+        \caption{\acrshort{gpo} für LAPS Deployment bearbeiten}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
@@ -63,7 +63,7 @@ LAPS wird beim Einloggen auf den jeweiligen Geräten installiert.
 \subsubsection{Domain Controller}
 Auf dem DC sollte man LAPS von Hand installieren.
 Bei der manuellen Installation müssen die zusätzlichen Features installiert werden.
-Diese sind das GUI, das Powershell Modul und die GPO Richtlinien.
+Diese sind das GUI, das Powershell Modul und die \acrshort{gpo} Richtlinien.
 
 Dazu die Installationsdatei ausführen und alle Features installieren.
 \begin{figure}[H]
@@ -74,7 +74,7 @@ Dazu die Installationsdatei ausführen und alle Features installieren.
 
 
 \subsubsection{LAPS GUI für Admins}\label{subsubsec:Laps-Gui}
-Über die GPO wird auf den Computern LAPS ohne GUI installiert.
+Über die \acrshort{gpo} wird auf den Computern LAPS ohne GUI installiert.
 Mit dem GUI kann das Passwort von beliebigen Windows Geräten in der Domäne abgefragt werden.\\
 
 Das GUI kann über die Systemeinstellungen installiert werden, wenn LAPS bereits installiert ist.

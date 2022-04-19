@@ -16,14 +16,14 @@ Wichtige Anmerkung:
 Bei kritischen Systemen muss immer zuerst überprüft werden, ob alle Funktionen nach dem Update noch funktionieren.
 \end{lstlisting}
 
-\subsection{GPO für Clients}
+\subsection{\acrshort{gpo} für Clients}
 Falls kritische Clients vorhanden sind, sollte \acrfull{wsus} verwendet werden. Siehe Kapitel \hyperref[subsec:wsus]{WSUS}\\
 
 Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der \acrshort{ou} verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/Updates/edit-gpo-clinets.png}
-    \caption{Neue GPO für Windows Client Updates}
+    \caption{Neue \acrshort{gpo} für Windows Client Updates}
 \end{figure}
 
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
@@ -34,28 +34,28 @@ Für Clients werden folgende Policies eingerichtet:
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/client-allow-immediate-updates.png}
-        \caption{GPO Client Updates 1}
+        \caption{\acrshort{gpo} Client Updates 1}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/client-configure-automatic-updates.png}
-        \caption{GPO Client Updates 2}
+        \caption{\acrshort{gpo} Client Updates 2}
     \end{figure}
 \end{minipage}\\
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/client-auto-restart-during-working-hours.png}
-        \caption{GPO Client Updates 3}
+        \caption{\acrshort{gpo} Client Updates 3}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/client-force-restart-deadline.png}
-        \caption{GPO Client Updates 4}
+        \caption{\acrshort{gpo} Client Updates 4}
     \end{figure}
 \end{minipage}\\
 
@@ -66,7 +66,7 @@ Ausserdem werden die Computer nur ausserhalb der definierten Arbeitszeit automat
 Diese Einstellungen sollen nicht strikt übernommen werden, sondern den Bedürfnissen des Betriebs angepasst werden.
 Wichtig ist jedoch, dass die Updates automatisch installiert werden und das die Computer nach Updates neugestartet werden müssen.
 
-\subsection{GPO für Server}
+\subsection{\acrshort{gpo} für Server}
 Falls kritische Server vorhanden sind, sollte \acrfull{wsus} verwendet werden. Siehe Kapitel \hyperref[subsec:wsus]{WSUS}\\
 
 Updates für Server sollten installiert werden, wenn Sie nicht in Verwendung sind, da sie für kurze Zeit nicht verfügbar sein werden.
@@ -77,7 +77,7 @@ Im Group Policy Management muss eine neue Group Policy erstellt werden, welche m
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/Updates/edit-gpo-server.png}
-    \caption{Neue GPO für Windows Server Updates}
+    \caption{Neue \acrshort{gpo} für Windows Server Updates}
 \end{figure}
 
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
@@ -88,28 +88,28 @@ Für Server werden folgende Policies eingerichtet:
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/client-allow-immediate-updates.png}
-        \caption{GPO Server Updates 1}
+        \caption{\acrshort{gpo} Server Updates 1}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/server-configure-automatic-updates.png}
-        \caption{GPO Server Updates 2}
+        \caption{\acrshort{gpo} Server Updates 2}
     \end{figure}
 \end{minipage}\\
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/client-auto-restart-during-working-hours.png}
-        \caption{GPO Server Updates 3}
+        \caption{\acrshort{gpo} Server Updates 3}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/Updates/server-automatic-restart.png}
-        \caption{GPO Server Updates 4}
+        \caption{\acrshort{gpo} Server Updates 4}
     \end{figure}
 \end{minipage}\\
 
