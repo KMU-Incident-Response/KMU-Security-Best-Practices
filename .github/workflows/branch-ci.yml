@@ -54,7 +54,7 @@ jobs:
       - name: Rename files
         run: |
           find etc/usr/artifacts/ -type f -name "main.pdf" -printf "/%P\n" \
-          | while read FILE ; do DIR=$(dirname "$FILE" ); \
+          | while read -r FILE ; do DIR=$(dirname "$FILE" ); \
           mv etc/usr/artifacts/"$FILE" etc/usr/artifacts/"$DIR""$DIR";done
       - name: Check for files
         run: ls -la etc/usr/artifacts/*
