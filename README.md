@@ -1,4 +1,5 @@
 # Incident Response für KMU
+![GitHub](https://img.shields.io/github/license/KMU-Incident-Response/KMU-Security-Best-Practices)
 [![GitHub Super-Linter](https://github.com/KMU-Incident-Response/KMU-Security-Best-Practices/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 ## Best Practices
 Eine Sammlung von Security Best Practices für KMUs.
