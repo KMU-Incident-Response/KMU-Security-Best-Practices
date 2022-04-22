@@ -13,7 +13,7 @@ Diese wird automatisch von Windows verwaltet und darum wird es diesem Dokument n
 \section{Zero Trust}
 In einem Netzwerk sollten keine Annahmen getroffen werden.
 Basierend darauf kann auch keinem Gerät standardmässig vertraut werden.
-Die Firewall soll so eingerichtet werden, dass spezielle Operationen wie Netzwerkverkehr vom Internet nach Intern freigeschaltet werden muss.
+Die Firewall soll so eingerichtet werden, dass spezielle Operationen wie Netzwerkverkehr vom Internet nach intern freigeschaltet werden muss.
 Es sollten strenge Regeln implementiert werden und die Ausnahme speziell einrichtet.
 Dies wird Whitelist Policy\footnote{https://de.wikipedia.org/wiki/Wei\%C3\%9Fe\_Liste} gennant.
 Das genannte Verhalten ist bei den meisten Produkten ein Standard.
@@ -24,7 +24,7 @@ Kritische Infrastruktur sollte nicht mit allen anderen Geräten im selben Netzwe
 Das Segment sollte mit einer Firewall abgeschottet sein und nur benötigte Verbindungen geöffnet werden.
 
 \section{Betrieb einer Firewall}
-Eine Firewall übernimmt den grossteil seiner Arbeit selbst.
+Eine Firewall übernimmt den Grossteil ihrer Arbeit selbst.
 Das Updaten der Firmware wird nicht von der Firewall selbst übernommen und muss meist manuell gemacht werden.
 Eine Firewall ist eine äusserst kritische Komponente eines Netzwerk und sollten dadurch auch regelmässig gepatcht werden.\\
 
@@ -41,9 +41,9 @@ Externe Dienstleister bringen bei Audits oftmals einen grossen Mehrwert, da dies
 Viele Firewall Hersteller haben ihr eigenes Betriebssystem auf den Geräten installiert.
 Durch diese Vielzahl an Systemen ist es für Wazuh nicht möglich einen Wazuh Agent für jedes Betriebssystem zu entwicklen.
 
-Daher bietet Wazuh die Möglichkeit, Agentless via syslog\footnote{Link: https://github.com/rsyslog/rsyslog} die Logdateien auszulesen und zu verarbeiten.\\
+Daher bietet Wazuh die Möglichkeit, Agentless via rsyslog\footnote{Link: https://github.com/rsyslog/rsyslog} die Logdateien auszulesen und zu verarbeiten.\\
 
-Ausserdem exisiteren bereits im Standard-Ruleset Regeln für einige Firewall-Hersteller\footnote{Link: https://documentation.wazuh.com/current/user-manual/ruleset/getting-started.html}, wie zum Beispiel Cisco, Junos oder CheckPoint Smart-1\\
+Ausserdem exisiteren bereits im Standard-Ruleset Regeln für einige Firewall-Hersteller\footnote{Link: https://documentation.wazuh.com/current/user-manual/ruleset/getting-started.html}, wie zum Beispiel Cisco, JunOS oder CheckPoint Smart-1.\\
 
 In diesem Guide wird das Einrichten von Agnetless Verbindungen zu Firewalls und anderen Geräten nicht genauer erläutert.
 In der \href{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}{Dokumentation von Wazuh}\footnote{Link: https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html} gibt es gute Anleitungen wie solche Systeme in Wazuh aufgenommen werden können.
