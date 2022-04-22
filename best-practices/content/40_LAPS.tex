@@ -1,6 +1,6 @@
 \chapter{\acrfull{laps}}
 \section{Einleitung}
-\acrfull{laps} ist eine Lösung von Microsoft.
+Die \acrfull{laps} ist eine Lösung von Microsoft.
 Mit \acrshort{laps} werden die Passwörter der lokalen Administratoren, welche auf allen Windows Geräten vorhanden sind, zufällig und unterschiedlich voneinander gesetzt.
 Zusätzlich werden die Paswörter in einem gewissen Zeitraum automatisch neu gesetzt.\\
 
@@ -14,7 +14,7 @@ Um \acrshort{laps} einsetzen zu können, wird eine Active Directory benötigt mi
 \section{Installation}
 Die Installation ist in drei Schritte unterteilt.
 \begin{enumerate}
-    \item Zuerstes wird \acrshort{laps} via Group Policy auf allen Windows Geräten installiert.
+    \item Als erstes wird \acrshort{laps} via Group Policy auf allen Windows Geräten installiert.
     \item Danach wird das Active Directory für \acrshort{laps} vorbereitet. Das Active Directory braucht zwei zusätzliche Attribute auf den Computer Objekten um die Passwörter verwalten zu können.
           \begin{itemize}
               \item \textbf{ms-Mcs-AdmPwd}: Speichert das Administrator Passwort in Klartext.
@@ -61,7 +61,7 @@ Die Group Policy kann nun geschlossen werden.
 \acrshort{laps} wird beim Einloggen auf den jeweiligen Geräten installiert.
 
 \subsubsection{Domain Controller}
-Auf dem DC sollte man \acrshort{laps} von Hand installieren.
+Auf dem Domain Controller sollte man \acrshort{laps} manuell installieren.
 Bei der manuellen Installation müssen die zusätzlichen Features installiert werden.
 Diese sind das GUI, das Powershell Modul und die \acrshort{gpo} Richtlinien.
 
@@ -131,11 +131,11 @@ Dieser Gruppe kann man alle Benutzer hinzufügen, welche Zugriff auf die Passwö
     \caption{\acrshort{laps} Active Directory Gruppe}
 \end{figure}
 
-Nach dem erstellen der Gruppe, muss zusätzlich noch eine Berechtigung auf der \acrshort{ou} für die Gruppe eingerichtet werden.
+Nach dem Erstellen der Gruppe, muss zusätzlich noch eine Berechtigung auf der \acrshort{ou} für die Gruppe eingerichtet werden.
 Dazu muss ASEdit und die Eigenschaften der \acrshort{ou} geöffnet werden. Im ``Security'' Tab
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/ASEdit.png}
+    \includegraphics[width=0.9\linewidth]{../img/LAPS/ASEdit.png}
     \caption{ASEdit}
 \end{figure}
 unter ``Advanced'' muss die neue Gruppe hinzugefügt werden mit der Berechtigung ``All Extended Rights''.\\
@@ -147,7 +147,7 @@ Set-AdmPwdReadPasswordPermission -OrgUnit "<Name der OU>" -AllowedPrincipals Glo
 Set-AdmPwdResetPasswordPermission -OrgUnit "<Name der OU>" -AllowedPrincipals Global_LAPS-Admins
 \end{lstlisting}
 Die Read Berechtigung erlaubt das Lesen der Passwörter.
-Die Reset Berechtigung erlaubt das setzten eines Ablaufdatums eines Passwortes.
+Die Reset Berechtigung erlaubt das setzen eines Ablaufdatums eines Passwortes.
 Die Berechtigung kann nun noch mii Powershell überprüft werden:
 \begin{lstlisting}
 Find-AdmPwdExtendedrights -identity "<Name der OU>"
@@ -166,7 +166,7 @@ Im Group Policy Management muss eine neue Group Policy erstellt werden, welche m
 
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
 Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Laps} findet man die Einstellungen von \acrshort{laps}.
-Mit \textbf{Rechtsklick $\rightarrow$ Edit} auf ``Enable local admin password management'' kann man die Einstellung öffnen und Links auf ``Enabled'' setzen.
+Mit \textbf{Rechtsklick $\rightarrow$ Edit} auf ``Enable local admin password management'' kann man die Einstellung öffnen und links auf ``Enabled'' setzen.
 Mit OK bestätigen.
 \begin{figure}[H]
     \centering
@@ -174,7 +174,7 @@ Mit OK bestätigen.
     \caption{\acrshort{laps} aktivieren}
 \end{figure}
 
-In der Einstellung ``Password Settings'' kann man die Passwort Länge und den Zyklus setzten, wie oft das Passwort gewechselt werden soll.\\
+In der Einstellung ``Password Settings'' kann man die Passwort Länge und den Zyklus setzen, wie oft das Passwort gewechselt werden soll.\\
 
 Zusätzlich muss noch der lokale Administrator aktiviert werden.
 Dieser ist standardmässig bei Computern welche der Active Directory beigetretten sind deaktiviert.
@@ -185,10 +185,10 @@ Die Group Policy kann nun geschlossen werden.
 
 \section{Verwendung}
 \subsection{Mit dem GUI}\label{subsec:laps-gui-usage}
-Das auslesen eines Passwortes über das GUI geht nur, wenn das GUI auch installiert wurde.
+Das Auslesen eines Passwortes über das GUI geht nur, wenn das GUI auch installiert wurde.
 Die Installation des GUI wird im Kapitel \hyperref[subsubsec:Laps-Gui]{LAPS GUI für Admins} erklärt.\\
 
-Im Startmenü muss man nach \textbf{\acrshort{laps} UI} suchen. Falls der in Windows angemeldete Benutzer Berechtigung besitzt, \acrshort{laps} Passwörter auszulesen, kann \acrshort{laps} dirket gestartet werden.\\
+Im Startmenü muss man nach \textbf{\acrshort{laps} UI} suchen. Falls der in Windows angemeldete Benutzer Berechtigung besitzt, \acrshort{laps} Passwörter auszulesen, kann \acrshort{laps} direkt gestartet werden.\\
 Falls nicht, muss man den Speicherort der Datei öffnen.
 Dann kann man mit \textbf{Shift + Rechtsklick} das Kontextmenü öffnen und die Datei mit ``Run as different user'' als anderen Benutzer ausführen.
 Ein Eingabefenster öffnet sich, wo man den berechtigten Benutzer und das Passwort des Benutzer eingeben kann.
@@ -215,10 +215,10 @@ Das Passwort wird dann im Feld ``Password'' angezeigt.
     \includegraphics[width=0.7\linewidth]{../img/LAPS/Laps-ui.png}
     \caption{\acrshort{laps} Passwort auslesen}
 \end{figure}
-Im Feld ``New expiration time'' kann man eine neue Zeit setzten, wann das Passwort gewechselt werden soll.
+Im Feld ``New expiration time'' kann man eine neue Zeit setzen, wann das Passwort gewechselt werden soll.
 
 \subsection{Mit Powershell}
-Die Powershell muss als Benutzer gestartet werden, welcher die Berechtigung hat das Passwort auszulesen oder zurückzusetzten.
+Die Powershell muss als Benutzer gestartet werden, welcher die Berechtigung hat das Passwort auszulesen oder zurückzusetzen.
 Powershell als ein anderer Benutzer starten kann man gleich wie \acrshort{laps} im Kapitel \hyperref[subsec:laps-gui-usage]{``Mit dem GUI''} als anderer Benutzer gestartet wurde.\\
 
 Für das Auslesen und Zurücksetzen gibt es folgende Befehle:
@@ -230,17 +230,17 @@ Für das Auslesen und Zurücksetzen gibt es folgende Befehle:
 
 \section{Best Practices}
 Idealerweise sollten nur ausgewählte IT Mitarbeitende die Berechtigung erhalten, Passwörter auslesen zu können.
-Alle Lokale Administratorrechte von AD Benutzern sollten entfernt werden und nur noch \acrshort{laps} Passwörter verwendet werden.
+Alle lokalen Administratorrechte von AD Benutzern sollten entfernt werden und nur noch \acrshort{laps} Passwörter verwendet werden.
 Dadurch kann man verhindern, dass es einen Benutzer gibt, welcher auf allen Systemen berechtigt ist.\\
 
 Falls ein Mitarbeitender ohne \acrshort{laps} Berechtigung lokale Administratorrechte braucht, kann diesem das \acrshort{laps} Paswort gegeben werden.
-Dann sollte man aber auch das ``Expire Date'' auf das Datum setzten, wo das Passwort nicht mehr gebraucht wird.
+Dann sollte man aber auch das ``Expire Date'' auf das Datum setzen, wo das Passwort nicht mehr gebraucht wird.
 Zum Beispeil am nächsten Tag.
 
 \section{Intergration in Wazuh}
 In Wazuh existiert eine Regel, welche jedes auslesen meldet.
 Die Regel hat die ID 110010 und der Agent Name ist der \textbf{Domain Controller}.
-Es ist nicht der der Computer, auf welchem das Passwort ausgelesen wurde.
+Es ist nicht der Computer, auf welchem das Passwort ausgelesen wurde.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{../img/LAPS/laps-wazuh.png}
