@@ -7,7 +7,6 @@ Es gibt eine 32- und 64-Bit Version von Sysmon.
 
 Zusätzlich braucht es noch eine Konfigurationsdatei welche definiert, was Sysmon in den Event Log schreibt.
 Die Konfiugrationsdatei kann man im \href{https://github.com/KMU-Incident-Response/KMU-Basis-Logging}{KMU-Incident-Response Repository}\footnote{Link: https://github.com/KMU-Incident-Response/KMU-Basis-Logging} herunterladen.\\
-% TODO: Update link maybe if sysmon file is in folder && maybe find automatic way link curl or wget invoke-webrequest
 
 Die .exe und .xml Dateien müssen in einem freigegebenen Netzlaufwerk abgespeichert werden, auf welches alle Windows Geräte Zugriff haben. Zum Beispiel auf dem Domain Controller unter:
 \begin{lstlisting}
@@ -101,7 +100,7 @@ Sysmon wird beim Einloggen auf den Windows Geräten installiert.
 
 \section{Manuelle Installation}
 Um Sysmon manuell auf einem Windows Gerät zu installieren, muss man, wie im vorherigen Kapitel beschrieben, die Dateien herunterladen.
-Die Konfigurationsdatei kann in das gleiche Verzeichniss wie die .exe kopiert werden.
+Die Konfigurationsdatei kann in das gleiche Verzeichnis wie die .exe kopiert werden.
 Danach öffnet man die Kommandozeile als Administrator und wechselt in das Verzeichnis der heruntergeladenen und entpackten Dateien.
 Dort gibt man folgendes Kommando ein:
 \begin{lstlisting}
