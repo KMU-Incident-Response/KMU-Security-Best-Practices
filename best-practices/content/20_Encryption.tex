@@ -5,7 +5,7 @@ Damit kann sichergestellt werden, dass keine Daten gestohlen werden können, wen
 Diese Sicherheit ist besonders wichtig, wenn Notebooks in der Firma eingesetzt werden.
 
 \section{Verschlüsselung unter Windows}
-In Windows gibt es zwei im OS integrierte Möglichkeiten, die Daten auf dem Gerät zu verschlüsseln.
+In Windows gibt es zwei im \acrshort{os} integrierte Möglichkeiten, die Daten auf dem Gerät zu verschlüsseln.
 In Windows Home gibt es die sogenannte ``Geräteverschlüsselung'' in den Systemeinstellungen.
 Ab Windows Pro kann man Geräte mit ``BitLocker'' verschlüsseln.\\
 
@@ -32,7 +32,7 @@ Es gibt auch die Möglichkeit BitLocker ohne \acrshort{tpm} Chip zu verwenden. D
 
 \subsubsection{BitLocker Feature}
 Damit der Recovery Key in Active Directory hinterlegt wird, muss zuerst das BitLocker Feature auf dem Domain Controller aktiviert werden.
-Dazu öffnet man den Server Manager, navigiert \textbf{Manage $\rightarrow$ Add Roles and Features}.
+Dazu öffnet man den Server Manager, navigiert zu \textbf{Manage $\rightarrow$ Add Roles and Features}.
 Unter ``Features'' wählt man ``Bitlocker Drive Encryption'' und installiert dieses Feature:
 \begin{figure}[H]
     \centering
@@ -72,14 +72,14 @@ Zum Beispiel auf dem Domain Controller unter:
 \end{figure}
 
 Da die Installation mit einem Script gemacht wird, muss zuerst noch erlaubt werden, dass in Powershell Skripte ausgeführt werden dürfen.
-Die kann unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Windows Components $\rightarrow$ Windows Powershell} mit der Policy ``Turn on Script Execution'' aktiviert werden:
+Die Erlaubnis kann unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Windows Components $\rightarrow$ Windows Powershell} mit der Policy ``Turn on Script Execution'' erteilt werden:
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{../img/Encryption/powershell-execution.png}
     \caption{Powershell Scripts aktivieren}
 \end{figure}
 
-Nun muss unter \textbf{Computer Configuration $\rightarrow$ Preferences $\rightarrow$ Control Panel Settings $\rightarrow$ Scheduled Task} ein neuer ``Immediate Task (At least Windows 7)'' erstellt werden:
+Als nächstes muss unter \textbf{Computer Configuration $\rightarrow$ Preferences $\rightarrow$ Control Panel Settings $\rightarrow$ Scheduled Task} ein neuer ``Immediate Task (At least Windows 7)'' erstellt werden:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/Encryption/new-scheduled-task.png}
@@ -134,11 +134,11 @@ Die Festplatte wird beim nächsten Neustart verschlüsselt.
 
 
 \subsubsection{Recovery Key auslesen}
-Der Recovery Key ist auf den Computer Objekten in Active Directory hinterlegt.
+Der Recovery Key ist auf den Computer Objekten in der Active Directory hinterlegt.
 Dazu öffnet man die Einstellungen eines Computer Objektes und öffnet den Tab ``BitLocker Recovery'':
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/Encryption/bitlocker-recovery.png}
     \caption{Recovery Key für BitLocker}
 \end{figure}
-Dort findet man unter ``Recovery Password'' das Passwort zum den Computer im Notfall zu entschlüsseln.
+Dort findet man unter ``Recovery Password'' das Passwort um den Computer im Notfall zu entschlüsseln.
