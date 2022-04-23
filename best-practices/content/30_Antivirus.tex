@@ -64,9 +64,35 @@ Hier eine Übersicht der Vor- und Nachteile:\\
 
 
 \subsection{Wazuh Integration}
-In Wazuh existieren Regeln welche das Verhalten von Windows Defender loggen.
+In Wazuh existieren Regeln, welche das Verhalten von Windows Defender loggen.
 Dazu gehören auch alle durchgeführten Scans.\\
 
-Die wichtigsten zwei Regeln sind folgende:\\
-\subsubsection{Real-time protection turned off}
+Die wichtigsten zwei Regeln sind folgende:
+\subsubsection{Real-time protection disabled}
+Wenn die Real-time Protection deaktiviert wird, kann möglicherweise bösartige Software ausgeführt werden.
+Daher wird in Wazuh ein Level 12 Alert erstellt: 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../img/AV/real-time-protection.png}
+    \caption{Real-time Protection wurde deaktiviert}
+\end{figure}
+
+
 \subsubsection{Defender found a threat}
+Wenn möglicherweise schädliche Software auf einen Computer herunterdeladen wird, sollte Windows Defender diese erkennen.
+Dann wird folgender Alert generiert:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../img/AV/defender-detection.png}
+    \caption{Malware wurde entdeckt}
+\end{figure}
+
+Auf diesen Alert sollte normalerweise folgender Alert folgen:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../img/AV/defender-removal.png}
+    \caption{Malware wurde entfernt}
+\end{figure}
+
+Dieser Bestätigt, dass Windows Defender die schädliche Software entfernt hat.
