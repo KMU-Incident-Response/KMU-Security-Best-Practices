@@ -68,7 +68,7 @@ Damit kann man bei einem Sicherheitsvorfall eventuell nachvollziehen, wie vorgeg
 \end{enumerate}
 
 \section{Rules}
-Das Rules findet man unter \textbf{Wazuh $\rightarrow$ Management $\rightarrow$ Rules}.
+Die Regeln findet man unter \textbf{Wazuh $\rightarrow$ Management $\rightarrow$ Rules}.
 Hier kann man alle Regeln anschauen und eigene Regeln hinzufügen. 
 
 \begin{figure}[H]
@@ -82,4 +82,37 @@ Hier kann man alle Regeln anschauen und eigene Regeln hinzufügen.
     \item Mit ``Add new rules file'' kann man eine neue Datei hinzufügen, um neue Regeln zu definieren.
     \item Mit ``Custom rules'' kann man nur die eigenen Regeln oder Regeldateien anzeigen lassen. Alle Regeln von Wazuh werden ausgeblendet.
 \end{enumerate}
+
+\section{Decoders}
+Das Decoder findet man unter \textbf{Wazuh $\rightarrow$ Management $\rightarrow$ Decoders}.
+Diese Seite ist gleich aufgebaut wie die Rules Seite.
+
+\section{Groups}
+Die Gruppen findet man unter \textbf{Wazuh $\rightarrow$ Management $\rightarrow$ Groups}.
+Hier findet man alle definierten Gruppen, kann neue Gruppen hinzufügen und entfernen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../img/wazuh-groups.png}
+    \caption{Groups}
+\end{figure}
+
+\begin{enumerate}
+    \item Mit ``Add new group'' kann man eine neue Gruppe hinzufügen.
+    \item Hier kann man die einzelnen Gruppen verwalten. Mit dem Aug-Symbol kann man alle Agents anschauen, die dieser Gruppe zugewiesen sind. Mit dem Stift-Symbol kann man die agent.conf bearbeiten und mit dem Papierkorb-Symbol kann man die Gruppe löschen. 
+\end{enumerate}
+
+\section{Configuration}
+Die Konfiguration findet man unter \textbf{Wazuh $\rightarrow$ Management $\rightarrow$ Configuration}.
+Hier sieht man eine Übersicht von allen Wazuh Manager Einstellungen und kann diese bearbeiten.
+
+\section{Agents}
+Die Konfiguration findet man unter \textbf{Wazuh $\rightarrow$ Agents}.
+Hier sieht man alle registrierten Agents und kann neue Agents hinzufügen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../img/wazuh-agents.png}
+    \caption{Agents}
+\end{figure}
 
