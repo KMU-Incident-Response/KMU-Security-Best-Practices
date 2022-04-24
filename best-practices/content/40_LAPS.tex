@@ -1,7 +1,7 @@
-\chapter{Local Administrator Password Solution}
+\chapter{\acrfull{laps}}
 \section{Einleitung}
-Local Administrator Password Solution (LAPS) ist eine Lösung von Microsoft.
-Mit LAPS werden die Passwörter der lokalen Administratoren, welche auf allen Windows Geräten vorhanden sind, zufällig und unterschiedlich voneinander gesetzt.
+Die \acrfull{laps} ist eine Lösung von Microsoft.
+Mit \acrshort{laps} werden die Passwörter der lokalen Administratoren, welche auf allen Windows Geräten vorhanden sind, zufällig und unterschiedlich voneinander gesetzt.
 Zusätzlich werden die Paswörter in einem gewissen Zeitraum automatisch neu gesetzt.\\
 
 Dies verhindert, dass ein Angreiffer auf weitere Systeme vordringen kann, wenn ein lokales Administratorpasswort komprimiert ist.
@@ -9,22 +9,22 @@ Die Passwörter sind in einem Attribut auf dem Computer Objekt im Active Directo
 Zugriff auf dieses Attribut haben nur berechtigte Benutzer.
 
 \subsection{Voraussetzungen}
-Um LAPS einsetzen zu können, wird eine Active Directory benötigt mit allen Windows Geräten als Computer Objekte.
+Um \acrshort{laps} einsetzen zu können, wird eine Active Directory benötigt mit allen Windows Geräten als Computer Objekte.
 
 \section{Installation}
 Die Installation ist in drei Schritte unterteilt.
 \begin{enumerate}
-    \item Zuerstes wird LAPS via Group Policy auf allen Windows Geräten installiert.
-    \item Danach wird das Active Directory für LAPS vorbereitet. Das Active Directory braucht zwei zusätzliche Attribute auf den Computer Objekten um die Passwörter verwalten zu können.
+    \item Als erstes wird \acrshort{laps} via Group Policy auf allen Windows Geräten installiert.
+    \item Danach wird das Active Directory für \acrshort{laps} vorbereitet. Das Active Directory braucht zwei zusätzliche Attribute auf den Computer Objekten um die Passwörter verwalten zu können.
           \begin{itemize}
               \item \textbf{ms-Mcs-AdmPwd}: Speichert das Administrator Passwort in Klartext.
               \item \textbf{ms-Mcs-AdmPwdExpirationTime}: Speichert den Zeitpunkt für den Passwortwechsel.
           \end{itemize}
-    \item Zum Schluss wird LAPS per Group Policy aktiviert.
+    \item Zum Schluss wird \acrshort{laps} per Group Policy aktiviert.
 \end{enumerate}
 
-\subsection{Installation via GPO}
-LAPS kann auf der \href{https://www.microsoft.com/download/details.aspx?id=46899}{Webseite von Microsoft}\footnote{Link: https://www.microsoft.com/download/details.aspx?id=46899} heruntergeladen werden.
+\subsection{Installation via \acrshort{gpo}}
+\acrshort{laps} kann auf der \href{https://www.microsoft.com/download/details.aspx?id=46899}{Webseite von Microsoft}\footnote{Link: https://www.microsoft.com/download/details.aspx?id=46899} heruntergeladen werden.
 Die .msi Datei muss in einem freigegebenen Netzlaufwerk platziert werden, auf welches alle Windows Geräte Zugriff haben.
 Zum Beispiel auf dem Domain Controller unter:
 \begin{lstlisting}
@@ -32,11 +32,11 @@ Zum Beispiel auf dem Domain Controller unter:
 \end{lstlisting}
 Dieses Verzeichnis ist Standardmässig auf Domain Controllern freigegeben.\\
 
-Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der OU verknüpft ist, die alle Windows Geräte enthält.
+Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der \acrshort{ou} verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}
-    \caption{Neue GPO für LAPS Deployment}
+    \caption{Neue \acrshort{gpo} für \acrshort{laps} Deployment}
 \end{figure}
 
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
@@ -46,51 +46,51 @@ Hier muss man die zuvor im freigegebenen Netzlaufwerk abgelegte Installationsdat
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/LAPS/GPO-Edit-Deployment.png}
-        \caption{GPO für LAPS Deployment bearbeiten}
+        \caption{\acrshort{gpo} für \acrshort{laps} Deployment bearbeiten}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/LAPS/GPO-Edit-Deployment-2.png}
-        \caption{LAPS Installationsdatei auswählen}
+        \caption{\acrshort{laps} Installationsdatei auswählen}
     \end{figure}
 \end{minipage}\\
 
 Die Group Policy kann nun geschlossen werden.
-LAPS wird beim Einloggen auf den jeweiligen Geräten installiert.
+\acrshort{laps} wird beim Einloggen auf den jeweiligen Geräten installiert.
 
 \subsubsection{Domain Controller}
-Auf dem DC sollte man LAPS von Hand installieren.
+Auf dem Domain Controller sollte man \acrshort{laps} manuell installieren.
 Bei der manuellen Installation müssen die zusätzlichen Features installiert werden.
-Diese sind das GUI, das Powershell Modul und die GPO Richtlinien.
+Diese sind das GUI, das Powershell Modul und die \acrshort{gpo} Richtlinien.
 
 Dazu die Installationsdatei ausführen und alle Features installieren.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install-2.png}
-    \caption{LAPS manuelle Installation}
+    \caption{\acrshort{laps} manuelle Installation}
 \end{figure}
 
 
-\subsubsection{LAPS GUI für Admins}\label{subsubsec:Laps-Gui}
-Über die GPO wird auf den Computern LAPS ohne GUI installiert.
+\subsubsection{\acrshort{laps} GUI für Admins}\label{subsubsec:Laps-Gui}
+Über die \acrshort{gpo} wird auf den Computern \acrshort{laps} ohne GUI installiert.
 Mit dem GUI kann das Passwort von beliebigen Windows Geräten in der Domäne abgefragt werden.\\
 
-Das GUI kann über die Systemeinstellungen installiert werden, wenn LAPS bereits installiert ist.
+Das GUI kann über die Systemeinstellungen installiert werden, wenn \acrshort{laps} bereits installiert ist.
 Die Installationsdatei wird dafür nicht benötigt.
-In der Programmliste in den Systemeinstellungen auf LAPS klicken und im Balken auf \textbf{Change} klicken.
+In der Programmliste in den Systemeinstellungen auf \acrshort{laps} klicken und im Balken auf \textbf{Change} klicken.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install.png}
-    \caption{LAPS GUI Installieren 1}
+    \caption{\acrshort{laps} GUI Installieren 1}
 \end{figure}
 
 Das \textbf{Management Tools} Feature auswählen und dem Installationsprozess folgen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install-2.png}
-    \caption{LAPS GUI Installieren 2}
+    \caption{\acrshort{laps} GUI Installieren 2}
 \end{figure}
 
 
@@ -128,63 +128,67 @@ Dieser Gruppe kann man alle Benutzer hinzufügen, welche Zugriff auf die Passwö
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{../img/LAPS/Laps-Admins.png}
-    \caption{LAPS Active Directory Gruppe}
+    \caption{\acrshort{laps} Active Directory Gruppe}
 \end{figure}
 
-Nach dem erstellen der Gruppe, muss zusätzlich noch eine Berechtigung auf der OU für die Gruppe eingerichtet werden.
-Dazu muss ASEdit und die Eigenschaften der OU geöffnet werden. Im ``Security'' Tab
+Nach dem Erstellen der Gruppe, muss zusätzlich noch eine Berechtigung auf der \acrshort{ou} für die Gruppe eingerichtet werden.
+Dazu muss ASEdit und die Eigenschaften der \acrshort{ou} geöffnet werden. Im ``Security'' Tab
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/ASEdit.png}
+    \includegraphics[width=0.9\linewidth]{../img/LAPS/ASEdit.png}
     \caption{ASEdit}
 \end{figure}
 unter ``Advanced'' muss die neue Gruppe hinzugefügt werden mit der Berechtigung ``All Extended Rights''.\\
 
-Nun muss für LAPS noch die Verknüpfung zwischen dieser Gruppe und der OU erstellt werden.
+Nun muss für \acrshort{laps} noch die Verknüpfung zwischen dieser Gruppe und der \acrshort{ou} erstellt werden.
 Dies kann mit Powershell erledigt werden:
 \begin{lstlisting}
 Set-AdmPwdReadPasswordPermission -OrgUnit "<Name der OU>" -AllowedPrincipals Global_LAPS-Admins
 Set-AdmPwdResetPasswordPermission -OrgUnit "<Name der OU>" -AllowedPrincipals Global_LAPS-Admins
 \end{lstlisting}
 Die Read Berechtigung erlaubt das Lesen der Passwörter.
-Die Reset Berechtigung erlaubt das setzten eines Ablaufdatums eines Passwortes.
+Die Reset Berechtigung erlaubt das setzen eines Ablaufdatums eines Passwortes.
 Die Berechtigung kann nun noch mii Powershell überprüft werden:
 \begin{lstlisting}
 Find-AdmPwdExtendedrights -identity "<Name der OU>"
 \end{lstlisting}
 
 
-\subsection{LAPS aktivieren}
-Zum Schluss muss LAPS noch mit einer neuen Group Policy aktiviert werden.
+\subsection{\acrshort{laps} aktivieren}
+Zum Schluss muss \acrshort{laps} noch mit einer neuen Group Policy aktiviert werden.
 
-Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der gleichen OU verknüpft ist, wie die Group Policy für das Deployment.
+Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der gleichen \acrshort{ou} verknüpft ist, wie die Group Policy für das Deployment.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}
-    \caption{Neue GP für LAPS Deployment}
+    \caption{Neue Group Policy für \acrshort{laps} Deployment}
 \end{figure}
 
 Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeitet werden.
-Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Laps} findet man die Einstellungen von LAPS.
-Mit \textbf{Rechtsklick $\rightarrow$ Edit} auf ``Enable local admin password management'' kann man die Einstellung öffnen und Links auf ``Enabled'' setzen.
+Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Laps} findet man die Einstellungen von \acrshort{laps}.
+Mit \textbf{Rechtsklick $\rightarrow$ Edit} auf ``Enable local admin password management'' kann man die Einstellung öffnen und links auf ``Enabled'' setzen.
 Mit OK bestätigen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/enable-laps.png}
-    \caption{LAPS aktivieren}
+    \caption{\acrshort{laps} aktivieren}
 \end{figure}
 
-In der Einstellung ``Password Settings'' kann man die Passwort Länge und den Zyklus setzten, wie oft das Passwort gewechselt werden soll.\\
+In der Einstellung ``Password Settings'' kann man die Passwort Länge und den Zyklus setzen, wie oft das Passwort gewechselt werden soll.\\
 
+Zusätzlich muss noch der lokale Administrator aktiviert werden.
+Dieser ist standardmässig bei Computern welche der Active Directory beigetreten sind deaktiviert.
+Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Windows Settings $\rightarrow$ Security Settings $\rightarrow$ Local Policies $\rightarrow$ Security Options } findet man die Einstellungen ``Accounts: Administrator Account Settings''.
+Diese setzt man auf ``Enabled''.
 Die Group Policy kann nun geschlossen werden.
 
 
 \section{Verwendung}
 \subsection{Mit dem GUI}\label{subsec:laps-gui-usage}
-Das auslesen eines Passwortes über das GUI geht nur, wenn das GUI auch installiert wurde.
+Das Auslesen eines Passwortes über das GUI geht nur, wenn das GUI auch installiert wurde.
 Die Installation des GUI wird im Kapitel \hyperref[subsubsec:Laps-Gui]{LAPS GUI für Admins} erklärt.\\
 
-Im Startmenü muss man nach \textbf{LAPS UI} suchen. Falls der in Windows angemeldete Benutzer Berechtigung besitzt, LAPS Passwörter auszulesen, kann LAPS dirket gestartet werden.\\
+Im Startmenü muss man nach \textbf{\acrshort{laps} UI} suchen. Falls der in Windows angemeldete Benutzer Berechtigung besitzt, \acrshort{laps} Passwörter auszulesen, kann \acrshort{laps} direkt gestartet werden.\\
 Falls nicht, muss man den Speicherort der Datei öffnen.
 Dann kann man mit \textbf{Shift + Rechtsklick} das Kontextmenü öffnen und die Datei mit ``Run as different user'' als anderen Benutzer ausführen.
 Ein Eingabefenster öffnet sich, wo man den berechtigten Benutzer und das Passwort des Benutzer eingeben kann.
@@ -193,29 +197,29 @@ Berechtigt sind alle Benutzer in der zuvor erstellten Gruppe und Domänen Admini
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/LAPS/usage-1.png}
-        \caption{LAPS Speicherort öffnen}
+        \caption{\acrshort{laps} Speicherort öffnen}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{../img/LAPS/usage-2.png}
-        \caption{LAPS als anderer Benutzer starten}
+        \caption{\acrshort{laps} als anderer Benutzer starten}
     \end{figure}
 \end{minipage}\\
 
-Im LAPS UI gibt man im Feld ``Computer name'' den Namen des Computers ein, von welchem man das lokale Passwort möchte.
+Im \acrshort{laps} UI gibt man im Feld ``Computer name'' den Namen des Computers ein, von welchem man das lokale Passwort möchte.
 Das Passwort wird dann im Feld ``Password'' angezeigt.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/Laps-ui.png}
-    \caption{LAPS Passwort auslesen}
+    \caption{\acrshort{laps} Passwort auslesen}
 \end{figure}
-Im Feld ``New expiration time'' kann man eine neue Zeit setzten, wann das Passwort gewechselt werden soll.
+Im Feld ``New expiration time'' kann man eine neue Zeit setzen, wann das Passwort gewechselt werden soll.
 
 \subsection{Mit Powershell}
-Die Powershell muss als Benutzer gestartet werden, welcher die Berechtigung hat das Passwort auszulesen oder zurückzusetzten.
-Powershell als ein anderer Benutzer starten kann man gleich wie LAPS im Kapitel \hyperref[subsec:laps-gui-usage]{``Mit dem GUI''} als anderer Benutzer gestartet wurde.\\
+Die Powershell muss als Benutzer gestartet werden, welcher die Berechtigung hat das Passwort auszulesen oder zurückzusetzen.
+Powershell als ein anderer Benutzer starten kann man gleich wie \acrshort{laps} im Kapitel \hyperref[subsec:laps-gui-usage]{``Mit dem GUI''} als anderer Benutzer gestartet wurde.\\
 
 Für das Auslesen und Zurücksetzen gibt es folgende Befehle:
 \begin{lstlisting}
@@ -226,21 +230,21 @@ Für das Auslesen und Zurücksetzen gibt es folgende Befehle:
 
 \section{Best Practices}
 Idealerweise sollten nur ausgewählte IT Mitarbeitende die Berechtigung erhalten, Passwörter auslesen zu können.
-Alle Lokale Administratorrechte von AD Benutzern sollten entfernt werden und nur noch LAPS Passwörter verwendet werden.
+Alle lokalen Administratorrechte von AD Benutzern sollten entfernt werden und nur noch \acrshort{laps} Passwörter verwendet werden.
 Dadurch kann man verhindern, dass es einen Benutzer gibt, welcher auf allen Systemen berechtigt ist.\\
 
-Falls ein Mitarbeitender ohne LAPS Berechtigung lokale Administratorrechte braucht, kann diesem das LAPS Paswort gegeben werden.
-Dann sollte man aber auch das ``Expire Date'' auf das Datum setzten, wo das Passwort nicht mehr gebraucht wird.
+Falls ein Mitarbeitender ohne \acrshort{laps} Berechtigung lokale Administratorrechte braucht, kann diesem das \acrshort{laps} Paswort gegeben werden.
+Dann sollte man aber auch das ``Expire Date'' auf das Datum setzen, wo das Passwort nicht mehr gebraucht wird.
 Zum Beispeil am nächsten Tag.
 
 \section{Intergration in Wazuh}
 In Wazuh existiert eine Regel, welche jedes auslesen meldet.
 Die Regel hat die ID 110010 und der Agent Name ist der \textbf{Domain Controller}.
-Es ist nicht der der Computer, auf welchem das Passwort ausgelesen wurde.
+Es ist nicht der Computer, auf welchem das Passwort ausgelesen wurde.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{../img/LAPS/laps-wazuh.png}
-    \caption{LAPS Wazuh Alert}
+    \caption{\acrshort{laps} Wazuh Alert}
 \end{figure}
 Somit weiss man wer für welchen Computer das Passwort ausgelesen hat.
 Man kann jedoch nicht feststellen, von welchem Computer aus das Passwort ausgelesen wurde.\\
@@ -252,9 +256,9 @@ Um den Computernamen zu finden, kann man folgenden Powershell Befehl verwenden:
     Get-ADObject -Identity "<GUID>"
 \end{lstlisting}
 
-Zusätzlich gibt es noch eine Regel, welche einen Alert generiert, sobald 20 LAPS Passwörter in 10 Minuten ausgelesen wurden.
+Zusätzlich gibt es noch eine Regel, welche einen Alert generiert, sobald 20 \acrshort{laps} Passwörter in 10 Minuten ausgelesen wurden.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{../img/LAPS/laps-wazuh-alert.png}
-    \caption{LAPS Wazuh Alert 2}
+    \caption{\acrshort{laps} Wazuh Alert 2}
 \end{figure}

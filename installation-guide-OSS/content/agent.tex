@@ -1,6 +1,6 @@
 \chapter{Wazuh Agent Installation}
 
-\section{Installation via GPO}
+\section{Installation via \acrshort{gpo}}
 Der Wazuh Agent kann per Group Policy auf allen Windows Geräten installiert werden.
 Dazu muss als erstes die Installationsdatei für den Agent auf der \href{https://documentation.wazuh.com/current/installation-guide/packages-list.html}{Webseite von Wazuh}\footnote{Link: https://documentation.wazuh.com/current/installation-guide/packages-list.html} heruntergeladen werden.\\
 
@@ -60,7 +60,7 @@ Die .msi und .mst Dateien müssen nun in einem freigegebenen Netzlaufwerk abgesp
 \end{lstlisting}
 
 Nun muss eine neue Group Policy erstellt werden, mit welcher der Wazuh Agent auf den Windows Geräten installiert wird.
-Dazu öffnet man das Group Policy Management auf dem Domain Controller und erstellt eine neue Group Policy, welche mit der OU verknüpft ist, die alle Windows Geräte enthält.
+Dazu öffnet man das Group Policy Management auf dem Domain Controller und erstellt eine neue Group Policy, welche mit der \acrshort{ou} verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/agent/create-new-group-policy.png}

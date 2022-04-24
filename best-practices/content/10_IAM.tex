@@ -59,16 +59,16 @@ Active Directory bietet in fast allen Fällen was ein KMU braucht und viel mehr.
 \subsection{FreeIPA}
 FreeIPA ist eine Open-Source Implementation eines IAMs, entwickelt durch die Community und Upstream von Red Hat Identity Management. Exklusiv verfügbar auf RPM-basierten Linux Systemen.\\
 
-FreeIPA bietet von den Features einen ähnlichen Umfang wie Active Directory, aber mit dem grossen Unterschied, dass die Hauptzielgruppe Linux Server und Clients sind. Es werden auch User-, Geräte- und Berechtigungsverwaltung, \acrshort{dhcp}, \acrshort{dns}, \acrshort{ntp} und viele weitere einfache, bis zu komplexe Funktionen angeboten.\\
+FreeIPA bietet von den Features einen ähnlichen Umfang wie Active Directory, aber mit dem grossen Unterschied, dass die Hauptzielgruppe Linux Server und Clients sind. Es werden auch User-, Geräte- und Berechtigungsverwaltung, \acrshort{dhcp}, \acrshort{dns}, \acrshort{ntp} und viele weitere einfache, bis zu komplexen Funktionen angeboten.\\
 
 FreeIPA ist eine gute Wahl in exklusiven Linuxnetzwerken. Für KMUs ist in den meisten Fällen FreeIPA die falsche Wahl und Active Directory sollte vorgezogen werden.
 
 
 \section{Betreiben eines IAMs}
-Das betreiben eines IAMs kann Herausforderungen bieten.
+Das Betreiben eines IAMs kann Herausforderungen bieten.
 Es gibt viele Dinge zu beachten.
 Das wichtigste ist es ein Verständnis zu erlangen wie kritisch das IAM System ist.
-Ein Ausfall des IAM Systems kann das ganze Netzwerk beeinträchtigen und bewirken, dass das arbeiten für die ganze Firma schwerer, bis unmöglich wird.
+Ein Ausfall des IAM Systems kann das ganze Netzwerk beeinträchtigen und bewirken, dass das Arbeiten für die ganze Firma schwerer, bis unmöglich wird.
 Eine Misskonfiguration kann die Türe für einen Cybersecurityvorfall öffnen.
 Das IAM ist oftmals das primäre Angriffsziel eines Angreifers, da ab diesem alle Systeme \& und deren Zugriff verwaltet wird.\\
 
@@ -81,13 +81,13 @@ Das Prinzip besagt jeder Benutzer soll genau soviel Rechte haben, wie er für se
 Somit kann die Angriffsfläche bei Vorfällen massiv verringert werden.\\
 
 Für privilegierte Benutzer wie z.B. ein Systemadministrator sollen zusätzliche, spezielle Accounts bereitgestellt werden.
-Den die meiste Arbeit kann mit einem nicht privilegierten Nutzer verrichtet werden.\\
+Denn die meiste Arbeit kann mit einem nicht privilegierten Nutzer verrichtet werden.\\
 
-Zusätzlich soll auch beachtet werden, dasses keine ``Masteraccounts'' gibt, welche alle Rechte besitzen.
+Zusätzlich soll auch beachtet werden, dass es keine ``Masteraccounts'' gibt, welche alle Rechte besitzen.
 Den diese sind für Angreifer besonders interessant und für das Unternehmen gefährlich.
 
 
-\subsection{persönliche Accounts}
+\subsection{Persönliche Accounts}
 Es muss versucht werden die Anzahl unpersönliche Accounts auf ein minimum beschränkt zu halten.
 Bei einem Incident sind die Logs ausschlaggebend.\\
 
@@ -100,9 +100,9 @@ Es ist ähnlich in der Verteilung von Benutzerrechten.
 Eine Person ist angestellt um eine bestimmte Arbeit zu verrichten.
 Diese Zuteilung wird nun auf eine Rolle abgebildet.
 Die Rolle mit den Rechten erhalten alle Angestellten mit dem gleichen Auftrag.
-Oftmals werden Rollen in einem IAM Gruppen genannt, welcher man Benutzer und andere Gruppen hinzufügen kann.\\
+Oftmals werden Rollen in einem IAM ``Gruppen'' genannt, welcher man Benutzer und andere Gruppen hinzufügen kann.\\
 
-Das verteilen von Rollen erleichtert den Überblick der einzelnen Berechtigungen in der Unternehmung.
+Das Verteilen von Rollen erleichtert den Überblick der einzelnen Berechtigungen in der Unternehmung.
 Bei individual Berechtigungen verliert man schnell den Überblick.
 Mit administrativen Wechseln wie interne Umorientierungen kann es dazu führen, dass Nutzer zu viele Berechtigungen für Ihren Job haben und somit das ``least privilege principle'' verletzen.
 Mit Rollen kann bei internen Wechseln lediglich die alte Rolle entfernt und die neue Rolle hinzugefügt werden.
@@ -111,14 +111,14 @@ Mit Rollen kann bei internen Wechseln lediglich die alte Rolle entfernt und die 
 \subsection{Automatische Benutzerverwaltung}
 Es ist empfohlen die Benutzerverwaltung zu automatisieren oder einen klaren Prozess festzulegen.
 Dies betrifft vorallem die Benutzer, welche das Unternehmen verlassen.
-Die Accounts sollten bei Austritt deaktiviert und nach einer definierten Zeit gelöscht werden.
+Die Accounts sollten beim Austritt deaktiviert und nach einer definierten Zeit gelöscht werden.
 
 
 \subsection{Zuständigkeitsbereich eines IAM}
 Es kann eine Herausforderung entstehen, wenn man alle seine Geräte an das IAM anbinden will.\\
 
 Im Idealfall sind alle Geräte an das IAM angebunden.
-Es gibt aber auch Instanzen, in welchen diese Lösung schlicht weg nicht wirtschaftlich vertretbar ist.
+Es gibt aber auch Instanzen, in welchen diese Lösung nicht wirtschaftlich vertretbar ist.
 Das geht in Ordnung.
 Bei solchen Geräten sollte sich überlegt werden, wie sie adäquat geschützt werden können.
 
@@ -129,7 +129,7 @@ Daher sollte ein IAM bestmöglich geschützt werden.
 Editorberechtigung im IAM sollten nur Personen zustehen, welche diese auch wirklich brauchen (least privilege).
 
 In den meisten Fällen ist ein IAM die beste Lösung.
-Der grösste Teil der Vorfälle kann mit den Konzepten oben mitigiert oder sogar ganz vermieden werden.
+Der grösste Teil der Vorfälle kann mit den zuvor genannten Konzepten mitigiert oder sogar ganz vermieden werden.
 
 
 \section{Active Directory Best Practices}
@@ -205,7 +205,7 @@ Dies sollte mit dem Management abgeklärt werden und die Benutzer sollten frühz
 Man kann auch zuerst die Mindestlänge in der Group Policy setzen und erst nach einem Zyklus, wenn alle Mitarbeitenden ihr Passwort auf die neue Länge gesetzt haben, die Option ``Maximum password age'' auf 0 setzen. \\
 
 Bei der Passwortrichtlinie für Administratoren wird empfohlen, dass diese ihr Passwort weiterhin mindestens alle 180 Tage wechseln müssen.
-Dazu kann eine neue Group Policy auf Höhe der OU mit den Administratoren erstellt werden:
+Dazu kann eine neue Group Policy auf Höhe der \acrshort{ou} mit den Administratoren erstellt werden:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/IAM/admin-password-policy.png}
@@ -214,7 +214,7 @@ Dazu kann eine neue Group Policy auf Höhe der OU mit den Administratoren erstel
 Die Account Lockout Policy bleibt gleich.
 
 \subsection{Active Directory Auditing}
-Active Directory bietet die Möglichkeit, Änderungen and Gruppen und Benutzern im Event Log festzuhalten.
+Active Directory bietet die Möglichkeit, Änderungen an Gruppen und Benutzern im Event Log festzuhalten.
 Dies ist nützlich um nachvollziehen zu können, wann welche Änderungen gemacht wurden und zusammen mit Wazuh erkennen zu können, ob Änderungen gemacht wurden die nicht von Administratoren kamen.\\
 
 Diese Logs müssen mit einer Group Policy aktiviert werden.
@@ -256,7 +256,7 @@ Dazu gehören folgende Gruppen:
     \includegraphics[width=0.7\linewidth]{../img/IAM/high-privilege-groups.png}
     \caption{Gruppen mit erhöhten Berechtigungen}
 \end{figure}
-Die Alerts sehen so aus:
+Die Alerts sehen wie folgt aus:
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{../img/IAM/alert-added-to-privilege-group.png}
