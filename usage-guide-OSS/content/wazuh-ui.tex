@@ -1,5 +1,7 @@
 \chapter{Wazuh UI}
 \section{Startseite}
+Die Wazuh Startseite kann mit dem Webbrowser aufgerufen werden.\\
+
 Auf der Startseite sieht man alle aktiven und inaktiven Computer, die mit dem Wazuh Manager verbunden sind.
 Von hier aus hat man Schnellzugriff auf alle ``Module'', die Wazuh anbietet.\\
 
@@ -19,30 +21,30 @@ Im Modul Security Events werden alle Alerts angezeigt, welche durch die definier
     \includegraphics[width=\linewidth]{../img/wazuh-se-1.png}
     \caption{Security Events}
 \end{figure}
-
 \begin{enumerate}
-    \item Hier kann man zwischen dem Dashboard und den Events wechseln. Das Dashboard zeigt die Alerts und zusammenfassende Diagramme an. Unter Events sieht man nur die Alerts, dafür aber zusätzlich bessere Filter.
-    \item In diesem Eingabefeld kann man die Alerts durchsuchen. Mithilfe von Filtern kann man zum Beispiel gewisse Alerts ausblenden oder nur gewisse Anzeigen lassen.
-    \item Hier kann man die Zeitspanne angeben, wie lange Zurück man die Alerts ansehen möchte.
+    \item Navigation zwischen dem Dashboard und den Events. Das Dashboard zeigt die Alerts und zusammenfassende Diagramme an. Unter Events sieht man nur die Alerts, dafür aber zusätzlich bessere Filter.
+    \item In diesem Eingabefeld kann man die Alerts durchsuchen. Mithilfe von Filtern kann man gewünschte Alerts ausblenden oder nur gewählte Anzeigen lassen.
+    \item Hier kann man die Zeitspanne angeben, wie lange zurück man die Alerts ansehen möchte.
     \item Diese Übersicht zeigt an, wie viele Alerts in der eingestellten Zeitspanne generiert wurden und wieviele davon über Level 12 (Kritisch) sind, wieviele davon erfolgreiche Logins und wieviele fehlgeschlagene Logins. Ausserdem zeigt es noch zusammenfassende Diagramme an.
     \item Bei ``Explore Agent'' kann man einen Agent auswählen um nur dessen Alerts anzuzeigen.
     \item Mit ``Refresh'' kann man die neusten Alerts laden.
 \end{enumerate}
 
+Auf der Seite unten findet man auch die Alerts. 
+In der Liste werden die Alerts angeziegt. 
+Diese können nach Titel sortiert werden. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{../img/wazuh-se-2.png}
     \caption{Security Events}
 \end{figure}
 
-Hier findet man auch die Alerts. 
-In der Liste werden die Alerts angeziegt. 
-Diese können nach Titel sortiert werden. 
+
 \begin{itemize}
     \item \textbf{Time} zeigt die Zeit, wann der Alert eingegenen ist.
     \item \textbf{Agent} zeigt von welchem Agent der Alert eingegenen ist.
-    \item \textbf{Agent name} zeigt den Computer-Namen des Agent.
-    \item \textbf{Technique \& Tatic} zeigt die Mitre Attack Framework Technik an, welcher dieser Alert sein könnte.
+    \item \textbf{Agent name} zeigt den Hostname des Agent.
+    \item \textbf{Technique \& Tatic} zeigt die \href{https://attack.mitre.org/techniques/enterprise/}{Mitre Attack Framework}\footnote{Link: https://attack.mitre.org/techniques/enterprise/} Technik an, welcher dieser Alert sein könnte.
     \item \textbf{Description} zeigt eine Beschreibung, um was es sich bei diesem Alert handelt.
     \item \textbf{Level} zeigt das Level des Alerts an. 
     \item \textbf{Rule ID} zeigt an, welche Regel diesen Alert generiert hat.
@@ -50,7 +52,7 @@ Diese können nach Titel sortiert werden.
 
 \section{Integrity Monitoring}
 Das Integrity Monitoring findet man unter \textbf{Wazuh $\rightarrow$ Modules $\rightarrow$ Integrity Monitoring}.
-Im Inventory Monitoring werden alle veränderten Systemdatei und Registry Einträge geloggt. 
+Im Inventory Monitoring werden alle veränderten Systemdateien und Registry Einträge geloggt. 
 Damit kann man bei einem Sicherheitsvorfall eventuell nachvollziehen, wie vorgegangen wurde.
 
 \begin{figure}[H]
@@ -60,16 +62,16 @@ Damit kann man bei einem Sicherheitsvorfall eventuell nachvollziehen, wie vorgeg
 \end{figure}
 
 \begin{enumerate}
-    \item Hier kann man zwischen dem Inventory, dem Dashboard und den Events wechsel.
-    \textbf{Inventory} zeigt die veränderten Systemdateien und Registry Einträge an. Im \textbf{Dashboard} findet man zusammenfassende Diagramme und unter \textbf{Events} werden auch alle Änderungen angezeigt, aber zusätzlichen mit einer Unterstützenden Suche. 
-    \item Hier kann man zwischen den geänderten Systemdateien und Registry Einträgen wechseln.
-    \item Hier kann man den Agent einstellen, welcher man anschauen möchte.
-    \item Hier sieht man die Liste von bearbeiteten Systemdateien oder Registry Einträgen.
+    \item Navigation zwischen dem Inventory, dem Dashboard und den Events.
+    \textbf{Inventory} zeigt die veränderten Systemdateien und Registry Einträge an. Im \textbf{Dashboard} findet man zusammenfassende Diagramme und unter \textbf{Events} werden auch alle Änderungen angezeigt, aber zusätzlichen mit einer unterstützenden Suche. 
+    \item Navigation zwischen den geänderten Systemdateien und Registry Einträgen.
+    \item Agent auswählen, welcher man anschauen möchte.
+    \item Liste von bearbeiteten Systemdateien oder Registry Einträgen.
 \end{enumerate}
 
 \section{Rules}
 Die Regeln findet man unter \textbf{Wazuh $\rightarrow$ Management $\rightarrow$ Rules}.
-Hier kann man alle Regeln anschauen und eigene Regeln hinzufügen. 
+Hier können alle Regeln angeschaut und eigene Regeln hinzugefügt werden. 
 
 \begin{figure}[H]
     \centering
@@ -78,9 +80,9 @@ Hier kann man alle Regeln anschauen und eigene Regeln hinzufügen.
 \end{figure}
 
 \begin{enumerate}
-    \item Mit ``Manage rules files'' kann man alle Dateien, welche die Regeln beinhalten, anschauen. 
-    \item Mit ``Add new rules file'' kann man eine neue Datei hinzufügen, um neue Regeln zu definieren.
-    \item Mit ``Custom rules'' kann man nur die eigenen Regeln oder Regeldateien anzeigen lassen. Alle Regeln von Wazuh werden ausgeblendet.
+    \item ``Manage rules files'' kann alle Dateien, welche die Regeln beinhalten, anschauen. 
+    \item ``Add new rules file'' kann eine neue Datei hinzufügen, um neue Regeln zu definieren.
+    \item ``Custom rules'' kann die eigenen Regeln oder Regeldateien anzeigen lassen. Alle Regeln von Wazuh werden ausgeblendet.
 \end{enumerate}
 
 \section{Decoders}
@@ -89,7 +91,7 @@ Diese Seite ist gleich aufgebaut wie die Rules Seite.
 
 \section{Groups}
 Die Gruppen findet man unter \textbf{Wazuh $\rightarrow$ Management $\rightarrow$ Groups}.
-Hier findet man alle definierten Gruppen, kann neue Gruppen hinzufügen und entfernen.
+Auf dieser Seite findet man alle definierten Gruppen, kann neue Gruppen hinzufügen und entfernen.
 
 \begin{figure}[H]
     \centering
@@ -98,15 +100,15 @@ Hier findet man alle definierten Gruppen, kann neue Gruppen hinzufügen und entf
 \end{figure}
 
 \begin{enumerate}
-    \item Mit ``Add new group'' kann man eine neue Gruppe hinzufügen.
+    \item ``Add new group'' kann eine neue Gruppe hinzufügen.
     \item Hier kann man die einzelnen Gruppen verwalten. Mit dem Aug-Symbol kann man alle Agents anschauen, die dieser Gruppe zugewiesen sind. Mit dem Stift-Symbol kann man die agent.conf bearbeiten und mit dem Papierkorb-Symbol kann man die Gruppe löschen. 
 \end{enumerate}
 
-\section{Configuration}
+\section{Konfiguration des Managers}
 Die Konfiguration findet man unter \textbf{Wazuh $\rightarrow$ Management $\rightarrow$ Configuration}.
-Hier sieht man eine Übersicht von allen Wazuh Manager Einstellungen und kann diese bearbeiten.
+Hier gibt es eine Übersicht von allen Wazuh Manager Einstellungen und diese können bearbeitet werden.
 
-\section{Agents}
+\section{Wazuh Agents}
 Die Konfiguration findet man unter \textbf{Wazuh $\rightarrow$ Agents}.
 Hier sieht man alle registrierten Agents und kann neue Agents hinzufügen.
 

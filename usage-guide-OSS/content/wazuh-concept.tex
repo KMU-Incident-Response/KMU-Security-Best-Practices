@@ -15,16 +15,13 @@ Es ist ein Plugin, welches in den \acrshort{elk} Stack integriert werden kann un
 \footnotetext{Zugriff: 24.04.2022 \cite{wazuh-documentation}}
 
 
-%TODO: maybe say deepdive installer handels most for starters
-
 \subsection{Wazuh Manager}
 Der Wazuh Manager wird auf einem Linux Server installiert.
 Der Wazuh Manager beinhaltet den kompletten \acrshort{elk} Stack, mit Wazuh Plugin. 
 
 \subsubsection{ossec.conf}
 In der ossec.conf Datei sind alle Konfigurationen vom Wazuh-Manager abgespeichert.
-
-%TODO: path maybe?
+Die Konfigurationsdatei kann im GUI bearbeitet werden. Alternativ liegt die Datei unter ``/var/ossec/etc/ossec.conf''
 
 
 \subsection{Wazuh Agent}
@@ -35,15 +32,11 @@ Der Wazuh Agent leitet alle Logdateien, die in der agent.conf definiert sind, we
 Zusätzlich überwacht der Wazuh Agent auch alle Systemdatei- und Registryänderungen und leitet diese an den Wazuh Manager weiter. 
 
 \subsection{Ablauf}
-Die Agents senden die Logs an den Wazuh Manager oder der Wazuh Manager holt die Logs mit rsyslog von den Systemen.
-%TODO: pretty sure this isn't how rsyslog work 
-%TODO: Logeintrag passender?
-Danach werden die Logs mit einem Decoder strukturiert und die Regeln werden auf die Logs angewendet.
+Die Agents senden die Logeinträge an den Wazuh Manager.
+Danach werden die Logeinträge mit einem Decoder strukturiert und die Regeln werden auf die Logeinträge angewendet.
 Wenn eine Regel zutrifft, wird ein Alert generiert und angezeigt.
-Wenn keine Regel zutrifft, wird das Log verworfen.
-%TODO: Logeintrag passender?
-In der ossec.conf kann eingestellt werden, dass auch die Logs abgespeichert werden, die auf keine Regel zutreffen.
-%TODO: Logeintrag passender?
+Wenn keine Regel zutrifft, wird der Logeintrag verworfen.
+In der ossec.conf kann eingestellt werden, dass auch die Logeinträge abgespeichert werden, die auf keine Regel zutreffen.
 Dabei sammeln sich grosse Datenmengen an und dies ist hauptsächlich für Debugging empfohlen.
 
 \begin{figure}[H]
