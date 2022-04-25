@@ -9,6 +9,7 @@ Eine Sammlung von Security Best Practices für KMUs.
 Template zur Definierung von Pflichten und Ansprechpartnern in einem Incident Response Fall.
 
 [Version aus dem aktuellen Release des Kontaktformular](https://github.com/KMU-Incident-Response/KMU-Security-Best-Practices/releases/latest/download/Incident-Response-Kontaktformular.docx)
+
 [Version aus dem aktuellen Release des Incident Response Plan](https://github.com/KMU-Incident-Response/KMU-Security-Best-Practices/releases/latest/download/Incident-Response-Plan-Vorlage.docx)
 
 ## Installationsguide für Open-Source Software
