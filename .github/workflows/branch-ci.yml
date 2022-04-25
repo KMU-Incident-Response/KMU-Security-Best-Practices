@@ -6,14 +6,21 @@ on:
 jobs:
   Upload-Word-Doc:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        doc_file:
+          [
+            "Incident-Response-Kontaktformular",
+            "Incident-Response-Plan-Vorlage",
+          ]
     steps:
       - name: Set up Git Repository
         uses: actions/checkout@v2
       - name: Upload a Word Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: incident-response-plan-template.docx
-          path: incident-response-plan-template/incident-response-plan-template.docx
+          name: ${{ matrix.doc_file }}.docx
+          path: incident-response-plan-template/${{ matrix.doc_file }}.docx
   Build-LaTeX-Doc:
     runs-on: ubuntu-latest
     strategy:

@@ -8,7 +8,8 @@ Eine Sammlung von Security Best Practices für KMUs.
 ## Incident Response Plan
 Template zur Definierung von Pflichten und Ansprechpartnern in einem Incident Response Fall.
 
-[Version aus dem aktuellen Release](https://github.com/KMU-Incident-Response/KMU-Security-Best-Practices/releases/latest/download/incident-response-plan-template.docx)
+[Version aus dem aktuellen Release des Kontaktformular](https://github.com/KMU-Incident-Response/KMU-Security-Best-Practices/releases/latest/download/Incident-Response-Kontaktformular.docx)
+[Version aus dem aktuellen Release des Incident Response Plan](https://github.com/KMU-Incident-Response/KMU-Security-Best-Practices/releases/latest/download/Incident-Response-Plan-Vorlage.docx)
 
 ## Installationsguide für Open-Source Software
 Installationsguide für die Installation von einem [Wazuh Server](https://documentation.wazuh.com/current/getting-started/index.html) und benutzerdefinierten Regeln ausgelegt auf KMUs.
