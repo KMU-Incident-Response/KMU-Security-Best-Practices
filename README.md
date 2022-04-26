@@ -6,7 +6,7 @@
 Die Incident Response ist ein Bereich in der Informatik, der viel Fachwissen benötigt.
 Fachwissen welches oftmals in kleineren Unternehmen nur beschränkt zur Verfügung steht.
 Daher ist es schwierig, ein KMU in der Incident Response zu trainieren.
-KMUs können sich aber vorbereiten,# Incident Response für KMU um den gesamten Incident Response Prozess zu verbessern und dadurch Incidents schneller erkennen und darauf reagieren.
+KMUs können sich aber vorbereiten, um den gesamten Incident Response Prozess zu verbessern und dadurch Incidents schneller erkennen und darauf reagieren.
 
 Dieses Repository hat sich dies zum Ziel gesetzt. Mithilfe von Vorlagen und Anleitungen sollen sich KMUs besser schützen können.
 Es wird empfohlen die Dokumente in folgender Reihenfolge zu lesen:
