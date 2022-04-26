@@ -2,7 +2,10 @@
 ![GitHub](https://img.shields.io/github/license/KMU-Incident-Response/KMU-Security-Best-Practices)
 [![GitHub Super-Linter](https://github.com/KMU-Incident-Response/KMU-Security-Best-Practices/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
-Die Incident Response ist ein Bereich in der Informatik, der viel Fachwissen benötigt. Fachwissen welches oftmals in kleineren Unternehmen nur beschränkt zur Verfügung steht. Daher ist es schwierig, ein KMU in der Incident Response zu trainieren. KMUs können sich aber vorbereiten, um den gesamten Incident Response Prozess zu verbessern und dadurch Incidents schneller erkennen und darauf reagieren. 
+Die Incident Response ist ein Bereich in der Informatik, der viel Fachwissen benötigt. 
+Fachwissen welches oftmals in kleineren Unternehmen nur beschränkt zur Verfügung steht. 
+Daher ist es schwierig, ein KMU in der Incident Response zu trainieren. 
+KMUs können sich aber vorbereiten, um den gesamten Incident Response Prozess zu verbessern und dadurch Incidents schneller erkennen und darauf reagieren. 
 
 Dieses Repository hat sich dies zum Ziel gesetzt. Mithilfe von Vorlagen und Anleitungen sollen sich KMUs besser schützen können.
 Es wird empfohlen die Dokumente in folgender Reihenfolge zu lesen:
