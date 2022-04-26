@@ -1,0 +1,13 @@
+\chapter{Sysmon}
+\section{Übersicht}
+System Monitor (Sysmon) ist ein Windows-Systemdienst und -Gerätetreiber, der, sobald er auf einem System installiert ist, bei jedem Neustart des Systems aktiv bleibt, um die Systemaktivitäten zu überwachen und im Windows-Ereignisprotokoll zu protokollieren. Er liefert detaillierte Informationen über die Erstellung von Prozessen, Netzwerkverbindungen und Änderungen der Dateierstellungszeit. Durch das Sammeln der von ihm erzeugten Ereignisse mithilfe der Windows-Ereignissammlung oder SIEM-Agenten und die anschließende Analyse dieser Ereignisse können Sie bösartige oder anomale Aktivitäten identifizieren und verstehen, wie Eindringlinge und Malware in Ihrem Netzwerk operieren.\\
+
+Beachten Sie, dass Sysmon keine Analyse der von ihm erzeugten Ereignisse bereitstellt und auch nicht versucht, sich vor Angreifern zu schützen oder zu verstecken.\footnote{Übersetzt mit www.DeepL.com/Translator: \href{https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon}{https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon}}
+
+\section{Konfiguration}
+Sysmon alleine macht nichts. 
+Erst mit einer Konfiguration, in welcher definiert wird was alles in den Eventlog geschrieben wird, kann Sysmon verwendet werden.
+Diese Konfiguration ist im XML Format. \\
+
+Wichtig ist zu wissen, dass Sysmon eventuell auch kritische Daten loggt und diese dann über den Wazuh Agent and den Manager gesendet werden.
+Falls kritische Programme und Daten verwendet werden, sollte die Konfiguration immer zuerst überprüft werden.

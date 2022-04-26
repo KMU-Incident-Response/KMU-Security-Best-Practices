@@ -9,9 +9,20 @@ Diese werden dann an das \acrshort{siem} System weitergeleitet.
 Dort werden mittels definierten Regeln anomalien entdeckt und Logs korreliert.
 
 \section{Umfang}
-Dieses Dokument erläutert grundlegend die Struktur des Wazuh Web UI.
+Dieses Dokument erläutert grundlegend die Struktur von Wazuh und dessen Web UI.
 Es wird auch darauf eingegangen wie das UI effizent verwendet wird.
 Anhand von Beispielen werden die aufgegriffenen Punkte visualisiert.\\
 
+Zusätzlich wird Sysmon erläutert und wieso Sysmon ein wichtiger Teil für die Verwendung von Wazuh ist.\\
+
 Teile dieses Dokumentes sind dazu gedacht um im Zweifelsfall nachzuschlagen.
 Der Wazuh Übersicht's Teil gibt etwas Kontext, welcher nicht benötigt wird, falls der \href{https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#Installation}{Wazuh Installer}\footnote{Link: https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#Installation} verwendet wird.
+
+\section{Sysmon \& Wazuh}
+Das Repository enthält neben dieser Anleitung einen Installer für Wazuh mit vordefinierte Regeln/Gruppen.
+Zusätzlich gibt es Installationsanleitungen, wie man die Agents installiert und wie man Sysmon installiert.\\
+
+Wazuh und Sysmon ergänzen sich sehr gut.
+Die Regeln, welche von diesem Repository installiert werden, \textbf{brauchen} Sysmon um überhaupt ausgelöst zu werden.
+Ohne Sysmon sind die Regeln nutzlos. 
+Daher ist es wichtig, dass alle verwendeten Produkte installiert werden.

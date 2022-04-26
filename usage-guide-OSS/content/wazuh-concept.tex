@@ -4,8 +4,8 @@ Wazuh ist aus dem Open-Source Projekt \href{https://github.com/ossec}{ossec}\foo
 Wazuh ist wie ossec komplett Open-Source und kostenlos verfügbar.
 
 \section{Aufbau}
-Wazuh basiert auf dem \acrfull{elk} Stack. 
-Es ist ein Plugin, welches in den \acrshort{elk} Stack integriert werden kann und mithilfe von Agents auf den Computern Logdateien sammelt.
+Wazuh basiert auf dem \acrfull{elk} Stack und besteht aus einem Manager und den Agents. 
+Der Manager ist ein Plugin, welches in den \acrshort{elk} Stack integriert werden kann und mithilfe von Agents auf den Computern Logdateien sammelt.
 
 \begin{figure}[H]
     \centering
@@ -15,23 +15,7 @@ Es ist ein Plugin, welches in den \acrshort{elk} Stack integriert werden kann un
 \footnotetext{Zugriff: 24.04.2022 \cite{wazuh-documentation}}
 
 
-\subsection{Wazuh Manager}
-Der Wazuh Manager wird auf einem Linux Server installiert.
-Der Wazuh Manager beinhaltet den kompletten \acrshort{elk} Stack, mit Wazuh Plugin. 
-
-\subsubsection{ossec.conf}
-In der ossec.conf Datei sind alle Konfigurationen vom Wazuh-Manager abgespeichert.
-Die Konfigurationsdatei kann im GUI bearbeitet werden. Alternativ liegt die Datei unter ``/var/ossec/etc/ossec.conf''
-
-
-\subsection{Wazuh Agent}
-Der Wazuh Agent wird auf dem Client installiert.
-Es werden die meisten Betriebssysteme unterstützt. Darunter viele Linux Systeme, Windows und MacOS.\\
-
-Der Wazuh Agent leitet alle Logdateien, die in der agent.conf definiert sind, weiter an den Wazuh Manager.
-Zusätzlich überwacht der Wazuh Agent auch alle Systemdatei- und Registryänderungen und leitet diese an den Wazuh Manager weiter. 
-
-\subsection{Ablauf}
+\section{Prozessablauf}
 Die Agents senden die Logeinträge an den Wazuh Manager.
 Danach werden die Logeinträge mit einem Decoder strukturiert und die Regeln werden auf die Logeinträge angewendet.
 Wenn eine Regel zutrifft, wird ein Alert generiert und angezeigt.
@@ -46,25 +30,13 @@ Dabei sammeln sich grosse Datenmengen an und dies ist hauptsächlich für Debugg
 \end{figure}
 \footnotetext{Zugriff: 24.04.2022 \cite{wazuh-documentation}}
 
-\section{Rules}
-\subsection{Alert Level}
-Es gibt Alert Levels von 0 bis 16. 
-Diese bedeuten nicht wie schwerwiegend ein Ereignis ist, sondern jedes Level hat eine spezielle Bedeutung.
-Die wichtigsten Level sind folgende:
-\begin{itemize}
-    \item \textbf{Level 3} sind Alerts, welche authorisiert sind und tendenziell nicht gefährlich.
-    \item \textbf{Level 12} sind Alerts, welche eine Anomalie darstellen und potenziell gefährlich sind.
-\end{itemize}
 
-Alle Alert Level findet man in der \href{https://documentation.wazuh.com/current/user-manual/ruleset/rules-classification.html}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/user-manual/ruleset/rules-classification.html}.
+\section{Wazuh Manager}
+Der Wazuh Manager wird auf einem Linux Server installiert und beinhaltet den kompletten \acrshort{elk} Stack, mit Wazuh Plugin. 
+Er ist verantwortlich für die Verarbeitung der eingehenden Logeinträge. 
+Dazu werden Groups, Decoder und Rules verwendet. 
 
-\section{Decoders}
-Da Logs in allen möglichen Formen daherkommen, je nach Herkunft braucht es verschiedene Decoder.
-Die Decoder bringen die eingehenden Logs in eine einheitliche Struktur, um die Regeln darauf anwenden zu können.
-Es werden Decoder für einige bekannten Logformate angeboten, wie zum Beispiel für den Windows Event Manager oder Cisco IOS Logs.
-
-
-\section{Groups}
+\subsection{Groups}
 Die Gruppen werden verwendet, um ähnliche Geräte zu gruppieren.
 Für jede Gruppe kann man eine agent.conf einrichten, in welcher eingetragen wird welche Logdateien von diesen Systemen verarbeitet werden sollen. 
 
@@ -79,4 +51,41 @@ Eine Lokation wird mit <localfile> angegeben:
     </localfile>
 </agent_config>
 \end{lstlisting}
-Weitere Informationen wie neue Orte mit Logdateien eingebunden werden können, findet man in der \href{https://documentation.wazuh.com/current/user-manual/reference/centralized-configuration.html?highlight=agent%20conf}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/user-manual/reference/centralized-configuration.html?highlight=agent\%20conf}
+Weitere Informationen wie neue Orte mit Logdateien eingebunden werden können, findet man in der \href{https://documentation.wazuh.com/current/user-manual/reference/centralized-configuration.html?highlight=agent%20conf}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/user-manual/reference/centralized-configuration.html?highlight=agent\%20conf}\\
+
+\subsection{Decoders}
+Da Logs in allen möglichen Formen daherkommen, je nach Herkunft braucht es verschiedene Decoder.
+Die Decoder bringen die eingehenden Logs in eine einheitliche Struktur, um die Regeln darauf anwenden zu können.
+Es werden Decoder für einige bekannten Logformate angeboten, wie zum Beispiel für den Windows Event Manager oder Cisco IOS Logs.\\
+
+
+
+\subsection{Rules}
+
+
+\subsubsection{Alert Level}
+Es gibt Alert Levels von 0 bis 16. 
+Diese bedeuten nicht wie schwerwiegend ein Ereignis ist, sondern jedes Level hat eine spezielle Bedeutung.
+Die wichtigsten Level sind folgende:
+\begin{itemize}
+    \item \textbf{Level 3} sind Alerts, welche authorisiert sind und tendenziell nicht gefährlich.
+    \item \textbf{Level 12} sind Alerts, welche eine Anomalie darstellen und potenziell gefährlich sind.
+\end{itemize}
+
+Alle Alert Level findet man in der \href{https://documentation.wazuh.com/current/user-manual/ruleset/rules-classification.html}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/user-manual/ruleset/rules-classification.html}.
+
+
+\subsection{Konfiguration}
+In der ossec.conf Datei sind alle Konfigurationen vom Wazuh-Manager abgespeichert.
+Die Konfigurationsdatei kann im GUI bearbeitet werden. Alternativ liegt die Datei unter:
+\begin{lstlisting}
+    /var/ossec/etc/ossec.conf
+\end{lstlisting}
+
+
+\section{Wazuh Agent}
+Der Wazuh Agent wird auf dem Client installiert.
+Es werden die meisten Betriebssysteme unterstützt. Darunter viele Linux Systeme, Windows und MacOS.\\
+
+Der Wazuh Agent leitet alle Logdateien, die in der agent.conf definiert sind, weiter an den Wazuh Manager.
+Zusätzlich überwacht der Wazuh Agent auch alle Systemdatei- und Registryänderungen und leitet diese an den Wazuh Manager weiter. 
