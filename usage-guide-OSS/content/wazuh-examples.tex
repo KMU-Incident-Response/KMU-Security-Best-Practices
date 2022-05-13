@@ -1,24 +1,18 @@
 \chapter{Incident Erkennung}
 \section{Einleitung}
 %TODO: Hier gibt es Beispiele, wichtig für erkennung. Log dateien anschauen
+%Wichtig meistens Level 12 Alerts. 
 
-
+\section{Queries}
+%IMAGE FILTER
 
 \section{Attacken Beispiele}
-
-\subsection{Defender abgeschalten}
-%Defender soll nie abgeschalten werden. Nachschauen bei Computer wieso.
-
-%Spezifische Reaktion: PC vom Netzwerk trennen, nachschauen was war. Malware detection tool einsetzten.
-%Mitigation: keine Lokalen Admins, LAPS
-
 \subsection{Mimikatz}
 %Mimikatz ist Tool für auslesen von passwort hash gespeichert auf PC. Mit diesen Hash kann pass the hash attacken gemacht werden. Dabei wird PW nicht gebraucht. 
 
 %Spezifische Reaktion: Betroffene Domain Admin Passwörter wechseln.  
 
 %Mitigation: LAPS, möglichst wenige accounts mit Admin Rechten auf  
-
 
 \subsection{Brute Force}
 %Bruteforce attacken
@@ -28,6 +22,15 @@
 %Mitigation: Gute Passwortrichtlinien, starche PWs
 
 
+\section{False Positives}
+\subsection{Check Hash}
+%Attacker benutzten gerne bekannte Namen, Hash ist aber immer eindeutig. Wenn nicht gleiche Datei, anderer Hash
+%IMAGE CHECK-HASH-1
+%Check parentimage that ran svchost. check hash of svchost of file with SAME Version (Windows)
+%Optional, check Parent Image Hash
+%certutil -hashfile "C:\Windows\System32\svchost.exe" SHA256
+%Hash: f3feb95e7bcfb0766a694d93fca29eda7e2ca977c2395b4be75242814eb6d881
 
+%VirusTotal verlinken
 
 \section{IT-Dienstleister}
