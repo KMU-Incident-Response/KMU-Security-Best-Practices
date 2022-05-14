@@ -1,9 +1,9 @@
 \chapter{Benutzeranleitung}
 \section{Einleitung}
-Wazuh kann zwar Alerts für jegliche Logdateien generieren und anzeigen lassen, die Erkennung eines Incident muss jedoch weiterhin von Fachpersonen gemacht werden.
+Wazuh kann zwar Alerts für jegliche Logdateien generieren und anzeigen lassen, die Erkennung eines Incident muss jedoch weiterhin von einer Fachperson gemacht werden.
 Dies ist leichter gesagt als getan.
-Bei jedem \acrshort{siem} System gibt es auch sogenannte ``False Positives'', Alerts die angezeigt werden aber eigentlich keine Incidents sind und ``False Negatives'', Incidents die keine Alerts generieren.
-Die ``False Negatives'' entdecken ist schwierig und kann nur durch verbessern der Wazuh Rules erreicht werden.
+Bei jedem \acrshort{siem} System gibt es auch sogenannte ``False Positives'', Alerts die angezeigt werden aber eigentlich keine Incidents sind. ``False Negatives'' sind Incidents die keine Alerts generieren.
+Die ``False Negatives'' entdecken ist schwierig und kann nur durch eine Ergänzung der Wazuh Rules erreicht werden.
 Bei den ``False Positives'' kann man durch Untersuchung der betroffenen Entitäten feststellen, ob es sich wirklich um einen Incident handelt.\\
 
 In diesem Kapitel wird angeschaut, wie man im Wazuh Web \acrshort{gui} mit Queries die Alerts filtern kann, es werden Beispiele von realen Attacken aufgezeigt und wie man ``False Positives'' erkennen kann.
@@ -13,16 +13,16 @@ Das Filtern der Alerts wird in Wazuh mittels der \acrfull{kql} gemacht.
 Der Wazuh Manager unterstützt das schreiben dieser Queries mit einem kleinen Interface, wo man die Filter zusammenklicken kann.\\
 
 Dieses Interface befindet sich bei den Security Events im Reiter ``Dashboard'' und ``Events''.
-Events gibt eine bessere Übersicht über alle möglichen Filter und eine bessere auflistung aller Informationen eines Alerts.
+Events gibt eine bessere Übersicht über alle möglichen Filter und eine bessere Auflistung aller Informationen eines Alerts.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{../img/filter.png}
     \caption{\acrshort{kql} Filter in Wazuh}
 \end{figure}
 
-In diesem Interface kann nun das Feld ausgewählt werden, die Art des Vergleichst und der Wert.
+In diesem Interface kann das Feld ausgewählt werden, dazu die Art des Vergleichs und der Wert.
 Im Bild oben werden zum Beispiel nur noch Rules angezeigt, welche die ID 61618 haben.
-Auf diese Weise kann man auch unnötige Rules ausblenden, oder nur bestimmte Rules eines bestimmten PCs anzeigen.
+Auf diese Weise kann man auch unnötige Rule IDs ausblenden, oder nur bestimmte Rule IDs eines bestimmten PCs anzeigen.
 
 \section{Attacken Beispiele}
 Attacken mit und ohne Kompromittierung generieren oftmals einen Level 12 Alert. Daher lohnt es sich, täglich die Level 12 Alerts in Wazuh anzuschauen.
@@ -36,7 +36,7 @@ Um nach diesen zu Filtern gibt es unter Security Events im Reiter ``Dashboard'' 
 
 \subsection{Mimikatz}
 Mimikatz ist eine Software mit welcher es möglich ist, die gespeicherten Passwort Hashes von Benutzern auf Windows auszulesen.
-Mit diesem Hash kann dann zum Beispiel eine \href{https://en.wikipedia.org/wiki/Pass\_the\_hash}{Pass-The-Hash}\footnote{Link: https://en.wikipedia.org/wiki/Pass\_the\_hash} Attacken ausgeführt werden.\\
+Mit diesem Hash kann dann zum Beispiel eine \href{https://en.wikipedia.org/wiki/Pass\_the\_hash}{Pass-The-Hash}\footnote{Link: https://en.wikipedia.org/wiki/Pass\_the\_hash} Attacke ausgeführt werden.\\
 
 Mimikatz Attacken sind besonders gefährlich wenn Sie unentdeckt bleiben und sich auf dem kompromittierten System zuvor ein Domänen Administrator angemeldet hat.
 \begin{figure}[H]
@@ -46,7 +46,7 @@ Mimikatz Attacken sind besonders gefährlich wenn Sie unentdeckt bleiben und sic
 \end{figure}
 
 \subsubsection{Reaktion}
-Bei einer Mimikatz Attacke sollten die Domänenadministratoren deaktiviert und die Passwörter dieser zurückgesetzt werden.
+Bei einer Mimikatz Attacke sollten die Domänenadministratoren soweit möglich deaktiviert und die Passwörter dieser zurückgesetzt werden.
 
 \subsubsection{Prävention}
 Ein effektiver Weg sich gegen eine Mimikatz Attacke zu schützten, ist \acrshort{laps} auf den Computern zu installieren. 
@@ -71,7 +71,7 @@ Bei einer Brute Force Attacke sollten alle Daten gesammelt werden.
 \begin{itemize}
     \item Welches Gerät wurde von welcher IP angegriffen?
     \item Ist die Brute Force Attacke per SSH, RDP, physisch beim Windows Login oder über andere Wege? 
-    \item Befindet sich der Angreiffer im lokalen Netzwerk oder extern?
+    \item Befindet sich der Angreifer im lokalen Netzwerk oder extern?
 \end{itemize}
 
 Dadurch kann man definieren, wie die Brute Force Attacken geblockt werden können.
@@ -82,12 +82,12 @@ Genauere Anleitungen dazu befinden sich im Dokument ``Security Best Practices'' 
 
 \section{False Positives}
 False Positives können am besten durch genauere Untersuchen der Alerts festgestellt werden.
-Eventuell hat ein Benutzer sein Passwort vergessen und erst beim 10. mal richtig eingegeben. 
+Eventuell hat ein Benutzer sein Passwort vergessen und erst beim 10. Versuch richtig eingegeben. 
 Daher sollte man mit den Benutzern der Systeme Kontakt aufnehmen, falls die Möglichkeit besteht, dass es ein legitimer Fehler eines Benutzers war.  
 
 \subsection{Check Hash}
-Angreiffer benutzen gerne bekannte Namen von Betriebssystem Dateien, um ihre Schadsoftware zu verdecken.
-Der Name kann zwar gefälscht werden, jedoch ändert sich der Hash der Datei damit.
+Angreifer benutzen gerne bekannte Namen von Betriebssystem Dateien, um ihre Schadsoftware zu verdecken.
+Der Name kann zwar gefälscht werden oder die Datei modifiziert, jedoch ändert sich der Hash der Datei damit.
 Durch überprüfen des Hashs kann festgestellt werden, ob es sich um die legitime Datei handelt. \\
 
 Wazuh logt bei Alerts von ausgeführten Prozessen auch den Hash mit.
@@ -101,7 +101,7 @@ In diesem Beispiel wurde der Prozess svchost.exe ausgeführt:
 Windows hat ein eingebautes Tool, um den Hash von Dateien zu berechnen.
 Dieses heisst ``certutil''.
 Damit kann der Hash von einer nicht komprimittierten svchost.exe Datei berechnet und verglichen werden.
-Dabei muss jedoch beachtet werden, dass es sich auch um die gleiche Version der .exe Datei handelt.
+Dabei muss beachtet werden, dass es sich auch um die gleiche Version der .exe Datei handelt.
 
 \begin{lstlisting}
     certutil -hashfile "C:\Windows\System32\svchost.exe" SHA256
