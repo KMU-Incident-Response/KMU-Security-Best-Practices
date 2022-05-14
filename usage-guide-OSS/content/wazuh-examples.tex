@@ -45,7 +45,7 @@ Mimikatz Attacken sind besonders gefährlich wenn Sie unentdeckt bleiben und sic
     \caption{Mimikatz Attacke in Wazuh}
 \end{figure}
 
-\subsubsection{Reaktion}
+\subsubsection{Massnahmen}
 Bei einer Mimikatz Attacke sollten die Domänenadministratoren deaktiviert und die Passwörter dieser zurückgesetzt werden.
 
 \subsubsection{Prävention}
@@ -66,7 +66,7 @@ Wenn ein Angreifer erfolgreich ist, wird eine ``Multiple authentication failures
     \caption{Brute Force Attacke in Wazuh}
 \end{figure}
 
-\subsubsection{Reaktion}
+\subsubsection{Massnahmen}
 Bei einer Brute Force Attacke sollten alle Daten gesammelt werden.
 \begin{itemize}
     \item Welches Gerät wurde von welcher IP angegriffen?
@@ -109,3 +109,11 @@ Dabei muss jedoch beachtet werden, dass es sich auch um die gleiche Version der 
 \end{lstlisting}
 
 Alternativ gibt es auch Online Tools wie \href{https://www.virustotal.com/gui/home/upload}{VirusTotal}\footnote{Link: https://www.virustotal.com/gui/home/upload}, bei welchen die Datei, ein URL oder der Hash abgefragt werden können.
+
+\section{Massnahmen}
+Bei Verdacht eines Incidents sollten als erstes möglichst schnell die betroffenen System eingedämmt werden. 
+Hilfreich dafür ist das trennen der Geräte vom Netzwerk, sperren von betroffenen Benutzeraccounts und das herunterfahren von Systemen.
+Dies verhindert eine Ausbreitung und der Kontakt zum Angreifer wird unterbrochen.\\
+
+Danach sollte Anhand des Incident Response Plan gearbeitet werden und der externe IT Dienstleiter kontaktiert werden.
+Es ist besser, den externen IT Dienstleister einmal mehr als nötig zu Informieren, um Folgeschäden von Angriffen zu vermeiden. 
