@@ -85,7 +85,7 @@ False Positives können am besten durch genauere Untersuchen der Alerts festgest
 Eventuell hat ein Benutzer sein Passwort vergessen und erst beim 10. Versuch richtig eingegeben. 
 Daher sollte man mit den Benutzern der Systeme Kontakt aufnehmen, falls die Möglichkeit besteht, dass es ein legitimer Fehler eines Benutzers war.  
 
-\subsection{Check Hash}
+\subsection{Dateihashes vergleichen}
 Angreifer benutzen gerne bekannte Namen von Betriebssystem Dateien, um ihre Schadsoftware zu verdecken.
 Der Name kann zwar gefälscht werden oder die Datei modifiziert, jedoch ändert sich der Hash der Datei damit.
 Durch überprüfen des Hashs kann festgestellt werden, ob es sich um die legitime Datei handelt. \\
@@ -111,9 +111,9 @@ Dabei muss beachtet werden, dass es sich auch um die gleiche Version der .exe Da
 Alternativ gibt es auch Online Tools wie \href{https://www.virustotal.com/gui/home/upload}{VirusTotal}\footnote{Link: https://www.virustotal.com/gui/home/upload}, bei welchen die Datei, ein URL oder der Hash abgefragt werden können.
 
 \section{Massnahmen}
-Bei Verdacht eines Incidents sollten als erstes möglichst schnell die betroffenen System eingedämmt werden. 
+Beim Verdacht eines Incidents sollten als erstes möglichst schnell die betroffenen Systeme eingedämmt werden. 
 Hilfreich dafür ist das trennen der Geräte vom Netzwerk, sperren von betroffenen Benutzeraccounts und das herunterfahren von Systemen.
-Dies verhindert eine Ausbreitung und der Kontakt zum Angreifer wird unterbrochen.\\
+Das kann eine Ausbreitung verhinderen und der Kontakt zum Angreifer könnte unterbrochen werden.\\
 
-Danach sollte Anhand des Incident Response Plan gearbeitet werden und der externe IT Dienstleiter kontaktiert werden.
-Es ist besser, den externen IT Dienstleister einmal mehr als nötig zu Informieren, um Folgeschäden von Angriffen zu vermeiden. 
+Danach sollte Anhand des Incident Response Plan gearbeitet und der externe IT Dienstleiter kontaktiert werden.
+Es ist besser, den externen IT Dienstleister einmal mehr als nötig zu informieren, um Folgeschäden von Angriffen zu vermeiden. 
