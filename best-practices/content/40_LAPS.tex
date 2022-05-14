@@ -63,7 +63,7 @@ Die Group Policy kann nun geschlossen werden.
 \subsubsection{Domain Controller}
 Auf dem Domain Controller sollte man \acrshort{laps} manuell installieren.
 Bei der manuellen Installation müssen die zusätzlichen Features installiert werden.
-Diese sind das GUI, das Powershell Modul und die \acrshort{gpo} Richtlinien.
+Diese sind das \acrshort{gui}, das Powershell Modul und die \acrshort{gpo} Richtlinien.
 
 Dazu die Installationsdatei ausführen und alle Features installieren.
 \begin{figure}[H]
@@ -73,24 +73,24 @@ Dazu die Installationsdatei ausführen und alle Features installieren.
 \end{figure}
 
 
-\subsubsection{\acrshort{laps} GUI für Admins}\label{subsubsec:Laps-Gui}
-Über die \acrshort{gpo} wird auf den Computern \acrshort{laps} ohne GUI installiert.
-Mit dem GUI kann das Passwort von beliebigen Windows Geräten in der Domäne abgefragt werden.\\
+\subsubsection{\acrshort{laps} \acrshort{gui} für Admins}\label{subsubsec:Laps-Gui}
+Über die \acrshort{gpo} wird auf den Computern \acrshort{laps} ohne \acrshort{gui} installiert.
+Mit dem \acrshort{gui} kann das Passwort von beliebigen Windows Geräten in der Domäne abgefragt werden.\\
 
-Das GUI kann über die Systemeinstellungen installiert werden, wenn \acrshort{laps} bereits installiert ist.
+Das \acrshort{gui} kann über die Systemeinstellungen installiert werden, wenn \acrshort{laps} bereits installiert ist.
 Die Installationsdatei wird dafür nicht benötigt.
 In der Programmliste in den Systemeinstellungen auf \acrshort{laps} klicken und im Balken auf \textbf{Change} klicken.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install.png}
-    \caption{\acrshort{laps} GUI Installieren 1}
+    \caption{\acrshort{laps} \acrshort{gui} Installieren 1}
 \end{figure}
 
 Das \textbf{Management Tools} Feature auswählen und dem Installationsprozess folgen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install-2.png}
-    \caption{\acrshort{laps} GUI Installieren 2}
+    \caption{\acrshort{laps} \acrshort{gui} Installieren 2}
 \end{figure}
 
 
@@ -184,9 +184,9 @@ Die Group Policy kann nun geschlossen werden.
 
 
 \section{Verwendung}
-\subsection{Mit dem GUI}\label{subsec:laps-gui-usage}
-Das Auslesen eines Passwortes über das GUI geht nur, wenn das GUI auch installiert wurde.
-Die Installation des GUI wird im Kapitel \hyperref[subsubsec:Laps-Gui]{LAPS GUI für Admins} erklärt.\\
+\subsection{Mit dem \acrshort{gui}}\label{subsec:laps-gui-usage}
+Das Auslesen eines Passwortes über das \acrshort{gui} geht nur, wenn das \acrshort{gui} auch installiert wurde.
+Die Installation des \acrshort{gui} wird im Kapitel \hyperref[subsubsec:Laps-Gui]{LAPS GUI für Admins} erklärt.\\
 
 Im Startmenü muss man nach \textbf{\acrshort{laps} UI} suchen. Falls der in Windows angemeldete Benutzer Berechtigung besitzt, \acrshort{laps} Passwörter auszulesen, kann \acrshort{laps} direkt gestartet werden.\\
 Falls nicht, muss man den Speicherort der Datei öffnen.
