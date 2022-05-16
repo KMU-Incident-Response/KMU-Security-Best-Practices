@@ -15,7 +15,7 @@ Es wird empfohlen die Dokumente in folgender Reihenfolge zu lesen:
 3. Incident Response Plan Vorlage
 4. Security Best-Practices für KMUs
 
-Mikro KMUs (unter 10 Angestellte) können Schritt 1. und 2. überspringen und direkt bei der Incident Response Plan Vorlage beginnen.
+Mikro & kleine KMUs (unter 50 Angestellte) können Schritt 1. und 2. überspringen und direkt bei der Incident Response Plan Vorlage beginnen.
 
 ## 1. Usageguide für Wazuh
 
