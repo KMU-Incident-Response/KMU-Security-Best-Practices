@@ -3,29 +3,51 @@ Der Incident Response Prozess des \acrfull{sans} definiert die Vorbereitung und 
 Dieser wird in sechs Schritte aufgeteilt. 
 
 \subsection{Prepare}
+In der Phase ``Prepare'' wird ein Unternehmen auf einen Incident vorbereitet. 
+Dazu gehört die technische, wie auch die organisatorische Vorbereitung.\\
 
+In der technischen Vorbereitung werden Unternehmen mit Sicherheitsmassnahmen, Software und Hardware geschützt.
+Ausserdem wird sichergestellt, dass das Incident Response Team die nötigen Berechtigungen hat, um einen Incident behandeln zu können.\\
 
-In dieser GitHub Organisation wird der ``Prepare'' Teil durch das Incident Response Plan Template, die Installation von Wazuh und den Security Best Practices abgedeckt.
+In der organisatiorischen Vorbereitung werden Richtlinien definiert, was in einem Unternehmen erlaubt ist im Umgang mit der IT Infrastruktur und wo Einschränkungen getroffen werden.
+Es wird ein Incident Response Plan erstellt, welcher den Ablauf im Falle eines Incidents regelt.
+Dabei wird auch das Vorgehen in der Kommunikation definiert und und Notfallkontakte definiert.\\
+
+In dieser GitHub Organisation\footnote{https://github.com/KMU-Incident-Response} wird der ``Prepare'' Teil durch das Incident Response Plan Template, die Installation von Wazuh und den Security Best Practices abgedeckt.
 
 \subsection{Identify}
+In der Phase ``Identify'' wird geregelt, wie Incidents erkannt werden. Nachfolgend kann der vorhergehend definierte Plan gestartet werden.
+Dies kann über Mitarbeitende passieren, die einen Incident dem IT Support melden, über ein automatisches Intrusion Detection System oder über Alerts von einem \acrshort{siem}.
+Falls ein Incident festgestellt wird, sollte der externe IT Dienstleister umgehend informiert werden.\\
 
-In dieser GitHub Organisation wird der ``Identify'' Teil durch die Erklärungen und Beispiele von Wazuh abgedeckt.
+In dieser GitHub Organisation\footnote{https://github.com/KMU-Incident-Response} wird der ``Identify'' Teil durch die Erklärungen und Beispiele von Wazuh abgedeckt.
 
 \subsection{Contain}
+Die ``Containment'' Phase beinhaltet die Eindämmung eines Incidents, um weitere Folgeschäden zu vermeiden.
+Diese Phase ist in drei Schritte aufgeteilt. 
+Das ``short-term Containment'', das ``System Backup'' und das ``long-term Containment''.\\
 
+Im ``short-term Containment'' ist der Fokus, den Schaden möglichst schnell einzudämmen.
+Dies kann unter anderem durch trennen der betroffenen System vom Netzwerk sein, betroffene Systeme herunterfahren und/oder Zugriffsrechte von Benutzeraccounts einzuschränken.
+Dieser Teil kann oftmals direkt vom IT Support ausgeführt werden, bevor ein externer IT Dienstleister bereit ist einzugreifen.\\
 
+Im ``System Backup'' Teil werden forensische Abbildungen der betroffenen Systeme erstellt.
+Mit diesen kann in der ``Lessons learned'' Phase nachvollzogen werden, wie Angreifer in die Systeme eingedrungen sind und wo allfällige Schwachstellen sind. 
+Für forensische Abbildungen werden spezifische Tools benötigt, welche ein KMU nicht besitzt. 
+Daher sollte dieser Schritt vom externen IT Dienstleister durchgeführt werden.
+
+Im ``long-term Containment'' werden die betroffenen Systeme soweit gesichert, dass diese wieder vorübergehend Produktuionsfähig sind, bevor in der nächsten Phase ``Eradicate'' saubere Systeme aufgesetzt werden.
 
 \subsection{Eradicate}
-
+Die ``Eradicate'' Phase behandelt die eigentliche Entfernung aller kompromittierten Systeme und Malware im Netzwerk.
+Bevor die Systeme wiederhergestellt werden, muss sichergestellt werden, dass alle Eintrittspunkte der Angreifer blockiert wurden und keine Malware sich im Netzwerk mehr befindet.
+Sonst werden neue Systeme direkt wieder kompromittiert.
 
 \subsection{Recover}
+In der ``Recover'' Phase werden die betroffenen Systeme wiederhergestellt.
+Es ist wichtig, die neuen Systeme genau zu überwachen um sicherzugehen, dass diese nicht direkt wieder kompromittiert werden. 
 
 
 \subsection{Lessons learned}
-
-
-
-%Incident Response prozess. (NIST)
-%Containment
-%Incident Response Plan Prozess starten.
-%IT Dienstleister informieren wenn sicher
+In der ``Lessons learned'' Phase werden alle Dokumentationen fertiggestellt, alle Erkentnisse aus dem Incident zusammengefasst und ein Report erstellt.
+Dies soll für weitere Incidents helfen, schneller reagieren zu können oder als Fallbeispiel für neue Mitarbeitende zu Verfügung stehen. 
