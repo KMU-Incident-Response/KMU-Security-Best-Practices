@@ -51,3 +51,17 @@ Bei der Installation vom Wazuh Server für KMUs wird automatisch auch eine Palet
 Es ist möglich die Regeln ohne die Serverinstallation zu importieren.
 Dazu wird ein bereits installierter Wazuhserver benötigt.
 Mehr Informationen kann man im GitHub \href{https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules}{README}\footnote{Link: https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules} finden.
+
+\section{SSL Zertifikat}
+Die Wazuhinstallation wird mit einem Self-Signed Zertifikat ausgeliefert.
+Es ist empfohlen das Standard Zertifikat durch ein eigenes zu ersetzen.\\
+
+Das Zertifikat muss später im Kibana hinterlegt werden und der Service neugestartet.
+
+\begin{lstlisting}
+    sudo mv my-cert.crt /etc/kibana/certs/kibana.crt
+    sudo mv my-cert.key /etc/kibana/certs/kibana.key
+    sudo chmod 440 /etc/kibana/certs/kibana.{key,crt}
+    sudo chown kibana:kibana /etc/kibana/certs/kibana.{key,crt}
+    sudo systemctl restart kibana.service
+\end{lstlisting}
