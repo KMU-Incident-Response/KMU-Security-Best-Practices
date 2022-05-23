@@ -6,9 +6,16 @@ Bei jedem \acrshort{siem} System gibt es auch sogenannte ``False Positives'', Al
 Die ``False Negatives'' entdecken ist schwierig und kann nur durch eine Ergänzung der Wazuh Rules erreicht werden.
 Bei den ``False Positives'' kann man durch Untersuchung der betroffenen Entitäten feststellen, ob es sich wirklich um einen Incident handelt.\\
 
-In diesem Kapitel wird angeschaut, wie man im Wazuh Web \acrshort{gui} mit Queries die Alerts filtern kann, es werden Beispiele von realen Attacken aufgezeigt und wie man ``False Positives'' erkennen kann.
+In diesem Kapitel wird angeschaut, wie man im Wazuh Web \acrshort{gui} mit Queries die Alerts filtern kann, es werden Beispiele von realen Attacken aufgezeigt und wie man ``False Positives'' erkennen kann.\\
 
-\section{Queries}
+Die Security Events findet man im Wazuh Web \acrshort{gui} unter \textbf{Wazuh $\rightarrow$ Modules $\rightarrow$ Security Events}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../img/wazuh-security-events.png}
+    \caption{Wazuh Security Events}
+\end{figure}
+Im Register Events findet man dann eine gute Übersicht
+\section{Filter}
 Das Filtern der Alerts wird in Wazuh mittels der \acrfull{kql} gemacht.
 Der Wazuh Manager unterstützt das schreiben dieser Queries mit einem kleinen Interface, wo man die Filter zusammenklicken kann.\\
 
@@ -22,9 +29,41 @@ Events gibt eine bessere Übersicht über alle möglichen Filter und eine besser
 
 In diesem Interface kann das Feld ausgewählt werden, dazu die Art des Vergleichs und der Wert.
 Im Bild oben werden zum Beispiel nur noch Rules angezeigt, welche die ID 61618 haben.
-Auf diese Weise kann man auch unnötige Rule IDs ausblenden, oder nur bestimmte Rule IDs eines bestimmten PCs anzeigen.
+Auf diese Weise kann man auch unnötige Rule IDs ausblenden, oder nur bestimmte Rule IDs eines bestimmten PCs anzeigen.\\
+
+Alle aktiven Filter sieht man unter der Suchleiste nebeneinander aufgelistet.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{../img/aktive-filter.png}
+    \caption{Aktive Filter in Wazuh}
+\end{figure}
+Diese kann man mit dem kleinen ``X'' rechts im Feld wieder löschen.\\
+
+Der angezeigte Zeithorizont kann man rechts von der Suchleiste einstellen.
+Dies ist grundsätzlich auch ein Filter für das Feld ``Time''.
+Dieses Feld sollte immer wieder überprüft werden um sicherzugehen, dass zum Beispiel nicht nur die letzten 15 minuten angezeigt werden.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{../img/zeitfilter.png}
+    \caption{Zeitfilter in Wazuh}
+\end{figure}
+
+\section{Alerts überprüfen}
+Die Alerts müssen in einem definierten Rythmus angeschaut werden, sonst bleiben Attacken weiterhin unentdeckt.
+Eine Empfehlung ist es, jeden Morgen kurz die Level 12 Alerts anzuschauen und den auffälligen Alerts nachzugehen.
+Dabei ist Wichtig zu beachten, dass man den Zeitfilter korrekt setzt. 
+Wenn zum Beispiel alle 2 Tage die Alerts überprüft werden, sollte auch der Zeitfilter um die 48 Stunden sein.\\
+
+Es gibt auch die Möglichkeit, E-Mails für level 12 Alerts zu erhalten.
+Die Einrichtung dazu wird in keinem Guide hier erklärt.
+Weitere Infos zu Einrichtung sind in der \href{https://documentation.wazuh.com/current/user-manual/manager/manual-email-report/index.html?highlight=email}{Dokumentation von Wazuh}\footnote{Link: https://documentation.wazuh.com/current/user-manual/manager/manual-email-report/index.html?highlight=email} erhältlich.
+
 
 \section{Attacken Beispiele}
+In diesem Kapitel werden zwei Beispiele von Attacken aufgezeigt.
+Dies sind natürlich nicht alle möglichen Attacken und die Liste daher nicht vollständig.
+Es sollen nur zwei Beispiele sein, damit Anwendern einen Anhaltspunkt haben wie mögliche Attacken aussehen könnten.\\
+
 Attacken mit und ohne Kompromittierung generieren oftmals einen Level 12 Alert. Daher lohnt es sich, täglich die Level 12 Alerts in Wazuh anzuschauen.
 Um nach diesen zu Filtern gibt es unter Security Events im Reiter ``Dashboard'' einen Shortcut:
 \begin{figure}[H]
@@ -82,7 +121,7 @@ Genauere Anleitungen dazu befinden sich im Dokument ``Security Best Practices'' 
 
 \section{False Positives}
 False Positives können am besten durch genauere Untersuchen der Alerts festgestellt werden.
-Eventuell hat ein Benutzer sein Passwort vergessen und erst beim 10. Versuch richtig eingegeben. 
+Eventuell hat ein Benutzer sein Passwort vergessen und erst beim 10. Versuch richtig eingegeben.
 Daher sollte man mit den Benutzern der Systeme Kontakt aufnehmen, falls die Möglichkeit besteht, dass es ein legitimer Fehler eines Benutzers war.  
 
 \subsection{Dateihashes vergleichen}
@@ -117,3 +156,4 @@ Das kann eine Ausbreitung verhinderen und der Kontakt zum Angreifer könnte unte
 
 Danach sollte Anhand des Incident Response Plan gearbeitet und der externe IT Dienstleiter kontaktiert werden.
 Es ist besser, den externen IT Dienstleister einmal mehr als nötig zu informieren, um Folgeschäden von Angriffen zu vermeiden. 
+
