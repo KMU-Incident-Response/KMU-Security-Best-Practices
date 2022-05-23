@@ -1,18 +1,27 @@
 \chapter{Wazuh Übersicht}
-\section{Entstehung}
-Wazuh ist aus dem Open-Source Projekt \href{https://github.com/ossec}{ossec}\footnote{Link: https://github.com/ossec} entstanden.
-Wazuh ist wie ossec komplett Open-Source und kostenlos verfügbar.
+\section{Umfang}
+Dieses Kapitel geht auf die technischen Gegebenheiten und den kompletten Ablauf im Hintergrund von Wazuh ein.
+Dies ist vorallem für Interessierte gedacht und muss nicht zwingend gelesen werden.\\
+
+Wazuh ist aus dem Open-Source Projekt \href{https://github.com/ossec}{ossec}\footnote{Link: https://github.com/ossec} entstanden und wie ossec komplett Open-Source und kostenlos verfügbar.
 
 \section{Aufbau}
+
+\begin{minipage}{0.4\linewidth}
 Wazuh basiert auf dem \acrfull{elk} Stack und besteht aus einem Manager und den Agents. 
 Der Manager ist ein Plugin, welches in den \acrshort{elk} Stack integriert werden kann und mithilfe von Agents auf den Computern Logdateien sammelt.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{../img/aufbau-wazuh.png}
-    \caption[Übersicht Wazuh]{Übersicht Wazuh\footnotemark}
-\end{figure}
+\end{minipage}
+\begin{minipage}{0.6\linewidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\linewidth]{../img/aufbau-wazuh.png}
+        \caption[Übersicht Wazuh]{Übersicht Wazuh\footnotemark}
+    \end{figure}
+    
+\end{minipage}
 \footnotetext{Zugriff: 24.04.2022 \cite{wazuh-documentation}}
+
 
 
 \section{Prozessablauf}
@@ -29,7 +38,6 @@ Dabei sammeln sich grosse Datenmengen an und dies ist hauptsächlich für Debugg
     \caption[Wazuh Ablauf]{Wazuh Ablauf\footnotemark}
 \end{figure}
 \footnotetext{Zugriff: 24.04.2022 \cite{wazuh-documentation}}
-
 
 \section{Wazuh Manager}
 Der Wazuh Manager wird auf einem Linux Server installiert und beinhaltet den kompletten \acrshort{elk} Stack, mit Wazuh Plugin. 
@@ -51,17 +59,14 @@ Eine Lokation wird mit <localfile> angegeben:
     </localfile>
 </agent_config>
 \end{lstlisting}
-Weitere Informationen wie neue Orte mit Logdateien eingebunden werden können, findet man in der \href{https://documentation.wazuh.com/current/user-manual/reference/centralized-configuration.html?highlight=agent%20conf}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/user-manual/reference/centralized-configuration.html?highlight=agent\%20conf}\\
+Weitere Informationen wie neue Orte mit Logdateien eingebunden werden können, findet man in der \href{https://documentation.wazuh.com/current/user-manual/reference/centralized-configuration.html?highlight=agent%20conf}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/user-manual/reference/centralized-configuration.html?highlight=agent\%20conf}
 
 \subsection{Decoders}
-Da Logs in allen möglichen Formen daherkommen, je nach Herkunft braucht es verschiedene Decoder.
+Da Logs in allen möglichen Formen daherkommen, braucht es je nach Herkunft verschiedene Decoder.
 Die Decoder bringen die eingehenden Logs in eine einheitliche Struktur, um die Regeln darauf anwenden zu können.
-Es werden Decoder für einige bekannten Logformate angeboten, wie zum Beispiel für den Windows Event Manager oder Cisco IOS Logs.\\
-
-
+Es werden Decoder für einige bekannten Logformate angeboten, wie zum Beispiel für den Windows Event Manager oder Cisco IOS Logs.
 
 \subsection{Rules}
-
 
 \subsubsection{Alert Level}
 Es gibt Alert Levels von 0 bis 16. 
