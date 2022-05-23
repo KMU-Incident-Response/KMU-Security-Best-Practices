@@ -31,15 +31,15 @@ In diesem Interface kann das Feld ausgewählt werden, dazu die Art des Vergleich
 Im Bild oben werden zum Beispiel nur noch Rules angezeigt, welche die ID 61618 haben.
 Auf diese Weise kann man auch unnötige Rule IDs ausblenden, oder nur bestimmte Rule IDs eines bestimmten PCs anzeigen.\\
 
-Alle aktiven Filter sieht man unter der Suchleiste nebeneinander aufgelistet.
+Filter sind Modular aufgebaut. Alle aktiven Filter sieht man unter der Suchleiste nebeneinander aufgelistet.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{../img/aktive-filter.png}
     \caption{Aktive Filter in Wazuh}
 \end{figure}
-Diese kann man mit dem kleinen ``X'' rechts im Feld wieder löschen.\\
+Diese kann man mit dem kleinen $\times$ rechts im Feld wieder löschen.\\
 
-Der angezeigte Zeithorizont kann man rechts von der Suchleiste einstellen.
+Der angezeigte Zeitintervall kann man rechts von der Suchleiste einstellen.
 Dies ist grundsätzlich auch ein Filter für das Feld ``Time''.
 Dieses Feld sollte immer wieder überprüft werden um sicherzugehen, dass zum Beispiel nicht nur die letzten 15 minuten angezeigt werden.
 \begin{figure}[H]
@@ -49,19 +49,19 @@ Dieses Feld sollte immer wieder überprüft werden um sicherzugehen, dass zum Be
 \end{figure}
 
 \section{Alerts überprüfen}
-Die Alerts müssen in einem definierten Rythmus angeschaut werden, sonst bleiben Attacken weiterhin unentdeckt.
+Die Alerts müssen in einem definierten Rhythmus angeschaut werden, sonst bleiben Attacken weiterhin unentdeckt.
 Eine Empfehlung ist es, jeden Morgen kurz die Level 12 Alerts anzuschauen und den auffälligen Alerts nachzugehen.
 Dabei ist Wichtig zu beachten, dass man den Zeitfilter korrekt setzt. 
 Wenn zum Beispiel alle 2 Tage die Alerts überprüft werden, sollte auch der Zeitfilter um die 48 Stunden sein.\\
 
 Es gibt auch die Möglichkeit, E-Mails für level 12 Alerts zu erhalten.
-Die Einrichtung dazu wird in keinem Guide hier erklärt.
+Die Einrichtung dazu wird in diesem Repository und deren Guides nicht erklärt.
 Weitere Infos zu Einrichtung sind in der \href{https://documentation.wazuh.com/current/user-manual/manager/manual-email-report/index.html?highlight=email}{Dokumentation von Wazuh}\footnote{Link: https://documentation.wazuh.com/current/user-manual/manager/manual-email-report/index.html?highlight=email} erhältlich.
 
 
 \section{Attacken Beispiele}
 In diesem Kapitel werden zwei Beispiele von Attacken aufgezeigt.
-Dies sind natürlich nicht alle möglichen Attacken und die Liste daher nicht vollständig.
+Dies sind nicht alle möglichen Attacken und die Liste ist daher nicht vollständig.
 Es sollen nur zwei Beispiele sein, damit Anwendern einen Anhaltspunkt haben wie mögliche Attacken aussehen könnten.\\
 
 Attacken mit und ohne Kompromittierung generieren oftmals einen Level 12 Alert. Daher lohnt es sich, täglich die Level 12 Alerts in Wazuh anzuschauen.
