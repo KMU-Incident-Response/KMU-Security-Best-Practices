@@ -8,7 +8,21 @@ Das Ziel einer Firewall ist es den Netzwerkverkehr zu überprüfen und gegebenfa
 \section{Umfang}
 In diesem Dokument wird auf die Netzwerkfirewall eingegangen.
 Für die persönliche Firewall wird die Windows Firewall empfohlen.
-Diese wird automatisch von Windows verwaltet, ist Teil des \acrshort{os}-schutzkonzept und darum wird es diesem Dokument nicht weiter behandelt.
+Diese wird automatisch von Windows verwaltet, ist Teil des \acrshort{os}-Schutzkonzept und wird darum in diesem Dokument nicht weiter behandelt.
+
+\section{Funktionsweise}
+Eine Firewall Regel besteht aus vier Teilen:
+\begin{itemize}
+    \item Herkunftsadresse
+    \item Zieladresse
+    \item Protokoll
+    \item Zulassen / Blockieren
+\end{itemize}
+
+Ausserdem wird eine Regel immer entweder für eingehenden oder ausgehenden Verkehr definiert.
+Für die Herkunft und Zieladressen können auch ganze Bereiche von IP-Adressen angegeben werden.
+Viele Firewalls funktionieren nach dem Top-Down Prinzip. 
+Die Regeln werden von oben nach unten für jeden Verkehr geprüft und bei einer Übereinstimmung angewendet.
 
 \section{Default Deny}
 In einem Netzwerk sollten keine Annahmen getroffen werden.
@@ -17,7 +31,15 @@ Die Firewall soll so eingerichtet werden, dass spezielle Operationen wie Netzwer
 Es sollten strenge Regeln implementiert und die Ausnahme speziell einrichtet werden.
 Dies wird Allow-List Policy\footnote{https://de.wikipedia.org/wiki/Wei\%C3\%9Fe\_Liste} gennant.
 Das genannte Verhalten ist bei den meisten Produkten ein Standard.
-Auf jeden Fall sollte es aber überprüft werden.
+Auf jeden Fall sollte es aber überprüft werden.\\
+
+Explizite Regeln sollten zuerst einsetzten 
+Eine Default Deny Regel sollte immer am Schluss aller Regeln einsetzten und sieht folgendermassen aus:\\
+\textbf{Herkunftsadresse:} \quad ANY\\
+\textbf{Zieladresse:}\quad\quad\quad\quad ANY\\
+\textbf{Protokoll:}\quad\quad\quad\quad\quad ANY\\
+\textbf{Blockieren}
+
 
 \section{Unternehmenskritische Infrastruktur}
 Unternehmenskritische Infrastruktur sollte nicht mit allen anderen Geräten im selben Netzwerk sein, sondern in einem dedizierten LAN Segment.
@@ -29,7 +51,6 @@ Das Updaten der Firmware wird nicht von der Firewall selbst übernommen und muss
 Eine Firewall ist eine äusserst kritische Komponente eines Netzwerk und sollten dadurch auch regelmässig gepatcht werden.\\
 
 Bei einem Ausfall einer Firewall muss nicht zwingend ein Security Incident eingetroffen sein, aber es kann sein das der produktive Betrieb des Unternehmens eingeschränkt wird.
-
 
 \section{Audits}
 Es ist empfehlenswert in regelmässigen Abständen Audits von unternehmenskritischer Infrastruktur zu halten.
