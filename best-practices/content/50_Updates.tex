@@ -12,11 +12,11 @@ Dies muss jedoch standardmässig von den Benutzern gemacht werden.
 Diese Updates können über die Group Policy erzwungen werden, damit sichergestellt werden kann, dass die System immer auf aktuellen Stand sind.\\
 
 \textbf{Wichtige Anmerkung:}\\
-Bei kritischen Systemen muss immer zuerst überprüft werden, ob alle Funktionen nach dem Update noch funktionieren.
+Bei unternehmenskritischen Systemen muss immer zuerst überprüft werden, ob alle Funktionen nach dem Update noch funktionieren.
 
 
 \subsection{\acrshort{gpo} für Clients}
-Falls kritische Clients vorhanden sind, sollte \acrfull{wsus} verwendet werden. Siehe Kapitel \hyperref[subsec:wsus]{WSUS}.\\
+Falls unternehmenskritische Clients vorhanden sind, sollte \acrfull{wsus} verwendet werden. Siehe Kapitel \hyperref[subsec:wsus]{WSUS}.\\
 
 Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der \acrshort{ou} verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
@@ -66,7 +66,7 @@ Diese Einstellungen sollen nicht strikt übernommen werden, sondern den Bedürfn
 Wichtig ist jedoch, dass die Updates automatisch installiert werden und das die Computer nach Updates neugestartet werden müssen.
 
 \subsection{\acrshort{gpo} für Server}
-Falls kritische Server vorhanden sind, sollte \acrfull{wsus} verwendet werden. Siehe Kapitel \hyperref[subsec:wsus]{WSUS}.\\
+Falls unternehmenskritische Server vorhanden sind, sollte \acrfull{wsus} verwendet werden. Siehe Kapitel \hyperref[subsec:wsus]{WSUS}.\\
 
 Updates für Server sollten installiert werden, wenn Sie nicht in Verwendung sind, da sie für kurze Zeit nicht verfügbar sein werden.
 Daher ist die Group Policy für Server anders als für Clients.
@@ -113,10 +113,10 @@ Für Server werden folgende Policies eingerichtet:
 \end{minipage}\\
 
 Die Updates werden auf den Servern in der Nacht, um 01:00 Uhr, installiert und die Server anschliessend neu gestartet.
-Für kritische Server sollten die Updates zuerst getestet werden und manuell installiert werden.
+Für unternehmenskritische Server sollten die Updates zuerst getestet werden und manuell installiert werden.
 
 \subsection{\acrfull{wsus}}\label{subsec:wsus}
-Falls neben den regulären auch kritische Systeme vorhanden sind, ist es empfohlen sich einen WSUS Server einzurichten.
+Falls neben den regulären auch unternehmenskritische Systeme vorhanden sind, ist es empfohlen sich einen WSUS Server einzurichten.
 Dieser bietet die Möglichkeit, Computer und Server in Gruppen einzuteilen und genauer zu definieren, welche Gruppe wann welche Updates erhält.
 WSUS ist eine Serverrolle auf Windows Server und kann über den Server Manager installiert werden.\\
 
@@ -126,4 +126,10 @@ Microsoft bietet gute \href{https://docs.microsoft.com/de-de/windows-server/admi
 
 \section{Updates weiterer Software}
 Für weitere Software, welche nicht zentral verwaltet werden kann, sollte ein Update-Konzept erstellt werden.
-Neue Updates sollten in einem festgelegten Rythmus auf allen betroffenen Systemen installiert werden.
+Dies ist besonders wichtig für Software, welche sich nicht automatisch aktualisiert. 
+
+\subsection{Update Konzept}
+Im Update Konzept sollten alle Computer welche die Software installiert haben inventarisiert werden.
+Damit hat man einen Überblick und vergisst keine der Computer.
+Ausserdem sollte pro Software ein ``Owner'' festgelegt werden. 
+Dieser kann sich bei den Verteilerlisten der Softwarehersteller anmelden um informationen über neuste Updates zu erhalten.

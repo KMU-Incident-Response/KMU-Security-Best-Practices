@@ -10,17 +10,17 @@ In diesem Dokument wird auf die Netzwerkfirewall eingegangen.
 Für die persönliche Firewall wird die Windows Firewall empfohlen.
 Diese wird automatisch von Windows verwaltet, ist Teil des \acrshort{os}-schutzkonzept und darum wird es diesem Dokument nicht weiter behandelt.
 
-\section{Zero Trust}
+\section{Default Deny}
 In einem Netzwerk sollten keine Annahmen getroffen werden.
 Basierend darauf kann auch keinem Gerät standardmässig vertraut werden.
 Die Firewall soll so eingerichtet werden, dass spezielle Operationen wie Netzwerkverkehr vom Internet nach intern freigeschaltet werden muss.
-Es sollten strenge Regeln implementiert werden und die Ausnahme speziell einrichtet.
-Dies wird Whitelist Policy\footnote{https://de.wikipedia.org/wiki/Wei\%C3\%9Fe\_Liste} gennant.
+Es sollten strenge Regeln implementiert und die Ausnahme speziell einrichtet werden.
+Dies wird Allow-List Policy\footnote{https://de.wikipedia.org/wiki/Wei\%C3\%9Fe\_Liste} gennant.
 Das genannte Verhalten ist bei den meisten Produkten ein Standard.
 Auf jeden Fall sollte es aber überprüft werden.
 
-\section{Kritische Infrastruktur}
-Kritische Infrastruktur sollte nicht mit allen anderen Geräten im selben Netzwerk sein, sondern in einem dedizierten LAN Segment.
+\section{Unternehmenskritische Infrastruktur}
+Unternehmenskritische Infrastruktur sollte nicht mit allen anderen Geräten im selben Netzwerk sein, sondern in einem dedizierten LAN Segment.
 Das Segment sollte mit einer Firewall abgeschottet sein und nur benötigte Verbindungen geöffnet werden.
 
 \section{Betrieb einer Firewall}
@@ -32,7 +32,7 @@ Bei einem Ausfall einer Firewall muss nicht zwingend ein Security Incident einge
 
 
 \section{Audits}
-Es ist empfehlenswert in regelmässigen Abständen Audits von kritischer Infrastruktur zu halten.
+Es ist empfehlenswert in regelmässigen Abständen Audits von unternehmenskritischer Infrastruktur zu halten.
 Dies betrifft auch eine Firewall, respektiv deren Konfiguration.
 Idealerweise werden Audits jährlich durchgeführt, solche Audits können auch von Dienstleister durchgeführt werden.
 Externe Dienstleister bringen bei Audits oftmals einen grossen Mehrwert, da diese viele Erfahrungen mit diversen Kunden machen.
