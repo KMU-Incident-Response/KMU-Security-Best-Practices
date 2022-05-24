@@ -17,7 +17,7 @@ Nun muss eine neue Group Policy erstellt werden, mit welcher Sysmon auf den Wind
 Dazu öffnet man das Group Policy Management auf dem Domain Controller und erstellt eine neue Group Policy, welche mit der \acrshort{ou} verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/create-new-group-policy.png}
+    \includegraphics[width=\linewidth]{../img/agent/create-new-group-policy.png}
     \caption{Neue Group Policy für Sysmon Deployment}
 \end{figure}
 
@@ -28,14 +28,14 @@ Es müssen folgende Einstellungen vorgenommen werden:\\
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\linewidth]{../img/sysmon/new-folder-1.png}
+        \includegraphics[width=\linewidth]{../img/sysmon/new-folder-1.png}
         \caption{Neuer Ordner mit GP erstellen 1}
     \end{figure}
 \end{minipage}
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\linewidth]{../img/sysmon/new-folder-2.png}
+        \includegraphics[width=\linewidth]{../img/sysmon/new-folder-2.png}
         \caption{Neuer Ordner mit GP erstellen 2}
     \end{figure}
 \end{minipage}\\
@@ -52,7 +52,7 @@ Unter dem Reiter \textbf{Common} muss wieder ein Hacken bei ``Apply once and do 
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\linewidth]{../img/sysmon/sysmon-file.png}
+        \includegraphics[width=\linewidth]{../img/sysmon/sysmon-file.png}
         \caption{Sysmon.exe kopieren}
     \end{figure}
 
@@ -60,7 +60,7 @@ Unter dem Reiter \textbf{Common} muss wieder ein Hacken bei ``Apply once and do 
 \begin{minipage}{0.5\linewidth}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\linewidth]{../img/sysmon/config-file.png}
+        \includegraphics[width=\linewidth]{../img/sysmon/config-file.png}
         \caption{sysmon-config.xml kopieren}
     \end{figure}
 \end{minipage}
@@ -68,7 +68,7 @@ Unter dem Reiter \textbf{Common} muss wieder ein Hacken bei ``Apply once and do 
 Zuletzt muss noch ein neuer Immediate Task unter \textbf{Computer Configuration $\rightarrow$ Preferences $\rightarrow$ Control Panel Settings $\rightarrow$ Scheduled Tasks} mit \textbf{Rechtsklick $\rightarrow$ New $\rightarrow$ Immediate Task (At least Windows 7)} erstellt werden.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/sysmon/new-scheduled-task.png}
+    \includegraphics[width=\linewidth]{../img/sysmon/new-scheduled-task.png}
     \caption{Neuen Immediate Task erstellen}
 \end{figure}
 

@@ -36,7 +36,7 @@ Dazu öffnet man den Server Manager, navigiert zu \textbf{Manage $\rightarrow$ A
 Unter ``Features'' wählt man ``Bitlocker Drive Encryption'' und installiert dieses Feature:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/Encryption/bitlocker-feature.png}
+    \includegraphics[width=\linewidth]{../img/Encryption/bitlocker-feature.png}
     \caption{BitLocker Feature}
 \end{figure}
 \textbf{Wichtig:} Nach dem installiern muss der Server neugestartet werden.
@@ -47,7 +47,7 @@ Mit \textbf{Rechtsklick $\rightarrow$ Edit} kann die neue Group Policy bearbeite
 Unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Administrative Templates $\rightarrow$ Windows Components $\rightarrow$ BitLocker Drive Encryption $\rightarrow$ Operating System Drives} kann mit \textbf{Rechtsklick $\rightarrow$ New $\rightarrow$ Package\dots} wird die Policy ``Choose how BitLocker-protected operating system drives can be recovered'' wie folgt eingerichtet:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/Encryption/store-bitlocker-in-ad.png}
+    \includegraphics[width=\linewidth]{../img/Encryption/store-bitlocker-in-ad.png}
     \caption{BitLocker Policy}
 \end{figure}
 
@@ -82,7 +82,7 @@ Die Erlaubnis kann unter \textbf{Computer Configuration $\rightarrow$ Policies $
 Als nächstes muss unter \textbf{Computer Configuration $\rightarrow$ Preferences $\rightarrow$ Control Panel Settings $\rightarrow$ Scheduled Task} ein neuer ``Immediate Task (At least Windows 7)'' erstellt werden:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/Encryption/new-scheduled-task.png}
+    \includegraphics[width=\linewidth]{../img/Encryption/new-scheduled-task.png}
     \caption{Neuer Scheduled Task für BitLocker}
 \end{figure}
 
@@ -119,7 +119,7 @@ Die Policy befindet sich am gleichen Ort wie die vorherige Policy um BitLocker z
 Dort setzt man folgende Einstellungen:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/Encryption/computers-without-tpm.png}
+    \includegraphics[width=\linewidth]{../img/Encryption/computers-without-tpm.png}
     \caption{\acrshort{gpo} für BitLocker ohne \acrshort{tpm}}
 \end{figure}
 Zusätzlich kann nicht das Script verwendet werden, da vom Benutzer ein Passwort gesetzt werden muss.
@@ -138,7 +138,7 @@ Der Recovery Key ist auf den Computer Objekten in der Active Directory hinterleg
 Dazu öffnet man die Einstellungen eines Computer Objektes und öffnet den Tab ``BitLocker Recovery'':
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/Encryption/bitlocker-recovery.png}
+    \includegraphics[width=\linewidth]{../img/Encryption/bitlocker-recovery.png}
     \caption{Recovery Key für BitLocker}
 \end{figure}
 Dort findet man unter ``Recovery Password'' das Passwort um den Computer im Notfall zu entschlüsseln.

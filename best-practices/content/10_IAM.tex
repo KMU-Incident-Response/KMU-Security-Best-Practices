@@ -1,6 +1,5 @@
 \chapter{\acrfull{iam}}
 
-
 \section{Umfang}
 In diesem Kaptiel werden die On-Premise \acrfull{iam} Lösungen erläutert.
 Die Federation \acrshort{iam} haben einen sehr spezifischen Use-Cases und sind hauptsächlich bei Cloud-First Archtitekturen zu finden. Daher sind diese in diesem Dokument ausserhalb des Umfangs und werden nicht weiter behandelt.
@@ -11,8 +10,7 @@ Zudem können Berechtigungen auf Entitäten in einer Domäne verwaltet werden.\\
 
 \textbf{Braucht es ein IAM?}\\
 Es ist grundsätzlich möglich ohne ein IAM System zu arbeiten, wobei der Aufwand für das Management der Userverwaltung auf allen Maschinen schnell den Rahmen des Budgets sprengt.
-Der allgemeine Konsenus ist, dass ab 15 aktiven Bentuzern ein IAM verwendet werden soll.\\
-
+Der allgemeine Konsenus ist, dass ab 15 aktiven Bentuzern ein IAM verwendet werden soll.
 Eine IAM Lösung bringt viele Vorteile, gleichzeitig birgt es auch Risiken.\\
 
 \begin{minipage}{\linewidth}
@@ -137,7 +135,7 @@ Editorberechtigung im IAM sollten nur Personen zustehen, welche diese auch wirkl
 In den meisten Fällen ist ein IAM die beste Lösung.
 Der grösste Teil der Vorfälle kann mit den zuvor genannten Konzepten mitigiert oder sogar ganz vermieden werden.
 
-
+\newpage
 \section{Active Directory Best Practices}
 \subsection{Passwortrichtlinien}
 Es gibt verschiedene Möglichkeiten, wie Angreifer an Passwörter kommen können.
@@ -214,7 +212,7 @@ Bei der Passwortrichtlinie für Administratoren wird empfohlen, dass diese ihr P
 Dazu kann eine neue Group Policy auf Höhe der \acrshort{ou} mit den Administratoren erstellt werden:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/IAM/admin-password-policy.png}
+    \includegraphics[width=\linewidth]{../img/IAM/admin-password-policy.png}
     \caption{Passwortrichtlinien Administratoren}
 \end{figure}
 Die Account Lockout Policy bleibt gleich.
@@ -228,7 +226,7 @@ Im Group Policy Management existiert unter \textbf{Forest: <Domänen-Namen> $\ri
 In dieser setzt man unter \textbf{Computer Configuration $\rightarrow$ Policies $\rightarrow$ Windows Settings $\rightarrow$ Security Settings $\rightarrow$ Local Policies $\rightarrow$ Audit Policy} in der Richtlinie ``Audit account Management'' folgende Einstellungen:\\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/IAM/ad-account-management.png}
+    \includegraphics[width=\linewidth]{../img/IAM/ad-account-management.png}
     \caption{Active Directory Audit Policy}
 \end{figure}
 
@@ -251,7 +249,7 @@ Dies beihnaltet Änderungen an Accounts und Gruppen:
 \end{lstlisting}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/IAM/security-group-alert-example.png}
+    \includegraphics[width=\linewidth]{../img/IAM/security-group-alert-example.png}
     \caption{Security Group Alert Beispiel}
 \end{figure}
 
@@ -259,7 +257,7 @@ Zusätzlich gibt es noch Alert mit Level 12, falls eine Standardgruppe mit erhö
 Dazu gehören folgende Gruppen:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/IAM/high-privilege-groups.png}
+    \includegraphics[width=\linewidth]{../img/IAM/high-privilege-groups.png}
     \caption{Gruppen mit erhöhten Berechtigungen}
 \end{figure}
 Die Alerts sehen wie folgt aus:
