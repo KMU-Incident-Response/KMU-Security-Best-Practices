@@ -29,7 +29,7 @@ In einem Netzwerk sollten keine Annahmen getroffen werden.
 Basierend darauf kann auch keinem Gerät standardmässig vertraut werden.
 Die Firewall soll so eingerichtet werden, dass spezielle Operationen wie Netzwerkverkehr vom Internet nach intern freigeschaltet werden muss.
 Es sollten strenge Regeln implementiert und die Ausnahme speziell einrichtet werden.
-Dies wird Allow-List Policy\footnote{https://de.wikipedia.org/wiki/Wei\%C3\%9Fe\_Liste} gennant.
+Dies wird Allow-List Policy\footnote{\href{https://en.wikipedia.org/wiki/Whitelist}{https://en.wikipedia.org/wiki/Whitelist}} gennant.
 Das genannte Verhalten ist bei den meisten Produkten ein Standard.
 Auf jeden Fall sollte es aber überprüft werden.\\
 
@@ -62,9 +62,9 @@ Externe Dienstleister bringen bei Audits oftmals einen grossen Mehrwert, da dies
 Viele Firewall Hersteller haben ihr eigenes Betriebssystem auf den Geräten installiert.
 Durch diese Vielzahl an Systemen ist es für Wazuh nicht möglich einen Wazuh Agent für jedes Betriebssystem zu entwicklen.
 
-Daher bietet Wazuh die Möglichkeit, Agentless via rsyslog\footnote{Link: https://github.com/rsyslog/rsyslog} die Logdateien auszulesen und zu verarbeiten.\\
+Daher bietet Wazuh die Möglichkeit, Agentless via rsyslog\footnote{Link: \href{https://github.com/rsyslog/rsyslog}{https://github.com/rsyslog/rsyslog}} die Logdateien auszulesen und zu verarbeiten.\\
 
-Ausserdem exisiteren bereits im Standard-Ruleset Regeln für einige Firewall-Hersteller\footnote{Link: https://documentation.wazuh.com/current/user-manual/ruleset/getting-started.html}, wie zum Beispiel Cisco, JunOS oder CheckPoint Smart-1.\\
+Ausserdem exisiteren bereits im Standard-Ruleset Regeln für einige Firewall-Hersteller\footnote{Link: \href{https://documentation.wazuh.com/current/user-manual/ruleset/getting-started.html}{https://documentation.wazuh.com/current/user-manual/ruleset/getting-started.html}}, wie zum Beispiel Cisco, JunOS oder CheckPoint Smart-1.\\
 
 In diesem Guide wird das Einrichten von Agnetless Verbindungen zu Firewalls und anderen Geräten nicht genauer erläutert.
-In der \href{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}{Dokumentation von Wazuh}\footnote{Link: https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html} gibt es gute Anleitungen wie solche Systeme in Wazuh aufgenommen werden können.
+In der \href{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}{Dokumentation von Wazuh}\footnote{Link: \href{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}} gibt es gute Anleitungen wie solche Systeme in Wazuh aufgenommen werden können.

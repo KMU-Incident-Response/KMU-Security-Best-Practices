@@ -2,20 +2,20 @@
 
 \section{Voraussetzungen}
 Die Installationsanleitung für KMUs unterstützt debian-basierte Systeme.
-Es wird \href{https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso}{Ubuntu 20.04 LTS}\footnote{Link: https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso} empfohlen.
+Es wird \href{https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso}{Ubuntu 20.04 LTS}\footnote{Link: \href{https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso}{https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso}} empfohlen.
 Es muss auch beachtet werden, dass der Server genug Ressourcen zur Verfügung hat.
 Der Server braucht mindestens 2 CPU Cores, 4GB RAM und 100 GB Speicher.
 Der Speicher hängt von der Anzahl Clients ab.
-Weitere Informationen dazu gibt es in der \href{https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}{Wazuh Dokumentation}\footnote{Link: https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}.
+Weitere Informationen dazu gibt es in der \href{https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}{Wazuh Dokumentation}\footnote{Link: \href{https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}{https://documentation.wazuh.com/current/installation-guide/requirements.html\#all-in-one-deployment}}.
 
 \section{Installation}
-Die Installationsanleitung kann direkt im \href{https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#installation}{README.md}\footnote{Link: https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#installation} auf GitHub eingesehen werden.
+Die Installationsanleitung kann direkt im \href{https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#installation}{README.md}\footnote{Link: \href{https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#installation}{https://github.com/KMU-Incident-Response/KMU-Basis-Logging/blob/main/universal\_installer/README.md\#installation}} auf GitHub eingesehen werden.
 
 
 \subsection{Firewall}
 Es ist empfohlen eine hostbased Firewall zu verwenden.
-Auf Ubuntu wird standardmässig \href{https://help.ubuntu.com/community/UFW}{UFW}\footnote{Link: https://help.ubuntu.com/community/UFW} verwendet.
-Es ist auch möglich \href{https://firewalld.org/}{Firewalld}\footnote{Link: https://firewalld.org/} einzusetzen, welches auf den meisten anderen Linuxsystemen als default verwendet wird.
+Auf Ubuntu wird standardmässig \href{https://help.ubuntu.com/community/UFW}{UFW}\footnote{Link: \href{https://help.ubuntu.com/community/UFW}{https://help.ubuntu.com/community/UFW}} verwendet.
+Es ist auch möglich \href{https://firewalld.org/}{Firewalld}\footnote{Link: \href{https://firewalld.org/}{https://firewalld.org/}} einzusetzen, welches auf den meisten anderen Linuxsystemen als default verwendet wird.
 
 \subsubsection{Ports}
 \begin{lstlisting}
@@ -31,7 +31,7 @@ Es ist auch möglich \href{https://firewalld.org/}{Firewalld}\footnote{Link: htt
 
 
 
-Weitere Informationen können dem \href{https://documentation.wazuh.com/current/getting-started/architecture.html\#required-ports}{Architekturkonzept}\footnote{Link: https://documentation.wazuh.com/current/getting-started/architecture.html\#required-ports} von Wazuh entnommen werden.\\
+Weitere Informationen können dem \href{https://documentation.wazuh.com/current/getting-started/architecture.html\#required-ports}{Architekturkonzept}\footnote{Link: \href{https://documentation.wazuh.com/current/getting-started/architecture.html\#required-ports}{https://documentation.wazuh.com/current/getting-started/architecture.html\#required-ports}} von Wazuh entnommen werden.\\
 
 
 \subsection{SELinux}
@@ -40,7 +40,7 @@ Es ist empfohlen SELinux auf der ``permissive'' oder ``disabled'' Stufe zu halte
 \section{Upgrade}
 Das Upgrade des Wazuhserver kann über den Packagemanager gemacht werden.
 Es ist zu beachten, dass nur die unterstützen Versionen von Wazuh, Elasticsearch und Kibana installiert werden sollen.
-Informationen zu unterstützten Versionen können der \href{https://documentation.wazuh.com/current/upgrade-guide/compatibility-matrix/index.html}{Webseite}\footnote{Link: https://documentation.wazuh.com/current/upgrade-guide/compatibility-matrix/index.html} von Wazuh entnommen werden. Ein Upgrade könnte nachher wie folgt aussehen:
+Informationen zu unterstützten Versionen können der \href{https://documentation.wazuh.com/current/upgrade-guide/compatibility-matrix/index.html}{Webseite}\footnote{Link: \href{https://documentation.wazuh.com/current/upgrade-guide/compatibility-matrix/index.html}{https://documentation.wazuh.com/current/upgrade-guide/compatibility-matrix/index.html}} von Wazuh entnommen werden. Ein Upgrade könnte nachher wie folgt aussehen:
 \begin{lstlisting}
 apt-get install elasticsearch=7.14.2
 \end{lstlisting}
@@ -50,7 +50,7 @@ apt-get install elasticsearch=7.14.2
 Bei der Installation vom Wazuh Server für KMUs wird automatisch auch eine Palette von Regeln bereitgestellt.
 Es ist möglich die Regeln ohne die Serverinstallation zu importieren.
 Dazu wird ein bereits installierter Wazuhserver benötigt.
-Mehr Informationen kann man im GitHub \href{https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules}{README}\footnote{Link: https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules} finden.
+Mehr Informationen kann man im GitHub \href{https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules}{README}\footnote{Link: \href{https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules}{https://github.com/KMU-Incident-Response/ossec-sysmon/tree/master\#manuelle-installation-von-rules}} finden.
 
 \section{SSL Zertifikat}
 Die Wazuhinstallation wird mit einem Self-Signed Zertifikat ausgeliefert.
