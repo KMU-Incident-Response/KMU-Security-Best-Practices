@@ -11,7 +11,7 @@ Für die persönliche Firewall wird die Windows Firewall empfohlen.
 Diese wird automatisch von Windows verwaltet, ist Teil des \acrshort{os}-Schutzkonzept und wird darum in diesem Dokument nicht weiter behandelt.
 
 \section{Funktionsweise}
-Eine Firewall Regel besteht aus vier Teilen:
+Eine Layer 3 Netzwerkfirewall-Regel besteht aus vier Teilen:
 \begin{itemize}
     \item Herkunftsadresse
     \item Zieladresse
@@ -22,18 +22,18 @@ Eine Firewall Regel besteht aus vier Teilen:
 Ausserdem wird eine Regel immer entweder für eingehenden oder ausgehenden Verkehr definiert.
 Für die Herkunft und Zieladressen können auch ganze Bereiche von IP-Adressen angegeben werden.
 Viele Firewalls funktionieren nach dem Top-Down Prinzip. 
-Die Regeln werden von oben nach unten für jeden Verkehr geprüft und bei einer Übereinstimmung angewendet.
+Die Regeln werden von oben nach unten für jedes Packet geprüft und bei der ersten Übereinstimmung angewendet, gibt es keine Übereinstimmung wird die Standardaktion ausgführt.
 
 \section{Default Deny}
 In einem Netzwerk sollten keine Annahmen getroffen werden.
 Basierend darauf kann auch keinem Gerät standardmässig vertraut werden.
 Die Firewall soll so eingerichtet werden, dass spezielle Operationen wie Netzwerkverkehr vom Internet nach intern freigeschaltet werden muss.
 Es sollten strenge Regeln implementiert und die Ausnahme speziell einrichtet werden.
-Dies wird Allow-List Policy\footnote{\href{https://en.wikipedia.org/wiki/Whitelist}{https://en.wikipedia.org/wiki/Whitelist}} gennant.
+Dies wird Whitelist Policy\footnote{\href{https://en.wikipedia.org/wiki/Whitelist}{https://en.wikipedia.org/wiki/Whitelist}} gennant.
 Das genannte Verhalten ist bei den meisten Produkten ein Standard.
 Auf jeden Fall sollte es aber überprüft werden.\\
 
-Explizite Regeln sollten zuerst einsetzten 
+Explizite Regeln sollten zuerst eingreifen.
 Eine Default Deny Regel sollte immer am Schluss aller Regeln einsetzten und sieht folgendermassen aus:\\
 \textbf{Herkunftsadresse:} \quad ANY\\
 \textbf{Zieladresse:}\quad\quad\quad\quad ANY\\
