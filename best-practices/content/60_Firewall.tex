@@ -8,19 +8,41 @@ Das Ziel einer Firewall ist es den Netzwerkverkehr zu überprüfen und gegebenfa
 \section{Umfang}
 In diesem Dokument wird auf die Netzwerkfirewall eingegangen.
 Für die persönliche Firewall wird die Windows Firewall empfohlen.
-Diese wird automatisch von Windows verwaltet, ist Teil des \acrshort{os}-schutzkonzept und darum wird es diesem Dokument nicht weiter behandelt.
+Diese wird automatisch von Windows verwaltet, ist Teil des \acrshort{os}-Schutzkonzept und wird darum in diesem Dokument nicht weiter behandelt.
 
-\section{Zero Trust}
+\section{Funktionsweise}
+Eine Layer 3 Netzwerkfirewall-Regel besteht aus vier Teilen:
+\begin{itemize}
+    \item Herkunftsadresse
+    \item Zieladresse
+    \item Protokoll
+    \item Zulassen / Blockieren
+\end{itemize}
+
+Ausserdem wird eine Regel immer entweder für eingehenden oder ausgehenden Verkehr definiert.
+Für die Herkunft und Zieladressen können auch ganze Bereiche von IP-Adressen angegeben werden.
+Viele Firewalls funktionieren nach dem Top-Down Prinzip. 
+Die Regeln werden von oben nach unten für jedes Packet geprüft und bei der ersten Übereinstimmung angewendet, gibt es keine Übereinstimmung wird die Standardaktion ausgführt.
+
+\section{Default Deny}
 In einem Netzwerk sollten keine Annahmen getroffen werden.
 Basierend darauf kann auch keinem Gerät standardmässig vertraut werden.
 Die Firewall soll so eingerichtet werden, dass spezielle Operationen wie Netzwerkverkehr vom Internet nach intern freigeschaltet werden muss.
-Es sollten strenge Regeln implementiert werden und die Ausnahme speziell einrichtet.
-Dies wird Whitelist Policy\footnote{https://de.wikipedia.org/wiki/Wei\%C3\%9Fe\_Liste} gennant.
+Es sollten strenge Regeln implementiert und die Ausnahme speziell einrichtet werden.
+Dies wird Whitelist Policy\footnote{\href{https://en.wikipedia.org/wiki/Whitelist}{https://en.wikipedia.org/wiki/Whitelist}} gennant.
 Das genannte Verhalten ist bei den meisten Produkten ein Standard.
-Auf jeden Fall sollte es aber überprüft werden.
+Auf jeden Fall sollte es aber überprüft werden.\\
 
-\section{Kritische Infrastruktur}
-Kritische Infrastruktur sollte nicht mit allen anderen Geräten im selben Netzwerk sein, sondern in einem dedizierten LAN Segment.
+Explizite Regeln sollten zuerst eingreifen.
+Eine Default Deny Regel sollte immer am Schluss aller Regeln einsetzten und sieht folgendermassen aus:\\
+\textbf{Herkunftsadresse:} \quad ANY\\
+\textbf{Zieladresse:}\quad\quad\quad\quad ANY\\
+\textbf{Protokoll:}\quad\quad\quad\quad\quad ANY\\
+\textbf{Blockieren}
+
+
+\section{Unternehmenskritische Infrastruktur}
+Unternehmenskritische Infrastruktur sollte nicht mit allen anderen Geräten im selben Netzwerk sein, sondern in einem dedizierten LAN Segment.
 Das Segment sollte mit einer Firewall abgeschottet sein und nur benötigte Verbindungen geöffnet werden.
 
 \section{Betrieb einer Firewall}
@@ -30,9 +52,8 @@ Eine Firewall ist eine äusserst kritische Komponente eines Netzwerk und sollten
 
 Bei einem Ausfall einer Firewall muss nicht zwingend ein Security Incident eingetroffen sein, aber es kann sein das der produktive Betrieb des Unternehmens eingeschränkt wird.
 
-
 \section{Audits}
-Es ist empfehlenswert in regelmässigen Abständen Audits von kritischer Infrastruktur zu halten.
+Es ist empfehlenswert in regelmässigen Abständen Audits von unternehmenskritischer Infrastruktur zu halten.
 Dies betrifft auch eine Firewall, respektiv deren Konfiguration.
 Idealerweise werden Audits jährlich durchgeführt, solche Audits können auch von Dienstleister durchgeführt werden.
 Externe Dienstleister bringen bei Audits oftmals einen grossen Mehrwert, da diese viele Erfahrungen mit diversen Kunden machen.
@@ -41,9 +62,9 @@ Externe Dienstleister bringen bei Audits oftmals einen grossen Mehrwert, da dies
 Viele Firewall Hersteller haben ihr eigenes Betriebssystem auf den Geräten installiert.
 Durch diese Vielzahl an Systemen ist es für Wazuh nicht möglich einen Wazuh Agent für jedes Betriebssystem zu entwicklen.
 
-Daher bietet Wazuh die Möglichkeit, Agentless via rsyslog\footnote{Link: https://github.com/rsyslog/rsyslog} die Logdateien auszulesen und zu verarbeiten.\\
+Daher bietet Wazuh die Möglichkeit, Agentless via rsyslog\footnote{Link: \href{https://github.com/rsyslog/rsyslog}{https://github.com/rsyslog/rsyslog}} die Logdateien auszulesen und zu verarbeiten.\\
 
-Ausserdem exisiteren bereits im Standard-Ruleset Regeln für einige Firewall-Hersteller\footnote{Link: https://documentation.wazuh.com/current/user-manual/ruleset/getting-started.html}, wie zum Beispiel Cisco, JunOS oder CheckPoint Smart-1.\\
+Ausserdem exisiteren bereits im Standard-Ruleset Regeln für einige Firewall-Hersteller\footnote{Link: \href{https://documentation.wazuh.com/current/user-manual/ruleset/getting-started.html}{https://documentation.wazuh.com/current/user-manual/ruleset/getting-started.html}}, wie zum Beispiel Cisco, JunOS oder CheckPoint Smart-1.\\
 
 In diesem Guide wird das Einrichten von Agnetless Verbindungen zu Firewalls und anderen Geräten nicht genauer erläutert.
-In der \href{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}{Dokumentation von Wazuh}\footnote{Link: https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html} gibt es gute Anleitungen wie solche Systeme in Wazuh aufgenommen werden können.
+In der \href{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}{Dokumentation von Wazuh}\footnote{Link: \href{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}{https://documentation.wazuh.com/current/user-manual/capabilities/agentless-monitoring/index.html}} gibt es gute Anleitungen wie solche Systeme in Wazuh aufgenommen werden können.

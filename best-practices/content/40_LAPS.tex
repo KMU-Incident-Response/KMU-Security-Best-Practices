@@ -4,7 +4,7 @@ Die \acrfull{laps} ist eine Lösung von Microsoft.
 Mit \acrshort{laps} werden die Passwörter der lokalen Administratoren, welche auf allen Windows Geräten vorhanden sind, zufällig und unterschiedlich voneinander gesetzt.
 Zusätzlich werden die Paswörter in einem gewissen Zeitraum automatisch neu gesetzt.\\
 
-Dies verhindert, dass ein Angreiffer auf weitere Systeme vordringen kann, wenn ein lokales Administratorpasswort komprimiert ist.
+Dies verhindert, dass ein Angreiffer auf weitere Systeme vordringen kann, wenn ein lokales Administratorpasswort kompromittiert ist.
 Die Passwörter sind in einem Attribut auf dem Computer Objekt im Active Directory hinterlegt.
 Zugriff auf dieses Attribut haben nur berechtigte Benutzer.
 
@@ -24,7 +24,7 @@ Die Installation ist in drei Schritte unterteilt.
 \end{enumerate}
 
 \subsection{Installation via \acrshort{gpo}}
-\acrshort{laps} kann auf der \href{https://www.microsoft.com/download/details.aspx?id=46899}{Webseite von Microsoft}\footnote{Link: https://www.microsoft.com/download/details.aspx?id=46899} heruntergeladen werden.
+\acrshort{laps} kann auf der \href{https://www.microsoft.com/download/details.aspx?id=46899}{Webseite von Microsoft}\footnote{Link: \href{https://www.microsoft.com/download/details.aspx?id=46899}{https://www.microsoft.com/download/details.aspx?id=46899}} heruntergeladen werden.
 Die .msi Datei muss in einem freigegebenen Netzlaufwerk platziert werden, auf welches alle Windows Geräte Zugriff haben.
 Zum Beispiel auf dem Domain Controller unter:
 \begin{lstlisting}
@@ -35,7 +35,7 @@ Dieses Verzeichnis ist Standardmässig auf Domain Controllern freigegeben.\\
 Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der \acrshort{ou} verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}
+    \includegraphics[width=\linewidth]{../img/LAPS/GPO-Create-New.png}
     \caption{Neue \acrshort{gpo} für \acrshort{laps} Deployment}
 \end{figure}
 
@@ -68,7 +68,7 @@ Diese sind das \acrshort{gui}, das Powershell Modul und die \acrshort{gpo} Richt
 Dazu die Installationsdatei ausführen und alle Features installieren.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/laps-ui-install-2.png}
+    \includegraphics[width=\linewidth]{../img/LAPS/laps-ui-install-2.png}
     \caption{\acrshort{laps} manuelle Installation}
 \end{figure}
 
@@ -99,7 +99,7 @@ Die zusätzlichen Extension Attributes können per Powershell hinzugefügt werde
 Der ausführende Domänenbenutzer muss ein ``Schema Admin'' in Active Directory sein.\\
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/schema-admins.png}
+    \includegraphics[width=\linewidth]{../img/LAPS/schema-admins.png}
     \caption{Schema Admins Gruppe}
 \end{figure}
 
@@ -160,7 +160,7 @@ Zum Schluss muss \acrshort{laps} noch mit einer neuen Group Policy aktiviert wer
 Im Group Policy Management muss eine neue Group Policy erstellt werden, welche mit der gleichen \acrshort{ou} verknüpft ist, wie die Group Policy für das Deployment.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/GPO-Create-New.png}
+    \includegraphics[width=\linewidth]{../img/LAPS/GPO-Create-New.png}
     \caption{Neue Group Policy für \acrshort{laps} Deployment}
 \end{figure}
 
@@ -170,7 +170,7 @@ Mit \textbf{Rechtsklick $\rightarrow$ Edit} auf ``Enable local admin password ma
 Mit OK bestätigen.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/enable-laps.png}
+    \includegraphics[width=\linewidth]{../img/LAPS/enable-laps.png}
     \caption{\acrshort{laps} aktivieren}
 \end{figure}
 
@@ -212,7 +212,7 @@ Im \acrshort{laps} UI gibt man im Feld ``Computer name'' den Namen des Computers
 Das Passwort wird dann im Feld ``Password'' angezeigt.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/LAPS/Laps-ui.png}
+    \includegraphics[width=\linewidth]{../img/LAPS/Laps-ui.png}
     \caption{\acrshort{laps} Passwort auslesen}
 \end{figure}
 Im Feld ``New expiration time'' kann man eine neue Zeit setzen, wann das Passwort gewechselt werden soll.

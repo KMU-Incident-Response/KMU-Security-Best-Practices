@@ -2,16 +2,16 @@
 
 \section{Installation via \acrshort{gpo}}
 Der Wazuh Agent kann per Group Policy auf allen Windows Geräten installiert werden.
-Dazu muss als erstes die Installationsdatei für den Agent auf der \href{https://documentation.wazuh.com/current/installation-guide/packages-list.html}{Webseite von Wazuh}\footnote{Link: https://documentation.wazuh.com/current/installation-guide/packages-list.html} heruntergeladen werden.\\
+Dazu muss als erstes die Installationsdatei für den Agent auf der \href{https://documentation.wazuh.com/current/installation-guide/packages-list.html}{Webseite von Wazuh}\footnote{Link: \href{https://documentation.wazuh.com/current/installation-guide/packages-list.html}{https://documentation.wazuh.com/current/installation-guide/packages-list.html}} heruntergeladen werden.\\
 
 Die Installationsdatei braucht eine Konfigurationsdatei welche die Netzwerkadresse des Wazuh Managers enthält.
-Eine solche Konfigurationsdatei kann mithilfe dem Windows Tool ``Orca'' erstellt werden, welches Teil der Windows SDK ist. Das Windows SDK kann man auf der \href{https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/}{Webseite von Microsoft}\footnote{Link: https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/} herunterladen.\\
+Eine solche Konfigurationsdatei kann mithilfe dem Windows Tool ``Orca'' erstellt werden, welches Teil der Windows SDK ist. Das Windows SDK kann man auf der \href{https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/}{Webseite von Microsoft}\footnote{Link: \href{https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/}{https://developer.microsoft.com/de-de/windows/downloads/windows-sdk/}} herunterladen.\\
 
 Bei der Installation der Windows SDK kann eine grosse Anzahl Features ausgewählt werden.
 Für Orca wird jedoch nur das Feature ``MSI Tools'' benötigt, alle andere Features können abgewählt werden.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/install-sdk.png}
+    \includegraphics[width=\linewidth]{../img/agent/install-sdk.png}
     \caption{MSI Tools der Windows SDK}
 \end{figure}
 
@@ -25,14 +25,14 @@ Sobald Orca installiert ist wird im Kontextmenu bei .msi Dateien einen neuen Pun
 Mit einem Rechtsklick auf die Wazuh Agent .msi Datei kann via ``Edit with Orca'' eine Konfigurationsdatei erstellt werden.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/edit-with-orca.png}
+    \includegraphics[width=\linewidth]{../img/agent/edit-with-orca.png}
     \caption{Mit Orca bearbeiten}
 \end{figure}
 
 In Orca muss man in der Menüleiste unter \textbf{Transform $\rightarrow$ New Transform} einen neuen Änderungsnachweis erstellen.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/new-transform.png}
+    \includegraphics[width=\linewidth]{../img/agent/new-transform.png}
     \caption{Neuer Änderungsnachweis in Orca}
 \end{figure}
 
@@ -48,7 +48,7 @@ Es braucht folgende Paare:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/Orca-Edit.png}
+    \includegraphics[width=\linewidth]{../img/agent/Orca-Edit.png}
     \caption{Wazuh Installationsparameter}
 \end{figure}
 
@@ -63,7 +63,7 @@ Nun muss eine neue Group Policy erstellt werden, mit welcher der Wazuh Agent auf
 Dazu öffnet man das Group Policy Management auf dem Domain Controller und erstellt eine neue Group Policy, welche mit der \acrshort{ou} verknüpft ist, die alle Windows Geräte enthält.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/create-new-group-policy.png}
+    \includegraphics[width=\linewidth]{../img/agent/create-new-group-policy.png}
     \caption{Neue Group Policy für Agent Deployment}
 \end{figure}
 
@@ -71,7 +71,7 @@ In der neuen Group Policy muss unter \textbf{Computer Configuration $\rightarrow
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/new-software-install.png}
+    \includegraphics[width=\linewidth]{../img/agent/new-software-install.png}
     \caption{Neue Group Policy für Agent Deployment}
 \end{figure}
 Im neuen Fesnter wählt man die .msi Datei, welche im freigegebenen Netzlaufwerk abgelegt wurde.
@@ -93,14 +93,14 @@ Dazu öffnet man den Wazuh Manager und geht auf \textbf{Wazuh $\rightarrow$ Agen
 Auf der rechten Seite der Tabelle mit allen Agents klickt man auf ``Deploy new Agent''.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/deploy-new-agent.png}
+    \includegraphics[width=\linewidth]{../img/agent/deploy-new-agent.png}
     \caption{Agent deployment}
 \end{figure}
 
 Auf der nächsten Seite gibt man alle nötigen Daten an und kann unten den Powershell Command kopieren.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{../img/agent/deploy-new-agent-2.png}
+    \includegraphics[width=\linewidth]{../img/agent/deploy-new-agent-2.png}
     \caption{Wazuh Agent manuell installieren}
 \end{figure}
 
