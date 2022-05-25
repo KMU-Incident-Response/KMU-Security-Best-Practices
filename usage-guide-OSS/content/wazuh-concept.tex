@@ -1,14 +1,15 @@
 \chapter{Wazuh Übersicht}
 \section{Umfang}
 Dieses Kapitel geht auf die technischen Gegebenheiten und den kompletten Ablauf im Hintergrund von Wazuh ein.
-Dies ist vorallem für Interessierte gedacht und muss nicht zwingend gelesen werden.\\
+Dies ist vorallem für Interessierte gedacht und muss nicht zwingend gelesen werden, um dem weiteren Verlauf des Dokumentes folgen zu können.\\
 
-Wazuh ist aus dem Open-Source Projekt \href{https://github.com/ossec}{ossec}\footnote{Link: https://github.com/ossec} entstanden und wie ossec komplett Open-Source und kostenlos verfügbar.
+Wazuh ist aus dem Open-Source Projekt \href{https://github.com/ossec}{ossec}\footnote{Link: https://github.com/ossec} entstanden. Wie ossec ist Wazuh komplett Open-Source und kostenlos verfügbar.
 
 \section{Aufbau}
 
 \begin{minipage}{0.4\linewidth}
-Wazuh basiert auf dem \acrfull{elk} Stack und besteht aus einem Manager und den Agents. 
+Wazuh basiert auf dem \acrfull{elk} Stack.
+Wazuh beinhaltet den Manager, auf welchen sich die Wazuh Agents verbinden. 
 Der Manager ist ein Plugin, welches in den \acrshort{elk} Stack integriert werden kann und mithilfe von Agents auf den Computern Logdateien sammelt.
 
 \end{minipage}
